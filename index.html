@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>ECE249 — Test Series (Units 1-6)</title>
+<title>CHE-110 — Test Series (Units 1-6)</title>
 <style>
 /* ===================== CSS Variables ===================== */
 :root{
@@ -352,7 +352,7 @@ input[type="text"], input[type="file"]{
       <header>
         <div class="title">
           <div style="display:flex;align-items:center;gap:10px">
-            <h1>ECE249 — Test Series (Units 1-6)</h1>
+            <h1>CHE-110 — Test Series (Units 1-6)</h1>
             <div class="accent-badge" id="badgeCount">300+ Qs</div>
           </div>
           <div class="small-by">Created by <strong>Aryan Singh</strong></div>
@@ -2802,7 +2802,7 @@ btnResetStart.addEventListener('click', ()=>{ if(confirm('Reset start form?')){ 
 function saveResult(){
   const correct = state.answeredCorrect.filter(x=>x).length;
   const attempted = state.answers.filter(a=>a!==null).length;
-  const user = JSON.parse(localStorage.getItem('ECE-249_user') || '{}');
+  const user = JSON.parse(localStorage.getItem('CHE-110_user') || '{}');
   const result = { name: user.name || inpName.value, reg: user.reg || inpReg.value, pic: user.pic || null, correct, attempted, time: formatTime(state.elapsedSec), date: (new Date()).toLocaleString() };
   
   // 🔗 also save online
@@ -2840,34 +2840,34 @@ function showLoader(msg, duration = 1500) {
 
 
 // // 🟢 Supabase Database Save (adds result to test_result table)
-// async function saveResultToSupabase(result) {
-//   try {
-//     // पहले check करो कि यह registration पहले से मौजूद तो नहीं है
-//     const { data: existing, error: fetchError } = await supabase
-//       .from('test_result')
-//       .select('reg')
-//       .eq('reg', result.reg);
+async function saveResultToSupabase(result) {
+  try {
+    // पहले check करो कि यह registration पहले से मौजूद तो नहीं है
+    const { data: existing, error: fetchError } = await supabase
+      .from('test_result')
+      .select('reg')
+      .eq('reg', result.reg);
 
-//     if (fetchError) throw fetchError;
+    if (fetchError) throw fetchError;
 
-//     if (existing && existing.length > 0) {
-//       alert('⚠️ This registration number has already submitted a result!');
-//       return;
-//     }
+    if (existing && existing.length > 0) {
+      alert('⚠️ This registration number has already submitted a result!');
+      return;
+    }
 
-//     // Insert new result
-//     const { data, error } = await supabase
-//       .from('test_result')
-//       .insert([result]);
+    // Insert new result
+    const { data, error } = await supabase
+      .from('test_result')
+      .insert([result]);
 
-//     if (error) throw error;
+    if (error) throw error;
 
-//     alert('✅ Result saved to Supabase database!');
-//   } catch (err) {
-//     console.error('Supabase insert error:', err);
-//     alert('❌ Error saving result to Supabase.');
-//   }
-// }
+    alert('✅ Result saved to Supabase database!');
+  } catch (err) {
+    console.error('Supabase insert error:', err);
+    alert('❌ Error saving result to Supabase.');
+  }
+}
 /* Export CSV for all saved results */
 
 // 🟢 Supabase Database Save (adds result to test_result table)
@@ -2903,8 +2903,8 @@ async function saveResultToSupabase(result) {
 
   } catch (err) {
     console.error('Aryan_data_base insert error:', err);
-    showLoader("❌ Error saving result!", 2000);
-    alert('❌ Error saving result to Aryan_data_base.');
+    showLoader("❌ 🥲🥲 Error saving result!", 2000);
+    alert('❌ 🥲🥲 Error saving result to Aryan_data_base.');
   }
 }
 
