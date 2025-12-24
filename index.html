@@ -1,0 +1,3009 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>ECE249 — Test Series (Units 1-6)</title>
+<style>
+/* ===================== CSS Variables ===================== */
+:root{
+    --bg:#10a482; /* Background main color variable */
+    --card:#0d0e0f; /* Card background color variable */
+    --accent:#1d6c52; /* Main accent color */
+    --accent-600:#059669; /* Darker accent */
+    --accent-400:#44a631; /* Lighter accent */
+    --danger:#d41212b8; /* Error/danger color */
+    --muted:#1e2939; /* Muted text color */
+    --glass:rgba(52, 36, 36, 0.03); /* Glassy overlay color */
+}
+
+/* ===================== Global Styles ===================== */
+*{
+    box-sizing:border-box; /* Padding + border included in element width/height */
+    font-family:Inter,ui-sans-serif,system-ui,Segoe UI,Roboto,Helvetica,Arial; /* Default font stack */
+}
+html,body{
+    height:100%; /* Full height for page */
+}
+body{
+    margin:0; /* Remove default margin */
+    background:
+        radial-gradient(900px 500px at 10% 10%, rgba(244, 50, 163, 0.04), transparent), /* Decorative radial gradient */
+        linear-gradient(180deg,#5a7ab2 0%, #11bac0 100%); /* Main page gradient background */
+    color:#070b0f; /* Default text color */
+    min-height:100vh; /* Minimum height full viewport */
+    display:flex; /* Flex layout */
+    align-items:center; /* Vertically center content */
+    justify-content:center; /* Horizontally center content */
+    padding:18px; /* Page padding */
+}
+
+/* ===================== Layout Wrappers ===================== */
+.wrap{
+    width:100%; /* Full width */
+    max-width:1100px; /* Max width for large screens */
+    margin:0 auto; /* Center horizontally */
+}
+.card{
+    background:linear-gradient(180deg, rgba(5, 3, 3, 0.02), rgba(0,0,0,0.12)); /* Card gradient */
+    border-radius:14px; /* Rounded corners */
+    padding:18px; /* Inner spacing */
+    box-shadow:0 10px 40px rgba(2,6,23,0.7); /* Shadow under card */
+    border:1px solid rgba(255,255,255,0.03); /* Subtle border */
+}
+
+/* ===================== Header ===================== */
+header{
+    display:flex; /* Flex layout */
+    justify-content:space-between; /* Space between title and other elements */
+    align-items:flex-start; /* Align at top */
+    gap:12px; /* Gap between items */
+}
+.title{
+    display:flex; /* Flex for vertical layout */
+    flex-direction:column; /* Stack title + subtitle vertically */
+}
+h1{
+    margin:0; /* Remove default margin */
+    font-size:20px; /* Title font size */
+}
+.small-by{
+    font-size:12px; /* Small subtitle text */
+    color:var(--muted); /* Muted color */
+    margin-top:6px; /* Space above */
+}
+.accent-badge{
+    background:linear-gradient(90deg,var(--accent-400),var(--accent)); /* Gradient badge */
+    padding:6px 10px; /* Inner spacing */
+    border-radius:8px; /* Rounded corners */
+    color:#022; /* Text color inside badge */
+    font-weight:700; /* Bold */
+}
+
+/* ===================== Start area ===================== */
+.start-area{
+    display:flex; /* Flex layout */
+    gap:14px; /* Gap between inputs/buttons */
+    align-items:flex-start; /* Align at top */
+    margin-top:12px; /* Top spacing */
+}
+.inputs{
+    display:flex; /* Flex layout */
+    flex-direction:column; /* Stack inputs vertically */
+    gap:8px; /* Space between inputs */
+}
+input[type="text"], input[type="file"]{
+    padding:10px; /* Inner spacing */
+    border-radius:8px; /* Rounded corners */
+    border:1px solid rgba(255,255,255,0.05); /* Border style */
+    background:transparent; /* Transparent input background */
+    color:inherit; /* Same as body color */
+    width:280px; /* Fixed input width */
+}
+
+/* ===================== About box ===================== */
+.about{
+    background:linear-gradient(180deg, rgba(204, 66, 66, 0.01), rgba(156, 43, 43, 0.02)); /* Light background gradient */
+    padding:12px; /* Inner spacing */
+    border-radius:10px; /* Rounded corners */
+    border:1px solid rgba(150, 23, 23, 0.02); /* Light border */
+    max-width:600px; /* Max width */
+}
+.about p{
+    margin:6px 0; /* Paragraph spacing */
+    color:var(--muted); /* Muted color */
+    font-size:13px; /* Small text */
+}
+
+/* ===================== Buttons ===================== */
+.btn{
+    padding:10px 14px; /* Inner spacing */
+    border-radius:10px; /* Rounded */
+    border:0; /* No border */
+    cursor:pointer; /* Pointer on hover */
+    font-weight:700; /* Bold */
+    background:var(--accent); /* Main accent color */
+    color:#022; /* Text color */
+    box-shadow:0 6px 20px rgba(14, 239, 164, 0.08); /* Shadow */
+    transition:transform .14s ease, box-shadow .14s ease; /* Smooth interaction */
+}
+.btn:active{
+    transform:translateY(2px); /* Button press effect */
+}
+.btn.ghost{
+    background:transparent; /* Ghost button */
+    border:1px solid rgba(99, 46, 46, 0.06); /* Light border */
+    color:#1a5795; /* Text color */
+}
+.btn.warn{
+    background:var(--danger); /* Red background for warning */
+    color:#52aeb7; /* Text color */
+}
+
+/* ===================== Row flex ===================== */
+.row{
+    display:flex; /* Flex layout */
+    gap:8px; /* Gap between items */
+    align-items:center; /* Vertical center */
+}
+.muted{
+    color:var(--muted); /* Muted text */
+    font-size:13px; /* Small text */
+}
+
+/* ===================== Main Layout ===================== */
+.main{
+    display:flex; /* Flex layout */
+    gap:16px; /* Gap between left and right */
+    margin-top:16px; /* Top spacing */
+}
+.left{
+    flex:1; /* Left area grows */
+}
+.right{
+    width:320px; /* Fixed width for right panel */
+}
+
+/* ===================== Top Status boxes ===================== */
+.topstatus{
+    display:flex;
+    gap:8px;
+    align-items:center;
+    flex-wrap:wrap; /* Wrap to next line if overflow */
+}
+.status-box{
+    background:var(--glass); /* Glassy background */
+    padding:8px 10px; /* Inner padding */
+    border-radius:8px;
+    min-width:80px; /* Minimum width */
+    text-align:center; /* Center text */
+    font-size:13px;
+}
+.status-box .label{
+    color:var(--muted);
+    font-size:12px;
+}
+.status-box .val{
+    font-weight:800;
+    margin-top:4px;
+}
+
+/* ===================== Question Area ===================== */
+.question-area{
+    margin-top:12px;
+    padding:18px;
+    border-radius:12px;
+    background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.06));
+    border:1px solid rgba(255,255,255,0.02);
+}
+.qtop{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+.qtext{
+    font-size:19px;
+    font-weight:700;
+    margin:12px 0;
+}
+.options{
+    display:grid; /* Grid layout */
+    grid-template-columns:1fr 1fr; /* Two columns for options */
+    gap:12px; /* Gap between options */
+}
+.option{
+    padding:12px;
+    border-radius:10px;
+    border:1px solid rgba(91, 206, 248, 0.438);
+    cursor:pointer;
+    background:linear-gradient(180deg, rgba(255,255,255,0.01), transparent);
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:10px;
+    transition:transform .18s cubic-bezier(.2,.9,.3,1), box-shadow .18s ease, background .18s ease;
+}
+.option:hover{
+    transform:translateY(-4px); /* Hover lift effect */
+    box-shadow:0 10px 30px rgba(12, 49, 217, 0.6);
+}
+.option .label{
+    font-weight:750;
+}
+.option .explainTiny{
+    font-size:12px;
+    color:var(--muted);
+    padding:10px 10px;
+    border-radius:10px;
+    border:5px solid rgba(255,255,255,0.02);
+}
+
+/* ===================== Option states ===================== */
+.option.correct{
+    background:linear-gradient(90deg, rgba(11, 29, 23, 0.12), rgba(22, 69, 53, 0.06));
+    border-color:rgba(16,185,129,0.28);
+    color:var(--accent);
+    box-shadow:0 10px 30px rgba(16,185,129,0.06), 0 0 18px rgba(16,185,129,0.06) inset;
+    animation:glow 900ms ease forwards; /* Green glow animation */
+}
+.option.wrong{
+    background:linear-gradient(90deg, rgba(239,68,68,0.06), rgba(239,68,68,0.03));
+    border-color:rgba(5, 5, 5, 0.22);
+    color:var(--danger);
+    animation:shake .45s linear; /* Red shake animation */
+}
+
+/* ===================== Animations ===================== */
+@keyframes glow{
+    0%{box-shadow:0 0 0 rgba(16,185,129,0)}
+    50%{box-shadow:0 0 20px rgba(113, 234, 194, 0.08)}
+    100%{box-shadow:0 0 6px rgba(16,185,129,0.04)}
+}
+@keyframes shake{
+    0%{transform:translateX(0)}
+    25%{transform:translateX(-6px)}
+    50%{transform:translateX(6px)}
+    75%{transform:translateX(-4px)}
+    100%{transform:translateX(0)}
+}
+
+/* ===================== Explanation box ===================== */
+.explain{
+    font-size:14px;
+    color:var(--muted);
+    margin-top:10px;
+    padding:12px;
+    border-radius:10px;
+    background:rgba(0,0,0,0.05);
+    display:none; /* Hidden by default */
+}
+
+/* ===================== Controls and Footer ===================== */
+.controls{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-top:14px;
+}
+.nav{
+    display:flex;
+    gap:8px;
+    align-items:center;
+}
+.footer{
+    margin-top:12px;
+    color:var(--muted);
+    font-size:13px;
+}
+
+/* ===================== Modal ===================== */
+.modal-backdrop{
+    position:fixed;
+    inset:0;
+    background:rgba(2,6,23,0.6); /* Semi-transparent backdrop */
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    z-index:60;
+}
+.modal{
+    background:#071025;
+    padding:16px;
+    border-radius:12px;
+    width:90%;
+    max-width:720px;
+    border:1px solid rgba(255,255,255,0.03);
+}
+.modal h3{
+    margin:0 0 8px;
+}
+.results-table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:8px;
+}
+.results-table th,.results-table td{
+    padding:8px;
+    border-bottom:1px solid rgba(255,255,255,0.03);
+    text-align:left;
+    font-size:13px;
+}
+.img-preview{
+    width:56px;
+    height:56px;
+    border-radius:8px;
+    object-fit:cover;
+    border:1px solid rgba(255,255,255,0.04);
+}
+
+/* ===================== Responsive ===================== */
+@media(max-width:880px){
+    .main{flex-direction:column;} /* Stack left & right vertically */
+    .right{width:100%;} /* Right panel full width */
+    .options{grid-template-columns:1fr;} /* Single column for options */
+}
+</style>
+<!-- Supabase client JS (must be above your custom <script>) -->
+<script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+</head>
+<body>
+  <div class="wrap">
+    <div class="card" id="cardRoot">
+      <header>
+        <div class="title">
+          <div style="display:flex;align-items:center;gap:10px">
+            <h1>ECE249 — Test Series (Units 1-6)</h1>
+            <div class="accent-badge" id="badgeCount">300+ Qs</div>
+          </div>
+          <div class="small-by">Created by <strong>Aryan Singh</strong></div>
+        </div>
+        <div style="display:flex;flex-direction:column;align-items:flex-end;gap:8px">
+          <div style="font-size:12px;color:var(--muted)">BY:- <strong style="color:var(--accent)">ARYAN SINGH 🥷</strong></div>
+        </div>
+      </header>
+
+      <!-- START PAGE -->
+      <div id="startPage" style="margin-top:12px">
+        <div class="start-area">
+          <div class="inputs">
+            <input id="inpName" type="text" placeholder="Enter full name "  />
+            <input id="inpReg" type="text" placeholder="Registration number" />
+            <div style="display:flex;align-items:center;gap:8px">
+              <input id="inpPic" type="file" accept="image/*" />
+              <img id="imgPreview" class="img-preview" src="" alt="profile picture" style="display:none" />
+            </div>
+            <div style="display:flex;gap:8px;margin-top:8px">
+              <button id="btnStart" class="btn" disabled>Start Test</button>
+              <button id="btnResetStart" class="btn ghost">Reset</button>
+            </div>
+            <div id="startErrors" style="color:#ffcccb;font-size:13px;margin-top:6px"></div>
+          </div>
+          <div class="about">
+            <strong>About this Test</strong>
+            <p>• 300+ MCQs covering Units 1-6. One question at a time.</p>
+            <p>• Name & Registration number are mandatory. Profile picture optional.</p>
+            <p>• No hard time limit, but inactivity of 60s shows a warning.</p>
+            <p>• Wrong answers do not increase progress percentage (progress = correct / total).</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- TEST PAGE (hidden initially) -->
+      <div id="testPage" style="display:none">
+        <div style="margin-top:12px;display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap">
+          <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap" class="topstatus">
+            <div class="status-box"><div class="label">Time</div><div class="val" id="timeTop">00:00</div></div>
+            <div class="status-box"><div class="label">Correct</div><div class="val" id="topCorrect">0</div></div>
+            <div class="status-box"><div class="label">Wrong</div><div class="val" id="topWrong">0</div></div>
+            <div class="status-box"><div class="label">Progress</div><div class="val" id="topProgress">0%</div></div>
+            <div class="status-box"><div class="label">Attempted</div><div class="val" id="topAttempted">0</div></div>
+            <div class="status-box"><div class="label">Q</div><div class="val" id="topQno">0/300</div></div>
+          </div>
+          <div style="display:flex;gap:8px;align-items:center">
+            <div class="muted" id="showUser">—</div>
+            <button id="btnEndTestTop" class="btn warn">End Test</button>
+          </div>
+        </div>
+
+        <div class="main">
+          <div class="left">
+            <div class="question-area">
+              <div class="qtop">
+                <div class="muted">Name: <span id="showName">—</span> • Reg: <span id="showReg">—</span></div>
+                <div class="muted">Progress: <span id="progressPercent">0%</span></div>
+              </div>
+              <div class="qtext" id="questionText">Loading...</div>
+              <div class="options" id="optionsBox"></div>
+              <div class="explain" id="explainBox"></div>
+
+              <div class="controls">
+                <div class="nav">
+                  <button id="btnPrev" class="btn ghost">Prev</button>
+                  <button id="btnNext" class="btn ghost">Next</button>
+                  <button id="btnShowExplain" class="btn ghost">Show Explanation</button>
+                </div>
+                <div class="muted">Score: <span id="scoreInline">0</span></div>
+              </div>
+            </div>
+            <div class="footer">Tip: Click the correct option — it turns <span style="color:var(--accent);font-weight:700">green</span>. Wrong picks become <span style="color:var(--danger);font-weight:700">red</span>.</div>
+          </div>
+
+          <aside class="right">
+            <div class="scorebox">
+              <div class="row" style="justify-content:space-between;align-items:center">
+                <div style="display:flex;gap:8px;align-items:center">
+                  <div style="display:flex;flex-direction:column"><div class="muted" style="font-size:12px">Questions</div><div style="font-weight:800" id="curQ">0</div></div>
+                  <div style="display:flex;flex-direction:column"><div class="muted" style="font-size:12px">Total</div><div style="font-weight:800" id="totalQ">300</div></div>
+                </div>
+                <img id="userPicSmall" class="img-preview" src="" style="display:none">
+              </div>
+
+              <div style="display:flex;gap:8px;margin-top:8px">
+                <div style="flex:1"><div class="label muted">Correct</div><div id="correctCount" style="font-weight:800">0</div></div>
+                <div style="flex:1"><div class="label muted">Wrong</div><div id="wrongCount" style="font-weight:800">0</div></div>
+              </div>
+
+              <div style="display:flex;gap:8px;margin-top:10px">
+                <div style="flex:1"><div class="label muted">Attempted</div><div id="attemptedCount" style="font-weight:800">0</div></div>
+                <div style="flex:1"><div class="label muted">Time</div><div id="timeSpent" style="font-weight:800">00:00</div></div>
+              </div>
+
+              <div style="margin-top:10px;display:flex;gap:8px">
+                <button id="btnSave" class="btn">Save Result</button>
+                <button id="btnExport" class="btn ghost">Export CSV</button>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- modal container -->
+  <div id="modalRoot" style="display:none"></div>
+  <!-- 🟢 Supabase Connection Setup -->
+<script>
+const SUPABASE_URL = "https://kqfdyvqrhytbjyszsxmr.supabase.co"; // Supabase Project URL
+const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImtxZmR5dnFyaHl0Ymp5c3pzeG1yIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjQ2NDkzNzQsImV4cCI6MjA4MDIyNTM3NH0.-WpfPxH7Q3xE5UF5448ERdsdSjYTiefF4nVymSM9cu0";
+// Create Supabase client
+const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+</script>
+<script>const QUESTIONS = [
+  {
+    q: "Environmental Studies is mainly concerned with:",
+    options: ["Space science", "Interaction of humans with environment", "Only plants", "Only animals"],
+    answer: 1, // "Interaction..." ab 2nd number (index 1) par hai
+  },
+  {
+    q: "Environmental Science mainly integrates:",
+    options: ["Social sciences only", "Engineering only", "Medical sciences", "Physical, chemical, biological sciences"],
+    answer: 3,
+  },
+  {
+    q: "Application of engineering principles to improve environment is called:",
+    options: ["Environmental Engineering", "Environmental Studies", "Ecology", "Environmental Science"],
+    answer: 0,
+  },
+  {
+    q: "Which is NOT a component of natural environment?",
+    options: ["Air", "Water", "Agricultural field", "Forest"],
+    answer: 2,
+  },
+  {
+    q: "Agricultural fields are examples of:",
+    options: ["Natural environment", "Anthropogenic environment", "Aquatic environment", "Atmospheric environment"],
+    answer: 1,
+  },
+  {
+    q: "Solid land mass of the Earth is called:",
+    options: ["Hydrosphere", "Lithosphere", "Atmosphere", "Biosphere"],
+    answer: 1,
+  },
+  {
+    q: "Which is NOT a layer of atmosphere?",
+    options: ["Troposphere", "Stratosphere", "Mesosphere", "Lithosphere"],
+    answer: 3,
+  },
+  {
+    q: "Most abundant gas in atmosphere is:",
+    options: ["Nitrogen", "Oxygen", "Carbon dioxide", "Argon"],
+    answer: 0,
+  },
+  {
+    q: "Biosphere includes:",
+    options: ["Only plants", "Living organisms", "Only animals", "Non-living matter"],
+    answer: 1,
+  },
+  {
+    q: "Sustainability means:",
+    options: ["Using all resources fast", "Industrial growth only", "Meeting present needs without harming future", "Economic growth only"],
+    answer: 2,
+  },
+  {
+    q: "Three pillars of sustainability are:",
+    options: ["Water, air, soil", "Plant, animal, human", "Social, economic, environmental", "Energy, food, shelter"],
+    answer: 2,
+  },
+  {
+    q: "Carrying capacity refers to:",
+    options: ["Maximum population environment can sustain", "Maximum pollution level", "Total resources on Earth", "Human population only"],
+    answer: 0,
+  },
+  {
+    q: "Which sector consumes maximum water?",
+    options: ["Municipal", "Domestic", "Industrial", "Agriculture"],
+    answer: 3,
+  },
+  {
+    q: "Main cause of groundwater depletion:",
+    options: ["Rainfall", "Flood", "Over-exploitation", "Afforestation"],
+    answer: 2,
+  },
+  {
+    q: "Which is a water-borne disease problem during floods?",
+    options: ["Cancer", "Heart disease", "Diabetes", "Malaria"],
+    answer: 3,
+  },
+  {
+    q: "Meteorological drought is caused by:",
+    options: ["Less rainfall", "Low soil moisture", "Low stream flow", "High temperature only"],
+    answer: 0,
+  },
+  {
+    q: "One major disadvantage of dams is:",
+    options: ["Electricity generation", "Displacement of people", "Flood control", "Irrigation"],
+    answer: 1,
+  },
+  {
+    q: "Rainwater harvesting helps in:",
+    options: ["Soil erosion", "Water pollution", "Groundwater recharge", "Flood increase"],
+    answer: 2,
+  },
+  {
+    q: "Study of soil in natural environment is called:",
+    options: ["Ecology", "Geology", "Pedology", "Hydrology"],
+    answer: 2,
+  },
+  {
+    q: "Removal of top soil layer is known as:",
+    options: ["Weathering", "Soil erosion", "Desertification", "Leaching"],
+    answer: 1,
+  },
+  {
+    q: "Wind erosion type includes:",
+    options: ["Saltation", "Splash", "Sheet", "Rill"],
+    answer: 0,
+  },
+  {
+    q: "Forest cover more than 70% is called:",
+    options: ["Open forest", "Very dense forest", "Moderately dense", "Scrub land"],
+    answer: 1,
+  },
+  {
+    q: "Mangrove forests grow in:",
+    options: ["Desert", "River deltas", "Mountains", "Grasslands"],
+    answer: 1,
+  },
+  {
+    q: "Cutting trees without planning leads to:",
+    options: ["Afforestation", "Reforestation", "Social forestry", "Deforestation"],
+    answer: 3,
+  },
+  {
+    q: "Coal is a:",
+    options: ["Renewable resource", "Biogas", "Non-renewable resource", "Nuclear fuel"],
+    answer: 2,
+  },
+  {
+    q: "Cleanest fossil fuel is:",
+    options: ["Coal", "Natural gas", "Petroleum", "Nuclear fuel"],
+    answer: 1,
+  },
+  {
+    q: "Nuclear energy is produced by:",
+    options: ["Fission or fusion", "Combustion", "Photosynthesis", "Oxidation"],
+    answer: 0,
+  },
+  {
+    q: "Energy from flowing water is:",
+    options: ["Wind energy", "Hydro-electric energy", "Solar energy", "Tidal energy"],
+    answer: 1,
+  },
+  {
+    q: "Solar energy is converted to electricity using:",
+    options: ["Turbine", "Photovoltaic cells", "Generator", "Boiler"],
+    answer: 1,
+  },
+  {
+    q: "Biomass energy source example:",
+    options: ["Coal", "Uranium", "Petrol", "Wood"],
+    answer: 3,
+  },
+  {
+    q: "Environmental Studies is a:",
+    options: ["Single discipline", "Pure science", "Multidisciplinary subject", "Engineering subject"],
+    answer: 2, // "Multidisciplinary subject" ab index 2 par hai
+  },
+  {
+    q: "Which environment is modified by humans?",
+    options: ["Natural", "Anthropogenic", "Aquatic", "Atmospheric"],
+    answer: 1,
+  },
+  {
+    q: "Which sphere includes oceans, rivers, glaciers?",
+    options: ["Atmosphere", "Lithosphere", "Hydrosphere", "Biosphere"],
+    answer: 2,
+  },
+  {
+    q: "Percentage of Nitrogen in atmosphere is:",
+    options: ["21%", "0.03%", "78%", "1%"],
+    answer: 2,
+  },
+  {
+    q: "Sustainable development concept was defined by:",
+    options: ["Brundtland Commission", "Kyoto Protocol", "UNEP", "WHO"],
+    answer: 0,
+  },
+  {
+    q: "Which is NOT a pillar of sustainability?",
+    options: ["Social", "Technological", "Economic", "Environmental"],
+    answer: 1,
+  },
+  {
+    q: "Carrying capacity depends on:",
+    options: ["Technology only", "Available resources", "Population only", "Climate only"],
+    answer: 1,
+  },
+  {
+    q: "Maximum freshwater use is in:",
+    options: ["Domestic", "Power plants", "Industry", "Agriculture"],
+    answer: 3,
+  },
+  {
+    q: "Groundwater over-exploitation leads to:",
+    options: ["Ground subsidence", "Flood", "Tsunami", "Cyclone"],
+    answer: 0,
+  },
+  {
+    q: "River flood is mainly caused by:",
+    options: ["Heavy rainfall", "Earthquake", "Volcano", "Drought"],
+    answer: 0,
+  },
+  {
+    q: "Which drought is related to soil moisture?",
+    options: ["Meteorological", "Agricultural", "Hydrological", "Ecological"],
+    answer: 1,
+  },
+  {
+    q: "Major disadvantage of big dams:",
+    options: ["Displacement", "Electricity", "Irrigation", "Water supply"],
+    answer: 0,
+  },
+  {
+    q: "Roof-top rainwater harvesting mainly helps in:",
+    options: ["Flood increase", "Pollution", "Groundwater recharge", "Evaporation"],
+    answer: 2,
+  },
+  {
+    q: "Study of soil is called:",
+    options: ["Ecology", "Hydrology", "Meteorology", "Pedology"],
+    answer: 3,
+  },
+  {
+    q: "Sheet erosion is caused by:",
+    options: ["Wind", "Glacier", "Slow flowing water", "Earthquake"],
+    answer: 2,
+  },
+  {
+    q: "Desertification mostly occurs in:",
+    options: ["Coastal areas", "Semi-arid regions", "High rainfall areas", "Polar regions"],
+    answer: 1,
+  },
+  {
+    q: "Forest with 10–40% canopy cover is:",
+    options: ["Dense forest", "Scrub land", "Open forest", "Mangrove"],
+    answer: 2,
+  },
+  {
+    q: "Mangrove forests grow in:",
+    options: ["River deltas", "Mountains", "Deserts", "Grasslands"],
+    answer: 0,
+  },
+  {
+    q: "Reforestation means:",
+    options: ["Cutting trees", "New forest on barren land", "Urban plantation", "Regrowing forest in deforested area"],
+    answer: 3,
+  },
+  {
+    q: "Cleanest fossil fuel is:",
+    options: ["Petroleum", "Natural gas", "Coal", "Nuclear fuel"],
+    answer: 1,
+  },
+  {
+    q: "Highest grade of coal is:",
+    options: ["Lignite", "Anthracite", "Bituminous", "Sub-bituminous"],
+    answer: 1,
+  },
+  {
+    q: "Nuclear energy is produced by:",
+    options: ["Combustion", "Fission", "Oxidation", "Photosynthesis"],
+    answer: 1,
+  },
+  {
+    q: "Energy from sunlight is converted using:",
+    options: ["Turbine", "Generator", "PV cells", "Boiler"],
+    answer: 2,
+  },
+  {
+    q: "India ranks ___ in wind energy production:",
+    options: ["1st", "4th", "2nd", "3rd"],
+    answer: 1,
+  },
+  {
+    q: "RDF stands for:",
+    options: ["Refuse Derived Fuel", "Renewable Development Fuel", "Recycled Domestic Fuel", "Residual Dump Fuel"],
+    answer: 0,
+  },
+  {
+    q: "Environmental Studies is a:",
+    options: ["Single discipline", "Engineering branch", "Multidisciplinary subject", "Medical science"],
+    answer: 2, // "Multidisciplinary subject" ab index 2 par hai
+  },
+  {
+    q: "Modification of natural environment by humans is called:",
+    options: ["Natural environment", "Anthropogenic environment", "Atmospheric environment", "Aquatic environment"],
+    answer: 1,
+  },
+  {
+    q: "Lithosphere represents:",
+    options: ["Water", "Living organisms", "Land", "Air"],
+    answer: 2,
+  },
+  {
+    q: "Percentage of Nitrogen in atmosphere is:",
+    options: ["21%", "1%", "0.03%", "78%"],
+    answer: 3,
+  },
+  {
+    q: "Sustainable development concept was given by:",
+    options: ["WHO", "Brundtland Commission", "UNEP", "UNDP"],
+    answer: 1,
+  },
+  {
+    q: "Which is NOT a pillar of sustainability?",
+    options: ["Social", "Political", "Environmental", "Economic"],
+    answer: 1,
+  },
+  {
+    q: "Carrying capacity means:",
+    options: ["Total population of Earth", "Maximum pollution level", "Maximum population an environment can sustain", "Resource exploitation rate"],
+    answer: 2,
+  },
+  {
+    q: "Sector using maximum freshwater is:",
+    options: ["Industrial", "Agriculture", "Domestic", "Municipal"],
+    answer: 1,
+  },
+  {
+    q: "Study of soil is called:",
+    options: ["Hydrology", "Pedology", "Ecology", "Geology"],
+    answer: 1,
+  },
+  {
+    q: "Removal of top fertile soil is known as:",
+    options: ["Soil erosion", "Weathering", "Desertification", "Leaching"],
+    answer: 0,
+  },
+  {
+    q: "Forest with more than 70% canopy cover:",
+    options: ["Scrub land", "Moderately dense", "Open forest", "Very dense forest"],
+    answer: 3,
+  },
+  {
+    q: "Mangrove forests grow in:",
+    options: ["Deserts", "River deltas", "Mountains", "Grasslands"],
+    answer: 1,
+  },
+  {
+    q: "Cleanest fossil fuel is:",
+    options: ["Coal", "Nuclear fuel", "Natural gas", "Petroleum"],
+    answer: 2,
+  },
+  {
+    q: "Highest grade of coal is:",
+    options: ["Lignite", "Bituminous", "Anthracite", "Sub-bituminous"],
+    answer: 2,
+  },
+  {
+    q: "Solar energy is converted into electricity using:",
+    options: ["PV cells", "Turbine", "Generator", "Boiler"],
+    answer: 0,
+  },{
+  q: "The term “Ecology” was coined by:",
+  options: ["Darwin", "Ernst Haeckel", "Linnaeus", "Arthur Tansley"],
+  answer: 1,
+},
+{
+  q: "Ecology was coined in the year:",
+  options: ["1865", "1905", "1866", "1859"],
+  answer: 2,
+},
+{
+  q: "The Greek word “Oikos” means:",
+  options: ["Nature", "Home", "Earth", "Life"],
+  answer: 1,
+},
+{
+  q: "Study of a single species is called:",
+  options: ["Population ecology", "Ecology", "Synecology", "Autecology"],
+  answer: 3,
+},
+{
+  q: "Study of multiple species is called:",
+  options: ["Autecology", "Biogeography", "Ethology", "Synecology"],
+  answer: 3,
+},
+{
+  q: "The term ecosystem was first used by:",
+  options: ["Ernst Haeckel", "Odum", "Arthur Tansley", "Charles Darwin"],
+  answer: 2,
+},
+{
+  q: "Ecosystem is a:",
+  options: ["Genetic unit", "Functional unit only", "Structural and functional unit", "Structural unit only"],
+  answer: 2,
+},
+{
+  q: "Grassland and forest are examples of:",
+  options: ["Engineered ecosystem", "Natural ecosystem", "Artificial ecosystem", "Urban ecosystem"],
+  answer: 1,
+},
+{
+  q: "Which is NOT a natural ecosystem?",
+  options: ["Forest", "Pond", "Crop field", "Desert"],
+  answer: 2,
+},
+{
+  q: "Marine ecosystem belongs to:",
+  options: ["Artificial", "Desert", "Terrestrial", "Aquatic"],
+  answer: 3,
+},
+{
+  q: "Sunlight and temperature are:",
+  options: ["Physical abiotic factors", "Biotic factors", "Chemical factors", "Geographic factors"],
+  answer: 0,
+},
+{
+  q: "Soil moisture and soil type are:",
+  options: ["Climatic factors", "Biotic factors", "Chemical factors", "Edaphic factors"],
+  answer: 3,
+},
+{
+  q: "Producers in ecosystem are:",
+  options: ["Decomposers", "Autotrophs", "Herbivores", "Carnivores"],
+  answer: 1,
+},
+{
+  q: "Nitrosomonas is a:",
+  options: ["Chemo-autotroph", "Producer", "Consumer", "Decomposer"],
+  answer: 0,
+},
+{
+  q: "Animals feeding on plants are:",
+  options: ["Omnivores", "Herbivores", "Carnivores", "Decomposers"],
+  answer: 1,
+},
+{
+  q: "Food chain represents:",
+  options: ["Matter cycle", "Mineral cycle", "Energy transfer", "Water cycle"],
+  answer: 2,
+},
+{
+  q: "Detritus food chain starts with:",
+  options: ["Dead organic matter", "Plants", "Consumers", "Animals"],
+  answer: 0,
+},
+{
+  q: "Interlinked food chains form:",
+  options: ["Pyramid", "Cycle", "Web", "Level"],
+  answer: 2,
+},
+{
+  q: "Each step of food chain is called:",
+  options: ["Trophic level", "Habitat", "Niche", "Biome"],
+  answer: 0,
+},
+{
+  q: "Pyramid that is always upright:",
+  options: ["Biomass", "Numbers", "Carbon", "Energy"],
+  answer: 3,
+},
+{
+  q: "Pyramid of numbers represents:",
+  options: ["Number of organisms", "Nutrient flow", "Energy flow", "Biomass"],
+  answer: 0,
+},
+{
+  q: "Energy flow in ecosystem is:",
+  options: ["Random", "Uni-directional", "Cyclic", "Reversible"],
+  answer: 1,
+},
+{
+  q: "Universal energy flow model shows:",
+  options: ["Single pathway", "Multiple pathways", "Heat loss only", "Nutrient flow"],
+  answer: 1,
+},
+{
+  q: "Y-shaped model represents:",
+  options: ["Single channel flow", "Nutrient recycling", "Double channel flow", "Energy loss"],
+  answer: 2,
+},
+{
+  q: "Nitrogen cycle is a:",
+  options: ["Gaseous cycle", "Closed cycle", "Sedimentary cycle", "Local cycle"],
+  answer: 0,
+},
+{
+  q: "Phosphorus cycle is a:",
+  options: ["Carbon cycle", "Hydrological cycle", "Gaseous cycle", "Sedimentary cycle"],
+  answer: 3,
+},
+{
+  q: "Biomass produced by plants is:",
+  options: ["Secondary production", "Net production", "Primary production", "Tertiary production"],
+  answer: 2,
+},
+{
+  q: "Biomass produced by consumers is:",
+  options: ["Gross", "Secondary", "Net", "Primary"],
+  answer: 1,
+},
+{
+  q: "Homeostasis means:",
+  options: ["Stability", "Competition", "Adaptation", "Growth"],
+  answer: 0,
+},
+{
+  q: "Term homeostasis was first used by:",
+  options: ["Walter Cannon", "Claude Bernard", "Haeckel", "Odum"],
+  answer: 0,
+},
+{
+  q: "Negative feedback helps in:",
+  options: ["Stability", "Sudden change", "Disturbance", "Succession"],
+  answer: 0,
+},
+{
+  q: "Succession on bare rock is called:",
+  options: ["Lithosere", "Hydrosere", "Halosere", "Xerosere"],
+  answer: 0,
+},
+{
+  q: "First community in succession is:",
+  options: ["Climax", "Pioneer", "Seral", "Stable"],
+  answer: 1,
+},
+{
+  q: "Final stable community is:",
+  options: ["Seral", "Temporary", "Climax", "Pioneer"],
+  answer: 2,
+},
+{
+  q: "Succession on previously occupied land is:",
+  options: ["Primary", "Secondary", "Lithic", "Tertiary"],
+  answer: 1,
+},
+{
+  q: "Formation of bare area is:",
+  options: ["Nudation", "Invasion", "Reaction", "Stabilization"],
+  answer: 0,
+},
+{
+  q: "Establishment of organisms is:",
+  options: ["Aggregation", "Reaction", "Migration", "Ecesis"],
+  answer: 3,
+},
+{
+  q: "Primary consumers in forest are:",
+  options: ["Tiger", "Deer", "Snake", "Eagle"],
+  answer: 1,
+},
+{
+  q: "Tertiary consumers are:",
+  options: ["Snake", "Tiger", "Deer", "Herbs"],
+  answer: 1,
+},
+{
+  q: "Tropical rainforests are found near:",
+  options: ["Tropic lines", "Poles", "Equator", "Mountains"],
+  answer: 2,
+},
+{
+  q: "Grasslands near equator are:",
+  options: ["Polar", "Tropical", "Desert", "Temperate"],
+  answer: 1,
+},
+{
+  q: "Savannas are:",
+  options: ["Temperate forest", "Tundra", "Tropical grassland", "Desert"],
+  answer: 2,
+},
+{
+  q: "Permafrost is found in:",
+  options: ["Tropical forest", "Polar grassland", "Desert", "Savanna"],
+  answer: 1,
+},
+{
+  q: "Bottom dwellers are called:",
+  options: ["Nekton", "Plankton", "Neuston", "Benthos"],
+  answer: 3,
+},
+{
+  q: "Warm surface layer of lake is:",
+  options: ["Thermocline", "Hypolimnion", "Benthic zone", "Epilimnion"],
+  answer: 3,
+},
+{
+  q: "Lake with high nutrients is:",
+  options: ["Eutrophic", "Endemic", "Oligotrophic", "Dystrophic"],
+  answer: 0,
+},
+{
+  q: "Zone with sufficient sunlight is:",
+  options: ["Bathyal", "Abyssal", "Euphotic", "Hadal"],
+  answer: 2,
+},
+{
+  q: "Darkest ocean zone is:",
+  options: ["Abyssal", "Coastal", "Bathyal", "Open sea"],
+  answer: 0,
+},{
+  q: "Ecology term was coined by:",
+  options: ["Darwin", "Ernst Haeckel", "Odum", "Arthur Tansley"],
+  answer: 1,
+},
+{
+  q: "Study of single species is called:",
+  options: ["Population ecology", "Autecology", "Synecology", "Community ecology"],
+  answer: 1,
+},
+{
+  q: "Ecosystem is a:",
+  options: ["Structural unit only", "Functional unit only", "Structural and functional unit", "Genetic unit"],
+  answer: 2,
+},
+{
+  q: "Ecosystem term was given by:",
+  options: ["Haeckel", "Darwin", "Tansley", "Linnaeus"],
+  answer: 2,
+},
+{
+  q: "Producers are also called:",
+  options: ["Decomposers", "Consumers", "Autotrophs", "Heterotrophs"],
+  answer: 2,
+},
+{
+  q: "Nitrosomonas is an example of:",
+  options: ["Photo-autotroph", "Consumer", "Chemo-autotroph", "Decomposer"],
+  answer: 2,
+},
+{
+  q: "Detritus food chain starts with:",
+  options: ["Herbivores", "Dead organic matter", "Plants", "Carnivores"],
+  answer: 1,
+},
+{
+  q: "Interconnected food chains form:",
+  options: ["Cycle", "Food web", "Trophic level", "Pyramid"],
+  answer: 1,
+},
+{
+  q: "Each step in food chain is called:",
+  options: ["Trophic level", "Niche", "Biome", "Habitat"],
+  answer: 0,
+},
+{
+  q: "Pyramid always upright is:",
+  options: ["Biomass", "Number", "Energy", "Carbon"],
+  answer: 2,
+},
+{
+  q: "Energy flow in ecosystem is:",
+  options: ["Bidirectional", "Random", "Cyclic", "Unidirectional"],
+  answer: 3,
+},
+{
+  q: "Nitrogen cycle is a:",
+  options: ["Sedimentary cycle", "Local cycle", "Gaseous cycle", "Closed cycle"],
+  answer: 2,
+},
+{
+  q: "Phosphorus cycle is a:",
+  options: ["Sedimentary cycle", "Atmospheric cycle", "Gaseous cycle", "Hydrological cycle"],
+  answer: 0,
+},
+{
+  q: "Primary production is done by:",
+  options: ["Decomposers", "Fungi", "Plants", "Animals"],
+  answer: 2,
+},
+{
+  q: "Homeostasis means:",
+  options: ["Succession", "Stability", "Competition", "Growth"],
+  answer: 1,
+},
+{
+  q: "Homeostasis term was first used by:",
+  options: ["Ernst Haeckel", "Odum", "Walter Cannon", "Claude Bernard"],
+  answer: 2,
+},
+{
+  q: "Succession on bare rock is:",
+  options: ["Lithosere", "Xerosere", "Hydrosere", "Halosere"],
+  answer: 0,
+},
+{
+  q: "First community in succession is:",
+  options: ["Climax", "Stable", "Seral", "Pioneer"],
+  answer: 3,
+},
+{
+  q: "Final stable community is:",
+  options: ["Temporary", "Climax", "Pioneer", "Seral"],
+  answer: 1,
+},
+{
+  q: "Warm surface layer of lake is:",
+  options: ["Hypolimnion", "Epilimnion", "Benthos", "Thermocline"],
+  answer: 1,
+},
+{
+  q: "Bottom-dwelling organisms are:",
+  options: ["Nekton", "Benthos", "Neuston", "Plankton"],
+  answer: 1,
+},
+{
+  q: "Tropical grassland is called:",
+  options: ["Tundra", "Savanna", "Steppe", "Pampas"],
+  answer: 1,
+},
+{
+  q: "Permafrost is found in:",
+  options: ["Savanna", "Tropical forest", "Desert", "Polar grassland"],
+  answer: 3,
+},
+{
+  q: "Zone with maximum photosynthesis in ocean:",
+  options: ["Hadal", "Euphotic", "Abyssal", "Bathyal"],
+  answer: 1,
+},
+{
+  q: "Lake with high nutrient content:",
+  options: ["Eutrophic", "Dystrophic", "Endemic", "Oligotrophic"],
+  answer: 0,
+},{
+  q: "The term biodiversity is derived from:",
+  options: ["Life + Variety", "Bio + Ecology", "Bio + Diversity", "Bio + Life"],
+  answer: 2,
+},
+{
+  q: "“Bio” refers to:",
+  options: ["Earth", "Living organisms", "Nature", "Ecosystem"],
+  answer: 1,
+},
+{
+  q: "Biodiversity includes variability among organisms from:",
+  options: ["Marine ecosystems only", "Terrestrial ecosystems only", "Terrestrial, marine and other ecosystems", "Forest ecosystems only"],
+  answer: 2,
+},
+{
+  q: "The term “Biodiversity” was coined by:",
+  options: ["Lovejoy", "Norman Myers", "Walter G. Rosen", "IUCN"],
+  answer: 2,
+},
+{
+  q: "Biodiversity term was coined in the year:",
+  options: ["1992", "1980", "1998", "1985"],
+  answer: 3,
+},
+{
+  q: "“Biological Diversity” term was introduced by:",
+  options: ["Myers", "Lovejoy", "Rosen", "Haeckel"],
+  answer: 1,
+},
+{
+  q: "Convention on Biological Diversity took place in:",
+  options: ["Kyoto (1997)", "Stockholm (1972)", "Rio Earth Summit (1992)", "Paris (2015)"],
+  answer: 2,
+},
+{
+  q: "India accounts for how much world land area?",
+  options: ["7%", "2.4%", "1.5%", "5%"],
+  answer: 1,
+},
+{
+  q: "India contributes approximately how much of world species?",
+  options: ["2–3%", "4–5%", "7–8%", "10–12%"],
+  answer: 2,
+},
+{
+  q: "Number of plant species in India is about:",
+  options: ["45,000", "25,000", "65,000", "35,000"],
+  answer: 0,
+},
+{
+  q: "India ranks ______ among plant-rich countries:",
+  options: ["6th", "8th", "12th", "10th"],
+  answer: 3,
+},
+{
+  q: "India ranks 11th in:",
+  options: ["Endemic mammals", "Agricultural crops", "Endemic higher vertebrates", "Total species"],
+  answer: 2,
+},
+{
+  q: "Mega-biodiverse countries were identified by:",
+  options: ["Conservation International", "WHO", "UNEP", "IUCN"],
+  answer: 0,
+},
+{
+  q: "Mega-biodiverse countries contain about:",
+  options: ["60% of biodiversity", "50% of biodiversity", "70% of biodiversity", "40% of biodiversity"],
+  answer: 2,
+},
+{
+  q: "Year of identification of mega-biodiverse countries:",
+  options: ["1985", "1992", "2001", "1998"],
+  answer: 3,
+},
+{
+  q: "Total biogeographic zones of India are:",
+  options: ["12", "9", "10", "8"],
+  answer: 2,
+},
+{
+  q: "Andaman, Nicobar and Lakshadweep fall under:",
+  options: ["Islands", "Coasts", "Deccan plateau", "Gangetic plains"],
+  answer: 0,
+},
+{
+  q: "Western Ghats belong to:",
+  options: ["Himalayan zone", "Western Ghat zone", "Coastal zone", "Semi-arid zone"],
+  answer: 1,
+},
+{
+  q: "Variation among genes of same species is:",
+  options: ["Species diversity", "Ecosystem diversity", "Genetic diversity", "Habitat diversity"],
+  answer: 2,
+},
+{
+  q: "Diversity among species in a given area is:",
+  options: ["Community", "Ecosystem", "Genetic", "Species"],
+  answer: 3,
+},
+{
+  q: "Diversity of habitats is called:",
+  options: ["Population diversity", "Ecosystem diversity", "Genetic diversity", "Species diversity"],
+  answer: 1,
+},
+{
+  q: "Silk is obtained from:",
+  options: ["Goat", "Insects", "Silk worm", "Sheep"],
+  answer: 2,
+},
+{
+  q: "Prevention of floods and soil erosion comes under:",
+  options: ["Aesthetic value", "Productive value", "Ecological service", "Ethical value"],
+  answer: 2,
+},
+{
+  q: "Fossil fuels are products of:",
+  options: ["Species diversity", "Fossilized biodiversity", "Modern biodiversity", "Genetic diversity"],
+  answer: 1,
+},
+{
+  q: "About how much world population depends on plant-based medicine?",
+  options: ["25%", "60%", "75%", "40%"],
+  answer: 2,
+},
+{
+  q: "Biodiversity hotspot concept was given by:",
+  options: ["Rosen", "IUCN", "Norman Myers", "Lovejoy"],
+  answer: 2,
+},{
+  q: "Year of hotspot concept:",
+  options: ["1985", "1988", "1992", "1980"],
+  answer: 1,
+},
+{
+  q: "Number of biodiversity hotspots in the world:",
+  options: ["36", "30", "25", "34"],
+  answer: 0,
+},
+{
+  q: "Indian biodiversity hotspots include:",
+  options: ["Himalayas", "Indo-Burma", "All of the above", "Western Ghats"],
+  answer: 2,
+},
+{
+  q: "Red Data Book is maintained by:",
+  options: ["WHO", "WWF", "UNEP", "IUCN"],
+  answer: 3,
+},
+{
+  q: "Red colour in Red Data Book indicates:",
+  options: ["Rare species", "Vulnerable species", "Extinct species", "Critically endangered species"],
+  answer: 3,
+},
+{
+  q: "Black colour indicates:",
+  options: ["Extinct", "Vulnerable", "Rare", "Endangered"],
+  answer: 0,
+},
+{
+  q: "Total IUCN categories are:",
+  options: ["7", "10", "9", "8"],
+  answer: 1,
+},
+{
+  q: "Species on verge of extinction are:",
+  options: ["Endemic", "Endangered", "Vulnerable", "Rare"],
+  answer: 1,
+},
+{
+  q: "Black buck is also known as:",
+  options: ["Chinkara", "Nilgai", "Kala hiran", "Barasingha"],
+  answer: 2,
+},
+{
+  q: "Vulnerable species are mainly affected due to:",
+  options: ["Climate change", "Overpopulation", "Habitat loss", "Migration"],
+  answer: 2,
+},
+{
+  q: "Species restricted to a particular region are:",
+  options: ["Rare", "Endemic", "Vulnerable", "Endangered"],
+  answer: 1,
+},
+{
+  q: "Protection in natural habitat is:",
+  options: ["Ex-situ", "Genetic", "In-situ", "Artificial"],
+  answer: 2,
+},
+{
+  q: "Total national parks in India:",
+  options: ["106", "120", "90", "100"],
+  answer: 0,
+},
+{
+  q: "Number of wildlife sanctuaries in India:",
+  options: ["650", "500", "573", "450"],
+  answer: 2,
+},
+{
+  q: "Number of biosphere reserves in India:",
+  options: ["12", "18", "25", "15"],
+  answer: 1,
+},
+{
+  q: "Human activity is completely prohibited in:",
+  options: ["Core zone", "Transition zone", "Restoration zone", "Buffer zone"],
+  answer: 0,
+},
+{
+  q: "Conservation outside natural habitat is:",
+  options: ["In-situ", "Ex-situ", "Artificial", "In-vivo"],
+  answer: 1,
+},
+{
+  q: "Tissue culture is mainly used for:",
+  options: ["Plants", "Bacteria", "Animals", "Fungi"],
+  answer: 0,
+},
+{
+  q: "Total zoological parks in India:",
+  options: ["180", "120", "155", "140"],
+  answer: 2,
+},
+{
+  q: "Main cause of man-wildlife conflict:",
+  options: ["Tourism", "Climate change", "Migration", "Shrinkage of habitat"],
+  answer: 3,
+},
+{
+  q: "Corbett National Park is famous for:",
+  options: ["Elephants", "Man-eater leopards", "Crocodiles", "Tigers"],
+  answer: 1,
+},{
+  q: "The term “Biodiversity” was coined by:",
+  options: ["Lovejoy", "Walter G. Rosen", "IUCN", "Norman Myers"],
+  answer: 1,
+},
+{
+  q: "“Biological Diversity” term was first used by:",
+  options: ["Darwin", "Myers", "Haeckel", "Lovejoy"],
+  answer: 3,
+},
+{
+  q: "Convention on Biological Diversity was held at:",
+  options: ["Stockholm", "Rio de Janeiro", "Paris", "Kyoto"],
+  answer: 1,
+},
+{
+  q: "India has about ___ of the world’s land area:",
+  options: ["5%", "2.4%", "7%", "1.5%"],
+  answer: 1,
+},
+{
+  q: "India contributes nearly ___ of global species:",
+  options: ["4–5%", "2–3%", "7–8%", "10–12%"],
+  answer: 2,
+},
+{
+  q: "Number of biogeographic zones in India:",
+  options: ["12", "10", "8", "9"],
+  answer: 1,
+},
+{
+  q: "Diversity within species is called:",
+  options: ["Ecosystem diversity", "Genetic diversity", "Community diversity", "Species diversity"],
+  answer: 1,
+},
+{
+  q: "Diversity between different species is:",
+  options: ["Genetic diversity", "Ecosystem diversity", "Habitat diversity", "Species diversity"],
+  answer: 3,
+},
+{
+  q: "Diversity of habitats is known as:",
+  options: ["Population", "Ecosystem", "Species", "Genetic"],
+  answer: 1,
+},
+{
+  q: "Concept of biodiversity hotspot was given by:",
+  options: ["Norman Myers", "IUCN", "Rosen", "Lovejoy"],
+  answer: 0,
+},
+{
+  q: "Total biodiversity hotspots in the world:",
+  options: ["30", "25", "36", "34"],
+  answer: 2,
+},
+{
+  q: "Which is NOT an Indian biodiversity hotspot?",
+  options: ["Indo-Burma", "Thar Desert", "Western Ghats", "Himalayas"],
+  answer: 1,
+},
+{
+  q: "Red Data Book is published by:",
+  options: ["FAO", "UNEP", "WWF", "IUCN"],
+  answer: 3,
+},
+{
+  q: "Red colour in Red Data Book indicates:",
+  options: ["Extinct species", "Endangered species", "Rare species", "Vulnerable species"],
+  answer: 1,
+},
+{
+  q: "Species found only in a particular area are:",
+  options: ["Vulnerable", "Endangered", "Rare", "Endemic"],
+  answer: 3,
+},
+{
+  q: "Conservation in natural habitat is called:",
+  options: ["Ex-situ", "Artificial", "In-situ", "Genetic"],
+  answer: 2,
+},
+{
+  q: "Human activity is totally prohibited in:",
+  options: ["Peripheral zone", "Core zone", "Transition zone", "Buffer zone"],
+  answer: 1,
+},
+{
+  q: "Conservation outside natural habitat is:",
+  options: ["In-situ", "Ex-situ", "In-vivo", "Ecosystem"],
+  answer: 1,
+},
+{
+  q: "Blackbuck is also known as:",
+  options: ["Nilgai", "Barasingha", "Kala hiran", "Chinkara"],
+  answer: 2,
+},
+{
+  q: "Main cause of biodiversity loss is:",
+  options: ["Migration", "Climate change", "Natural disasters", "Habitat destruction"],
+  answer: 3,
+},{
+  q: "Pollutants are substances that:",
+  options: ["Improve environment", "Increase biodiversity", "Contaminate environment", "Reduce temperature"],
+  answer: 2,
+},
+{
+  q: "Volcanoes and forest fires are:",
+  options: ["Secondary pollutants", "Natural pollutants", "Anthropogenic pollutants", "Persistent pollutants"],
+  answer: 1,
+},
+{
+  q: "Biodegradable pollutants are:",
+  options: ["Radioactive", "Non-persistent", "Synthetic", "Persistent"],
+  answer: 1,
+},
+{
+  q: "Pollution is an undesirable change in:",
+  options: ["Only physical properties", "Only biological properties", "Physical, chemical or biological properties", "Only chemical properties"],
+  answer: 2,
+},
+{
+  q: "Which is NOT a type of pollution?",
+  options: ["Water", "Soil", "Genetic", "Air"],
+  answer: 2,
+},
+{
+  q: "Air pollution exists when atmospheric substances harm:",
+  options: ["Living beings or materials", "Plants only", "Humans only", "Materials only"],
+  answer: 0,
+},
+{
+  q: "Vehicular exhaust is a major source of:",
+  options: ["NH₃", "SO₂", "CO", "O₃"],
+  answer: 2,
+},
+{
+  q: "Methane (CH₄) from microbes is a:",
+  options: ["Secondary pollutant", "Natural cause", "Man-made cause", "Indoor pollutant"],
+  answer: 1,
+},
+{
+  q: "Bleaching of leaf pigment is caused by:",
+  options: ["NOx", "O₃", "SOx", "CO"],
+  answer: 2,
+},
+{
+  q: "Greenhouse effect leads to:",
+  options: ["Ozone depletion", "Smog", "Acid rain", "Global warming"],
+  answer: 3,
+},
+{
+  q: "Indoor air pollution can be up to ___ times worse than outdoor:",
+  options: ["5", "2", "10", "20"],
+  answer: 2,
+},
+{
+  q: "Radon is a major:",
+  options: ["Indoor pollutant", "Particulate", "Secondary pollutant", "Outdoor pollutant"],
+  answer: 0,
+},
+{
+  q: "Asbestos is used as:",
+  options: ["Fertilizer", "Insulation", "Fuel", "Pesticide"],
+  answer: 1,
+},
+{
+  q: "Primary pollutants are:",
+  options: ["Always gaseous", "Released directly", "Formed by reactions", "Always secondary"],
+  answer: 1,
+},
+{
+  q: "Ozone is a:",
+  options: ["Natural pollutant", "Indoor pollutant", "Secondary pollutant", "Primary pollutant"],
+  answer: 2,
+},
+{
+  q: "PAN stands for:",
+  options: ["Poly Aromatic Nitrogen", "Photo Active Nitrite", "Peroxy Acetyl Nitrate", "Particulate Air Nitrate"],
+  answer: 2,
+},
+{
+  q: "CFCs mainly destroy:",
+  options: ["Stratospheric clouds", "Ionosphere", "Ozone layer", "Troposphere"],
+  answer: 2,
+},
+{
+  q: "NO₂ is responsible for:",
+  options: ["Eutrophication", "Blue baby syndrome", "Acid rain & smog", "Fluorosis"],
+  answer: 2,
+},
+{
+  q: "Fine particulate matter increases risk of:",
+  options: ["Skin disease", "Flu", "Eye infection", "Heart & lung disease"],
+  answer: 3,
+},
+{
+  q: "Which is NOT an APC device?",
+  options: ["Cyclone separator", "Bioreactor", "Bag filter", "Electrostatic precipitator"],
+  answer: 1,
+},
+{
+  q: "Adsorption/absorption control is for:",
+  options: ["Gases", "Particulates", "Radiation", "Noise"],
+  answer: 0,
+},
+{
+  q: "AQI includes PM2.5 and:",
+  options: ["PM1", "PM10", "PM20", "PM5"],
+  answer: 1,
+},
+{
+  q: "CPCB AQI considers how many pollutants?",
+  options: ["6", "5", "8", "7"],
+  answer: 2,
+},
+{
+  q: "Minimum pollutants needed to calculate AQI:",
+  options: ["1", "5", "3", "2"],
+  answer: 2,
+},
+{
+  q: "Water pollution reduces:",
+  options: ["Evaporation", "Rainfall", "Water hardness", "Water usability"],
+  answer: 3,
+},
+{
+  q: "BOD measures:",
+  options: ["Oxygen present", "Oxygen required by microbes", "Turbidity", "Chemical toxicity"],
+  answer: 1,
+},
+{
+  q: "DO suitable for active fish is:",
+  options: ["1–2 mg/L", "5–8 mg/L", "10–15 mg/L", "3 mg/L"],
+  answer: 1,
+},
+{
+  q: "Excess N & P cause:",
+  options: ["Biomagnification", "Eutrophication", "Salination", "Acid rain"],
+  answer: 1,
+},
+{
+  q: "Mercury causes:",
+  options: ["Itai-Itai disease", "Blue baby syndrome", "Fluorosis", "Minamata disease"],
+  answer: 3,
+},
+{
+  q: "Nitrates cause:",
+  options: ["Fluorosis", "Blue baby syndrome", "Cancer", "Jaundice"],
+  answer: 1,
+},
+{
+  q: "Grit removal is part of:",
+  options: ["Secondary treatment", "Anaerobic treatment", "Tertiary treatment", "Primary treatment"],
+  answer: 3,
+},
+{
+  q: "Activated sludge is:",
+  options: ["Tertiary", "Physical", "Secondary", "Primary"],
+  answer: 2,
+},
+{
+  q: "UASB reactor is:",
+  options: ["Chemical", "Anaerobic", "Aerobic", "Thermal"],
+  answer: 1,
+},
+{
+  q: "Thermal pollution mainly reduces:",
+  options: ["Salinity", "DO", "pH", "Turbidity"],
+  answer: 1,
+},
+{
+  q: "About ___ marine pollution originates from land:",
+  options: ["80%", "40%", "90%", "60%"],
+  answer: 0,
+},
+{
+  q: "Soil pollution reduces:",
+  options: ["Soil fertility", "Water table", "Wind speed", "Rainfall"],
+  answer: 0,
+},
+{
+  q: "Agrochemicals include:",
+  options: ["Plastics", "Detergents", "Fertilizers & pesticides", "Metals"],
+  answer: 2,
+},
+{
+  q: "Putrescible waste is called:",
+  options: ["Refuse", "Rubbish", "Scrap", "Garbage"],
+  answer: 3,
+},
+{
+  q: "Non-putrescible waste is:",
+  options: ["Sludge", "Sewage", "Rubbish", "Garbage"],
+  answer: 2,
+},
+{
+  q: "Biomedical waste includes:",
+  options: ["Plastics", "Manure", "Needles & syringes", "Fly ash"],
+  answer: 2,
+},
+{
+  q: "SWM main steps include collection, transport and:",
+  options: ["Segregation", "Generation", "Storage", "Disposal"],
+  answer: 3,
+},
+{
+  q: "Sanitary landfill prevents:",
+  options: ["Leachate percolation", "Compaction", "Gas formation", "Decomposition"],
+  answer: 0,
+},
+{
+  q: "Incineration disadvantage:",
+  options: ["No pollution", "No residue", "Low cost", "Dioxin formation"],
+  answer: 3,
+},
+{
+  q: "Unit of sound pressure level:",
+  options: ["Hz", "dB", "Watt", "Pascal"],
+  answer: 1,
+},
+{
+  q: "Noise becomes painful above:",
+  options: ["100 dB", "130 dB", "120 dB", "75 dB"],
+  answer: 2,
+},
+{
+  q: "Noise above ___ dB is pollution:",
+  options: ["60", "65", "55", "70"],
+  answer: 1,
+},
+{
+  q: "Half-life is time for:",
+  options: ["Energy release", "Full decay", "Half atoms to decay", "Radiation stop"],
+  answer: 2,
+},
+{
+  q: "Unit of radioactive exposure:",
+  options: ["Gray", "Rem", "Sievert", "dB"],
+  answer: 1,
+},
+{
+  q: "Genetic effects of radiation affect:",
+  options: ["DNA", "Skin only", "Organs only", "Body cells"],
+  answer: 0,
+},
+{
+  q: "Radon-222 is a:",
+  options: ["Non-ionizing radiation", "Natural radioactive gas", "Man-made source", "Secondary pollutant"],
+  answer: 1,
+},
+{
+  q: "Pollution is defined as:",
+  options: ["Undesirable change in physical, chemical or biological properties", "Climate change", "Resource depletion", "Natural change in environment"],
+  answer: 0,
+},
+{
+  q: "Which of the following is a natural air pollutant?",
+  options: ["CO", "PAN", "SO₂", "Volcanic ash"],
+  answer: 3,
+},
+{
+  q: "Major source of carbon monoxide is:",
+  options: ["Power plants", "Vehicles", "Industries", "Forest fires"],
+  answer: 1,
+},
+{
+  q: "Ozone in lower atmosphere is:",
+  options: ["Beneficial", "Secondary pollutant", "Harmless", "Primary pollutant"],
+  answer: 1,
+},
+{
+  q: "CFCs are responsible for:",
+  options: ["Ozone layer depletion", "Smog", "Acid rain", "Global cooling"],
+  answer: 0,
+},
+{
+  q: "Device used to remove fine particulates:",
+  options: ["Electrostatic precipitator", "Settling chamber", "Scrubber", "Cyclone separator"],
+  answer: 0,
+},
+{
+  q: "BOD indicates:",
+  options: ["Water hardness", "Organic pollution level", "Amount of oxygen present", "Turbidity"],
+  answer: 1,
+},
+{
+  q: "Excess nutrients in water cause:",
+  options: ["Eutrophication", "Acidification", "Salination", "Biomagnification"],
+  answer: 0,
+},
+{
+  q: "Minamata disease is caused by:",
+  options: ["Lead", "Arsenic", "Mercury", "Cadmium"],
+  answer: 2,
+},
+{
+  q: "Blue baby syndrome is due to:",
+  options: ["Phosphates", "Sulphates", "Nitrates", "Chlorides"],
+  answer: 2,
+},
+{
+  q: "Secondary treatment of sewage involves:",
+  options: ["Activated sludge process", "Grit removal", "Chlorination", "Screening"],
+  answer: 0,
+},
+{
+  q: "Thermal pollution mainly affects:",
+  options: ["Turbidity", "Salinity", "Dissolved oxygen", "pH of water"],
+  answer: 2,
+},
+{
+  q: "Land-based activities contribute about ___ marine pollution:",
+  options: ["40%", "90%", "60%", "80%"],
+  answer: 3,
+},
+{
+  q: "Garbage refers to:",
+  options: ["Construction waste", "Industrial waste", "Plastic waste", "Putrescible solid waste"],
+  answer: 3,
+},
+{
+  q: "Best method for safe disposal of solid waste:",
+  options: ["Incineration", "Composting", "Sanitary landfill", "Open dumping"],
+  answer: 2,
+},
+{
+  q: "Noise pollution is measured in:",
+  options: ["Decibel", "Pascal", "Hertz", "Watt"],
+  answer: 0,
+},
+{
+  q: "Noise above ___ dB causes hearing damage:",
+  options: ["80", "120", "60", "90"],
+  answer: 1,
+},
+{
+  q: "Radon is a:",
+  options: ["Natural radioactive gas", "Man-made pollutant", "Non-pollutant", "Secondary air pollutant"],
+  answer: 0,
+},{
+  q: "Greenhouse effect refers to:",
+  options: ["Ozone depletion", "Heat trapping by greenhouse gases", "Acid rain", "Cooling of Earth"],
+  answer: 1,
+},
+{
+  q: "Greenhouse gases are transparent to:",
+  options: ["Gamma rays", "UV radiation", "Incoming solar radiation", "Infrared radiation"],
+  answer: 2,
+},
+{
+  q: "Global warming is:",
+  options: ["Ozone depletion", "Short-term cooling", "Rise in Earth’s average temperature", "Acidification"],
+  answer: 2,
+},
+{
+  q: "Incoming solar energy is converted into:",
+  options: ["Electricity", "Sound", "Heat", "Radiation"],
+  answer: 2,
+},
+{
+  q: "Infrared radiation is re-emitted by:",
+  options: ["Greenhouse gas molecules", "Clouds", "Oceans", "Soil"],
+  answer: 0,
+},
+{
+  q: "Major greenhouse gas is:",
+  options: ["Argon", "Carbon dioxide", "Nitrogen", "Oxygen"],
+  answer: 1,
+},
+{
+  q: "Which is NOT a greenhouse gas?",
+  options: ["CH₄", "N₂O", "SO₂", "CO₂"],
+  answer: 2,
+},
+{
+  q: "Livestock contributes mainly to:",
+  options: ["Nitrous oxide", "Methane", "CFCs", "CO₂"],
+  answer: 1,
+},
+{
+  q: "Biomass burning releases:",
+  options: ["Helium", "Only oxygen", "Greenhouse gases", "Nitrogen only"],
+  answer: 2,
+},
+{
+  q: "GWP measures:",
+  options: ["Lifetime of gas", "Energy absorbed by gas", "Toxicity of gas", "Weight of gas"],
+  answer: 1,
+},
+{
+  q: "GWP is measured relative to:",
+  options: ["Carbon dioxide", "Oxygen", "Methane", "Nitrous oxide"],
+  answer: 0,
+},
+{
+  q: "Standard GWP time period is:",
+  options: ["100 years", "20 years", "50 years", "200 years"],
+  answer: 0,
+},
+{
+  q: "20-year GWP prioritizes gases with:",
+  options: ["Long lifetime", "Infinite lifetime", "Short lifetime", "No lifetime"],
+  answer: 2,
+},
+{
+  q: "Increase in CO₂ causes:",
+  options: ["No effect", "Cooling of surface", "Only ocean cooling", "Warming of surface"],
+  answer: 3,
+},
+{
+  q: "Global warming leads to:",
+  options: ["Reduction of ice cover", "Soil formation", "No climate change", "Increase in ice cover"],
+  answer: 0,
+},
+{
+  q: "Excess warmth increases:",
+  options: ["Evaporation", "Condensation", "Precipitation only", "Freezing"],
+  answer: 0,
+},
+{
+  q: "Global warming affects:",
+  options: ["Climate, agriculture, health & biodiversity", "Human health only", "Climate only", "Agriculture only"],
+  answer: 0,
+},
+{
+  q: "Acid rain occurs due to reaction with:",
+  options: ["Methane", "SO₂ and NO₂", "Oxygen", "CO₂"],
+  answer: 1,
+},
+{
+  q: "SO₂ converts into:",
+  options: ["Sulphurous acid", "Carbonic acid", "Nitric acid", "Sulphuric acid"],
+  answer: 0,
+},
+{
+  q: "Nitrogen dioxide forms:",
+  options: ["Hydrochloric acid", "Acetic acid", "Nitric acid", "Sulphurous acid"],
+  answer: 2,
+},
+{
+  q: "Acid rain affects:",
+  options: ["Aquatic life only", "Buildings only", "All of these", "Humans only"],
+  answer: 2,
+},
+{
+  q: "Ozone layer depletion occurs in:",
+  options: ["Mesosphere", "Stratosphere", "Troposphere", "Ionosphere"],
+  answer: 1,
+},
+{
+  q: "Ozone hole was first observed over:",
+  options: ["Antarctica", "Africa", "Arctic", "Asia"],
+  answer: 0,
+},
+{
+  q: "Ozone thickness is measured in:",
+  options: ["Tesla", "ppm", "Dobson Units", "dB"],
+  answer: 2,
+},
+{
+  q: "Normal ozone thickness is about:",
+  options: ["2 mm", "1 mm", "3 mm", "5 mm"],
+  answer: 2,
+},
+{
+  q: "World Ozone Day is:",
+  options: ["22 April", "5 June", "11 December", "16 September"],
+  answer: 3,
+},
+{
+  q: "Major cause of ozone depletion:",
+  options: ["NO₂", "Methane", "CFCs", "CO₂"],
+  answer: 2,
+},
+{
+  q: "Ozone depletion increases:",
+  options: ["Rainfall", "Skin cancer", "Vision power", "Oxygen"],
+  answer: 1,
+},
+{
+  q: "Ozone depletion affects:",
+  options: ["Plants only", "Humans only", "All living organisms", "Aquatic life only"],
+  answer: 2,
+},
+{
+  q: "Substitute for CFCs are:",
+  options: ["Methane", "SO₂", "HCFCs & HFCs", "CO₂"],
+  answer: 2,
+},
+{
+  q: "Montreal Protocol deals with:",
+  options: ["Climate change", "Pollution", "Ozone depletion", "Biodiversity"],
+  answer: 2,
+},
+{
+  q: "Montreal Protocol was adopted in:",
+  options: ["1987", "1997", "1992", "1985"],
+  answer: 0,
+},
+{
+  q: "Parties phased out about ___ ODS:",
+  options: ["90%", "70%", "85%", "98%"],
+  answer: 3,
+},
+{
+  q: "Kyoto Protocol is related to:",
+  options: ["Ozone layer", "Biodiversity", "Global warming", "Wildlife"],
+  answer: 2,
+},
+{
+  q: "Kyoto Protocol adopted in:",
+  options: ["1997", "1995", "1992", "2005"],
+  answer: 0,
+},
+{
+  q: "Kyoto Protocol entered into force in:",
+  options: ["2003", "2005", "2010", "2000"],
+  answer: 1,
+},
+{
+  q: "Carbon credit equals:",
+  options: ["1 ton CO₂", "100 tons CO₂", "1 kg CO₂", "10 tons CO₂"],
+  answer: 0,
+},
+{
+  q: "CDM stands for:",
+  options: ["Clean Development Mechanism", "Clean Data Method", "Climate Development Model", "Carbon Development Market"],
+  answer: 0,
+},
+{
+  q: "CBD focuses on:",
+  options: ["Climate", "Biodiversity", "Ozone", "Pollution"],
+  answer: 1,
+},
+{
+  q: "CBD was opened for signature in:",
+  options: ["1997", "1987", "1992", "2000"],
+  answer: 2,
+},
+{
+  q: "CBD entered into force in:",
+  options: ["1992", "1995", "1997", "1993"],
+  answer: 3,
+},
+{
+  q: "CBD Secretariat is located in:",
+  options: ["New York", "Paris", "Montreal", "Geneva"],
+  answer: 2,
+},
+{
+  q: "Cartagena Protocol deals with:",
+  options: ["LMOs & biosafety", "Wildlife", "Climate", "Pollution"],
+  answer: 0,
+},
+{
+  q: "Cartagena Protocol adopted in:",
+  options: ["1997", "2000", "2003", "2010"],
+  answer: 1,
+},
+{
+  q: "Nagoya–Kuala Lumpur Protocol relates to:",
+  options: ["Noise control", "Liability & redress", "Climate finance", "Air pollution"],
+  answer: 1,
+},
+{
+  q: "Wildlife Protection Act year:",
+  options: ["1981", "1972", "1986", "1974"],
+  answer: 1,
+},
+{
+  q: "Water Act enacted in:",
+  options: ["1981", "1974", "1986", "1972"],
+  answer: 1,
+},
+{
+  q: "Air Act enacted in:",
+  options: ["1976", "1974", "1981", "1986"],
+  answer: 2,
+},
+{
+  q: "Environment Protection Act enacted in:",
+  options: ["1974", "1986", "1981", "1972"],
+  answer: 1,
+},
+{
+  q: "EPA was enacted after:",
+  options: ["Oil spill", "Bhopal Gas Tragedy", "Fukushima accident", "Chernobyl disaster"],
+  answer: 1,
+},
+{
+  q: "EPA empowers government to:",
+  options: ["Set standards", "Regulate pollution", "All of these", "Close industries"],
+  answer: 2,
+},
+{
+  q: "Maximum imprisonment under EPA:",
+  options: ["5 years", "2 years", "10 years", "3 years"],
+  answer: 0,
+},
+{
+  q: "Aim of National Forest Policy:",
+  options: ["Mining", "Urbanization", "Industrial growth", "Ecological balance"],
+  answer: 3,
+},
+{
+  q: "Joint Forest Management involves:",
+  options: ["Local communities", "Government only", "Foreign agencies", "Industries"],
+  answer: 0,
+},
+{
+  q: "Scheduled Tribes are included in:",
+  options: ["Schedules of Constitution", "Fundamental Rights", "Amendments", "Directive Principles"],
+  answer: 0,
+},
+{
+  q: "Article 46 deals with:",
+  options: ["Forests", "Welfare of SCs & STs", "Environment", "Education of women"],
+  answer: 1,
+},
+{
+  q: "Article 21 ensures:",
+  options: ["Right to property", "Right to religion", "Right to life", "Right to vote"],
+  answer: 2,
+},
+{
+  q: "Best way to reduce GHG emissions:",
+  options: ["Renewable energy", "Deforestation", "Fossil fuels", "More vehicles"],
+  answer: 0,
+},
+{
+  q: "Planting trees helps in:",
+  options: ["Soil pollution", "Noise increase", "Carbon sequestration", "Emission increase"],
+  answer: 2,
+},{
+  q: "Greenhouse effect is caused by:",
+  options: ["Reflection of sunlight", "Acid rain", "Trapping of heat by gases", "Ozone depletion"],
+  answer: 2,
+},
+{
+  q: "Major greenhouse gas responsible for global warming:",
+  options: ["N₂", "O₂", "CO₂", "SO₂"],
+  answer: 2,
+},
+{
+  q: "Global Warming Potential (GWP) is measured relative to:",
+  options: ["Methane", "Oxygen", "Nitrous oxide", "Carbon dioxide"],
+  answer: 3,
+},
+{
+  q: "Standard time horizon for GWP is:",
+  options: ["100 years", "20 years", "50 years", "200 years"],
+  answer: 0,
+},
+{
+  q: "Acid rain is mainly caused by:",
+  options: ["O₃ & CO", "CFCs", "SO₂ & NO₂", "CO₂ & CH₄"],
+  answer: 2,
+},
+{
+  q: "Ozone layer depletion occurs in:",
+  options: ["Mesosphere", "Stratosphere", "Troposphere", "Ionosphere"],
+  answer: 1,
+},
+{
+  q: "Ozone hole was first detected over:",
+  options: ["Asia", "Europe", "Antarctica", "Arctic"],
+  answer: 2,
+},
+{
+  q: "Ozone thickness is measured in:",
+  options: ["Decibel", "Tesla", "ppm", "Dobson Units"],
+  answer: 3,
+},
+{
+  q: "World Ozone Day is celebrated on:",
+  options: ["16 September", "11 December", "22 April", "5 June"],
+  answer: 0,
+},
+{
+  q: "Montreal Protocol deals with:",
+  options: ["Ozone-depleting substances", "Biodiversity", "Climate change", "Wildlife protection"],
+  answer: 0,
+},
+{
+  q: "Montreal Protocol was adopted in:",
+  options: ["1987", "1997", "1992", "1985"],
+  answer: 0,
+},
+{
+  q: "Kyoto Protocol is related to:",
+  options: ["Biodiversity", "Ozone depletion", "Forest conservation", "Global warming"],
+  answer: 3,
+},
+{
+  q: "Kyoto Protocol was adopted in:",
+  options: ["1992", "2005", "1997", "1995"],
+  answer: 2,
+},
+{
+  q: "One carbon credit is equal to:",
+  options: ["100 tonnes CO₂", "10 tonnes CO₂", "1 tonne CO₂", "1 kg CO₂"],
+  answer: 2,
+},
+{
+  q: "CDM stands for:",
+  options: ["Clean Development Mechanism", "Carbon Development Market", "Climate Development Model", "Clean Data Method"],
+  answer: 0,
+},
+{
+  q: "Convention on Biological Diversity (CBD) was held at:",
+  options: ["Stockholm", "Rio de Janeiro", "Kyoto", "Paris"],
+  answer: 1,
+},
+{
+  q: "CBD came into force in:",
+  options: ["1995", "1993", "1992", "1997"],
+  answer: 1,
+},
+{
+  q: "Wildlife Protection Act in India was enacted in:",
+  options: ["1986", "1972", "1974", "1981"],
+  answer: 1,
+},
+{
+  q: "Environment Protection Act (EPA) was enacted in:",
+  options: ["1974", "1981", "1986", "1972"],
+  answer: 2,
+},
+{
+  q: "EPA was enacted after:",
+  options: ["Bhopal Gas Tragedy", "Oil spill", "Chernobyl disaster", "Fukushima accident"],
+  answer: 0,
+},
+{
+  q: "The word “Disaster” is derived from:",
+  options: ["Latin word", "French word “Desastre”", "Greek word", "English word"],
+  answer: 1,
+},
+{
+  q: "“Desastre” means:",
+  options: ["Flood", "Bad wind", "Natural damage", "Evil star"],
+  answer: 3,
+},
+{
+  q: "Disaster is caused due to:",
+  options: ["Climatic causes only", "Natural or man-made causes", "Only natural causes", "Only man-made causes"],
+  answer: 1,
+},
+{
+  q: "A disaster leads to:",
+  options: ["Seasonal variation", "Gradual change", "Sudden disruption of normal life", "Economic growth"],
+  answer: 2,
+},
+{
+  q: "Disaster causes damage to:",
+  options: ["Property only", "Life only", "Infrastructure only", "Life and property"],
+  answer: 3,
+},
+{
+  q: "Disaster overwhelms:",
+  options: ["Climate cycle", "Government systems", "Natural balance", "Social and economic protection mechanisms"],
+  answer: 3,
+},
+{
+  q: "Disaster can be classified into:",
+  options: ["Small and large scale", "Large scale only", "Medium scale only", "Small scale only"],
+  answer: 0,
+},
+{
+  q: "Floods, hailstorms and cloudbursts are:",
+  options: ["Hydrological disasters", "Biological disasters", "Industrial disasters", "Geological disasters"],
+  answer: 0,
+},
+{
+  q: "Cyclones fall under:",
+  options: ["Meteorological", "Geological", "Climatological", "Biological"],
+  answer: 0,
+},
+{
+  q: "Heat waves, cold waves and droughts are:",
+  options: ["Meteorological", "Climatological", "Geological", "Hydrological"],
+  answer: 1,
+},
+{
+  q: "Earthquakes and volcanic eruptions are:",
+  options: ["Biological", "Meteorological", "Industrial", "Geological"],
+  answer: 3,
+},
+{
+  q: "Urban fires and oil spills are:",
+  options: ["Natural disasters", "Man-made disasters", "Hydrological disasters", "Geological disasters"],
+  answer: 1,
+},
+{
+  q: "Viral outbreaks and pest invasions are:",
+  options: ["Biological disasters", "Nuclear disasters", "Industrial disasters", "Geological disasters"],
+  answer: 0,
+},
+{
+  q: "Chemical mishaps and mining shaft fires are:",
+  options: ["Biological disasters", "Meteorological disasters", "Nuclear disasters", "Industrial disasters"],
+  answer: 3,
+},
+{
+  q: "Nuclear core meltdown causes:",
+  options: ["Cyclone", "Earthquake", "Radiation illness", "Flood"],
+  answer: 2,
+},
+{
+  q: "Disaster impacts individuals:",
+  options: ["Economically only", "Physically only", "Physically and psychologically", "Psychologically only"],
+  answer: 2,
+},
+{
+  q: "Loss of biodiversity is a:",
+  options: ["Impact of disaster", "Cause of disaster", "Type of disaster", "Control measure"],
+  answer: 0,
+},
+{
+  q: "Displacement of people is:",
+  options: ["Impact", "Prevention", "Preparedness", "Cause"],
+  answer: 0,
+},
+{
+  q: "Industrialization is a:",
+  options: ["Natural cause", "Cause of disaster", "Effect", "Impact"],
+  answer: 1,
+},
+{
+  q: "Environmental degradation leads to:",
+  options: ["Disaster control", "Disaster occurrence", "Disaster reduction", "Disaster recovery"],
+  answer: 1,
+},
+{
+  q: "Political issues can:",
+  options: ["Cause disasters", "Eliminate hazards", "Prevent disasters", "Control environment"],
+  answer: 0,
+},
+{
+  q: "Disaster management is a:",
+  options: ["Economic process", "Random activity", "Temporary process", "Systematic process"],
+  answer: 3,
+},
+{
+  q: "Disaster management aims to:",
+  options: ["Increase disasters", "Control population", "Lessen disaster impact", "Stop development"],
+  answer: 2,
+},
+{
+  q: "Pre-disaster management occurs:",
+  options: ["At recovery stage", "Before disaster", "After disaster", "During disaster"],
+  answer: 1,
+},
+{
+  q: "Management during disaster mainly involves:",
+  options: ["Immediate response", "Policy making", "Planning", "Research"],
+  answer: 0,
+},
+{
+  q: "Post-disaster management includes:",
+  options: ["Prevention", "Preparedness", "Mitigation", "Recovery"],
+  answer: 3,
+},
+{
+  q: "DRR focuses on:",
+  options: ["Eliminating hazards", "Increasing exposure", "Ignoring risks", "Reducing causal factors"],
+  answer: 3,
+},
+{
+  q: "Mitigation refers to:",
+  options: ["Emergency relief", "Recovery process", "Proactive measures before disaster", "Actions after disaster"],
+  answer: 2,
+},
+{
+  q: "Preparedness helps to:",
+  options: ["Create disasters", "Increase vulnerability", "Stop hazards", "Reduce effects of disasters"],
+  answer: 3,
+},
+{
+  q: "Rescue includes:",
+  options: ["Risk mapping", "Long-term planning", "Evacuation and immediate help", "Infrastructure repair"],
+  answer: 2,
+},
+{
+  q: "Food, water and medicines come under:",
+  options: ["Relief", "Preparedness", "Recovery", "Mitigation"],
+  answer: 0,
+},
+{
+  q: "Repair of damaged infrastructure is:",
+  options: ["Mitigation", "Recovery", "Relief", "Rescue"],
+  answer: 1,
+},
+{
+  q: "Risk assessment helps in:",
+  options: ["Identifying vulnerabilities", "Creating disasters", "Ignoring hazards", "Increasing damage"],
+  answer: 0,
+},
+{
+  q: "Climate change adaptation is a:",
+  options: ["Cause", "Disaster type", "Impact", "Mitigation measure"],
+  answer: 3,
+},
+{
+  q: "Urban planning helps in:",
+  options: ["Disaster mitigation", "Increasing risk", "Environmental degradation", "Hazard creation"],
+  answer: 0,
+},
+{
+  q: "Landslide involves movement of:",
+  options: ["Lava only", "Ice only", "Water only", "Rocks, soil and debris"],
+  answer: 3,
+},
+{
+  q: "Landslides can move:",
+  options: ["Only downward", "Only slow", "Only fast", "Slowly or rapidly"],
+  answer: 3,
+},
+{
+  q: "Landslides do NOT always involve:",
+  options: ["Gravity", "Slope", "Vegetation", "Water"],
+  answer: 3,
+},
+{
+  q: "Deforestation increases:",
+  options: ["Rainfall", "Soil fertility", "Stability", "Landslide risk"],
+  answer: 3,
+},
+{
+  q: "Avalanche is movement of:",
+  options: ["Ice and snow", "Soil and water", "Lava", "Rock and mud"],
+  answer: 0,
+},
+{
+  q: "Avalanche risk is highest during:",
+  options: ["December–April", "September–October", "June–August", "May–June"],
+  answer: 0,
+},
+{
+  q: "Loose snow avalanche is:",
+  options: ["Highly dangerous", "Slab-based", "Caused by rain only", "Low volume and speed"],
+  answer: 3,
+},
+{
+  q: "Slab avalanche speed can reach:",
+  options: ["10 km/h", "50–100 km/h", "150 km/h", "25 km/h"],
+  answer: 1,
+},
+{
+  q: "Wet-snow avalanche is triggered by:",
+  options: ["Rising temperature or rain", "Earthquake only", "Wind only", "Snowfall only"],
+  answer: 0,
+},
+{
+  q: "Heatwave occurs when temperature exceeds normal by:",
+  options: ["3°C or more", "1°C", "2°C", "5°C"],
+  answer: 0,
+},
+{
+  q: "Heat index measures:",
+  options: ["Pressure", "Rainfall", "Humidity effect on heat", "Wind speed"],
+  answer: 2,
+},
+{
+  q: "Cold wave in plains occurs below:",
+  options: ["5°C", "12°C", "15°C", "10°C"],
+  answer: 3,
+},
+{
+  q: "Cold wave is associated with:",
+  options: ["Low pressure", "High humidity", "Frost and icing", "Cyclones"],
+  answer: 2,
+},
+{
+  q: "Chairperson of NDMA is:",
+  options: ["Prime Minister", "President", "Home Minister", "Governor"],
+  answer: 0,
+},
+{
+  q: "State Disaster Management Authority is headed by:",
+  options: ["District Collector", "Governor", "Chief Minister", "Prime Minister"],
+  answer: 2,
+},
+{
+  q: "District Disaster Management Chairperson is:",
+  options: ["Principal", "Superintendent of Police", "Deputy Commissioner", "Chief Minister"],
+  answer: 2,
+},
+{
+  q: "School Disaster Management Chairperson is:",
+  options: ["Teacher", "Administrator", "Principal", "Headmaster"],
+  answer: 2,
+},
+];
+// end QUESTIONS array
+
+/* 300 QUESTIONS: We created 300 items above. */
+
+/* ============== App State ============== */
+/* If you paste the full 300 questions, make sure to update totalQ below automatically. */
+
+const totalQ = QUESTIONS.length || 300;
+document.getElementById('totalQ').innerText = totalQ;
+document.getElementById('badgeCount').innerText = totalQ + " Qs";
+
+/* ============== App State ============== */
+let state = {
+  current: 0,
+  answers: Array(totalQ).fill(null), // user's selected index
+  answeredCorrect: Array(totalQ).fill(false),
+  started: false,
+  startTime: null,
+  elapsedSec: 0,
+  timerInterval: null,
+  idleTimer: null
+};
+
+/* ============== DOM refs ============== */
+const startPage = document.getElementById('startPage');
+const testPage = document.getElementById('testPage');
+const inpName = document.getElementById('inpName');
+const inpReg = document.getElementById('inpReg');
+const inpPic = document.getElementById('inpPic');
+const imgPreview = document.getElementById('imgPreview');
+const btnStart = document.getElementById('btnStart');
+const btnResetStart = document.getElementById('btnResetStart');
+const startErrors = document.getElementById('startErrors');
+
+const showName = document.getElementById('showName');
+const showReg = document.getElementById('showReg');
+const userPicSmall = document.getElementById('userPicSmall');
+const showUser = document.getElementById('showUser');
+
+const timeTop = document.getElementById('timeTop');
+const topCorrect = document.getElementById('topCorrect');
+const topWrong = document.getElementById('topWrong');
+const topProgress = document.getElementById('topProgress');
+const topAttempted = document.getElementById('topAttempted');
+const topQno = document.getElementById('topQno');
+
+const questionText = document.getElementById('questionText');
+const optionsBox = document.getElementById('optionsBox');
+const explainBox = document.getElementById('explainBox');
+const btnPrev = document.getElementById('btnPrev');
+const btnNext = document.getElementById('btnNext');
+const btnShowExplain = document.getElementById('btnShowExplain');
+const btnEndTestTop = document.getElementById('btnEndTestTop');
+
+const curQ = document.getElementById('curQ');
+const correctCountEl = document.getElementById('correctCount');
+const wrongCountEl = document.getElementById('wrongCount');
+const attemptedCountEl = document.getElementById('attemptedCount');
+const timeSpentEl = document.getElementById('timeSpent');
+const scoreInline = document.getElementById('scoreInline');
+const progressPercent = document.getElementById('progressPercent');
+
+const btnSave = document.getElementById('btnSave');
+const btnExport = document.getElementById('btnExport');
+
+const modalRoot = document.getElementById('modalRoot');
+
+/* ============== Helpers ============== */
+function formatTime(sec){
+  const m = Math.floor(sec/60).toString().padStart(2,'0');
+  const s = (sec%60).toString().padStart(2,'0');
+  return `${m}:${s}`;
+}
+function updateTopStatus(){
+  const attempted = state.answers.filter(a=>a!==null).length;
+  const correct = state.answeredCorrect.filter(x=>x).length;
+  const wrong = attempted - correct;
+  topCorrect.innerText = correct;
+  topWrong.innerText = wrong;
+  topAttempted.innerText = attempted;
+  topProgress.innerText = `${Math.round((correct/totalQ)*100)}%`;
+  topQno.innerText = `${state.current+1}/${totalQ}`;
+  // right side small summary
+  correctCountEl.innerText = correct;
+  wrongCountEl.innerText = wrong;
+  attemptedCountEl.innerText = attempted;
+  scoreInline.innerText = correct;
+  curQ.innerText = state.current + 1;
+  progressPercent.innerText = `${Math.round((correct/totalQ)*100)}%`;
+}
+function startTimer(){
+  if(state.timerInterval) return;
+  state.startTime = Date.now() - (state.elapsedSec*1000);
+  state.timerInterval = setInterval(()=>{
+    state.elapsedSec = Math.floor((Date.now()-state.startTime)/1000);
+    timeTop.innerText = formatTime(state.elapsedSec);
+    timeSpentEl.innerText = formatTime(state.elapsedSec);
+  },1000);
+}
+function stopTimer(){
+  if(state.timerInterval){ clearInterval(state.timerInterval); state.timerInterval = null; }
+}
+function resetIdleTimer(){
+  if(state.idleTimer) clearTimeout(state.idleTimer);
+  // show warning if no action for 60s
+  state.idleTimer = setTimeout(()=>{ showWarning("You're idle — please continue answering to use time well."); }, 60000);
+}
+function showWarning(text){
+  // small non-blocking toast modal that disappears
+  const toast = document.createElement('div');
+  toast.style.position='fixed'; toast.style.left='50%'; toast.style.transform='translateX(-50%)'; toast.style.bottom='22px';
+  toast.style.background='rgba(0,0,1,0.8)'; toast.style.padding='12px 16px'; toast.style.borderRadius='10px'; toast.style.color='#fef'; toast.style.zIndex=9999;
+  toast.innerText = "⚠️ " + text;
+  document.body.appendChild(toast);
+  setTimeout(()=>{ toast.style.transition='opacity .4s'; toast.style.opacity='0'; setTimeout(()=>toast.remove(),400); }, 3000);
+}
+
+/* ============== Validation (start page) ============== */
+function validateName(v){
+  if(!v || !v.trim()) return false;
+  // allow letters, spaces, dot and hyphen optional; disallow digits
+  return /^[A-Za-z\s\.\-']+$/.test(v.trim());
+}
+function validateReg(v){
+  return /^\d{8}$/.test(v);
+}
+function checkStartInputs(){
+  const name = inpName.value.trim();
+  const reg = inpReg.value.trim();
+  let ok = true; startErrors.innerText = '';
+  if(!validateName(name)){ ok = false; startErrors.innerText = 'Name invalid: only letters, spaces allowed.'; }
+  else if(!validateReg(reg)){ ok = false; startErrors.innerText = 'Registration invalid: must be exactly 8 digits.'; }
+  btnStart.disabled = !ok;
+}
+
+/* image preview */
+inpPic.addEventListener('change', (e)=>{
+  const f = e.target.files && e.target.files[0];
+  if(!f){ imgPreview.style.display='none'; userPicSmall.style.display='none'; return; }
+  const url = URL.createObjectURL(f);
+  imgPreview.src = url; imgPreview.style.display='block';
+  userPicSmall.src = url; userPicSmall.style.display='block';
+});
+
+/* listen to inputs */
+inpName.addEventListener('input', checkStartInputs);
+inpReg.addEventListener('input', checkStartInputs);
+
+/* ============== Rendering ============== */
+function renderQuestion(idx){
+  resetIdleTimer();
+  const item = QUESTIONS[idx];
+  if(!item){
+    questionText.innerText = 'Question bank not loaded. Paste the QUESTIONS array into the file.';
+    optionsBox.innerHTML = '';
+    return;
+  }
+  questionText.innerHTML = `<span style="opacity:.9">${idx+1}.</span> <span style="margin-left:8px">${item.q}</span>`;
+  showName.innerText = inpName.value || '—';
+  showReg.innerText = inpReg.value || '—';
+  showUser.innerText = `${inpName.value || ''} • ${inpReg.value || ''}`;
+  explainBox.style.display = 'none'; explainBox.innerHTML = '';
+  optionsBox.innerHTML = '';
+
+  item.options.forEach((optText, i)=>{
+    const div = document.createElement('div');
+    div.className = 'option';
+    div.dataset.index = i;
+    div.innerHTML = `<div class="label"><strong>${String.fromCharCode(65+i)}</strong>. ${optText}</div><div class="explainTiny">Explain</div>`;
+    // answer click
+    div.addEventListener('click', (e)=>{
+      if(state.answers[idx] !== null) return; // locked
+      handleAnswer(idx, i);
+    });
+    // explain click
+    div.querySelector('.explainTiny').addEventListener('click', (ev)=>{ ev.stopPropagation(); showExplanation(idx); });
+    optionsBox.appendChild(div);
+  });
+
+  // if answered already, show colors
+  if(state.answers[idx] !== null){
+    const chosen = state.answers[idx];
+    const correct = QUESTIONS[idx].answer;
+    const all = optionsBox.querySelectorAll('.option');
+    all.forEach((od, i)=>{
+      od.classList.remove('correct','wrong');
+      if(i === correct) od.classList.add('correct');
+      if(i === chosen && chosen !== correct) od.classList.add('wrong');
+    });
+    explainBox.innerHTML = `<strong>Explanation:</strong><br>${item.explanation}<br><br><strong>Correct:</strong> ${String.fromCharCode(65+item.answer)}. ${item.options[item.answer]}`;
+    explainBox.style.display = 'none';
+  }
+
+  updateTopStatus();
+}
+
+/* ============== Answer Logic ============== */
+function handleAnswer(qIdx, choiceIdx){
+  // lock once selected
+  if(state.answers[qIdx] !== null) return;
+  state.answers[qIdx] = choiceIdx;
+  const correct = QUESTIONS[qIdx].answer;
+  const wasCorrect = (choiceIdx === correct);
+  state.answeredCorrect[qIdx] = wasCorrect;
+
+  // color options
+  const optDivs = optionsBox.querySelectorAll('.option');
+  optDivs.forEach((od, i)=>{
+    od.classList.remove('correct','wrong');
+    if(i === correct) od.classList.add('correct');
+    if(i === choiceIdx && choiceIdx !== correct) od.classList.add('wrong');
+  });
+
+  updateTopStatus();
+
+  // brief animation & then auto-next after 700ms
+  if(wasCorrect){
+    const correctEl = optionsBox.querySelector('.option.correct');
+    if(correctEl) correctEl.animate([{transform:'scale(1)'},{transform:'scale(1.03)'},{transform:'scale(1)'}], {duration:450, iterations:1, easing:'ease-out'});
+  }
+
+  // small delay then go next (unless last)
+  setTimeout(()=>{
+    if(state.current < totalQ - 1){
+      state.current++;
+      renderQuestion(state.current);
+    } else {
+      // reached end - show modal summary
+      showSummaryModal();
+    }
+  }, 2000);
+}
+
+/* explanation */
+function showExplanation(idx){
+  const item = QUESTIONS[idx];
+  if(!item) return;
+  explainBox.style.display = 'block';
+  explainBox.innerHTML = `<strong>Explanation:</strong><br>${item.explanation}<br><br><strong>Correct:</strong> ${String.fromCharCode(65+item.answer)}. ${item.options[item.answer]}`;
+}
+
+/* ============== Controls ============== */
+btnStart.addEventListener('click', ()=>{
+  // validate again
+  const name = inpName.value.trim();
+  const reg = inpReg.value.trim();
+  if(!validateName(name) || !validateReg(reg)){ alert('Enter valid Name and 8-digit Registration number.'); return; }
+  if(!QUESTIONS || QUESTIONS.length === 0){ alert('Question bank empty. Paste QUESTIONS into the file.'); return; }
+
+  // save user to localStorage (temp)
+  const user = {name, reg, pic: null};
+  if(inpPic.files && inpPic.files[0]){
+    // read as data URL
+    const reader = new FileReader();
+    reader.onload = function(e){
+      user.pic = e.target.result;
+      startTest(user);
+    }
+    reader.readAsDataURL(inpPic.files[0]);
+  } else {
+    startTest(user);
+  }
+});
+function startTest(user){
+  // store last user
+  localStorage.setItem('ECE-249_user', JSON.stringify(user));
+  // show test page
+  startPage.style.display = 'none';
+  testPage.style.display = 'block';
+  if(user.pic){ userPicSmall.src = user.pic; userPicSmall.style.display='block'; }
+  showName.innerText = user.name; showReg.innerText = user.reg; showUser.innerText = `${user.name} • ${user.reg}`;
+  state.started = true; startTimer(); resetIdleTimer(); renderQuestion(state.current); updateTopStatus();
+}
+
+/* Prev/Next */
+btnPrev.addEventListener('click', ()=>{ if(state.current>0){ state.current--; renderQuestion(state.current); } resetIdleTimer();});
+btnNext.addEventListener('click', ()=>{ if(state.current < totalQ - 1){ state.current++; renderQuestion(state.current); } resetIdleTimer();});
+
+/* End Test */
+btnEndTestTop.addEventListener('click', ()=>{ if(!state.started){ alert('Test not started.'); return;} if(!confirm('End test now and save result?')) return; stopTimer(); saveResult(); showSummaryModal(); });
+
+/* Show explain */
+btnShowExplain.addEventListener('click', ()=>{ showExplanation(state.current); });
+
+/* Keyboard navigation */
+document.addEventListener('keydown', (e)=>{ if(e.key === 'ArrowRight') btnNext.click(); if(e.key === 'ArrowLeft') btnPrev.click(); });
+
+/* Reset start page */
+btnResetStart.addEventListener('click', ()=>{ if(confirm('Reset start form?')){ inpName.value=''; inpReg.value=''; inpPic.value=''; imgPreview.style.display='none'; checkStartInputs(); } });
+
+/* Save result to localStorage */
+function saveResult(){
+  const correct = state.answeredCorrect.filter(x=>x).length;
+  const attempted = state.answers.filter(a=>a!==null).length;
+  const user = JSON.parse(localStorage.getItem('ECE-249_user') || '{}');
+  const result = { name: user.name || inpName.value, reg: user.reg || inpReg.value, pic: user.pic || null, correct, attempted, time: formatTime(state.elapsedSec), date: (new Date()).toLocaleString() };
+  
+  // 🔗 also save online
+  saveResultToSupabase(result); 
+
+  // const key = 'ECE-249_results';
+  // const arr = JSON.parse(localStorage.getItem(key) || '[]');
+  // arr.push(result);
+  // localStorage.setItem(key, JSON.stringify(arr));
+  // alert('Result saved locally.');
+}
+
+// 🌀 Small loader toast (for showing saving progress)
+
+function showLoader(msg, duration = 1500) {
+  const toast = document.createElement('div');
+  toast.style.position = 'fixed';
+  toast.style.left = '50%';
+  toast.style.transform = 'translateX(-50%)';
+  toast.style.bottom = '30px';
+  toast.style.background = 'rgba(0,0,0,0.8)';
+  toast.style.color = '#fff';
+  toast.style.padding = '12px 18px';
+  toast.style.borderRadius = '10px';
+  toast.style.fontSize = '14px';
+  toast.style.zIndex = 9999;
+  toast.innerText = msg;
+  document.body.appendChild(toast);
+  setTimeout(() => {
+    toast.style.transition = 'opacity .4s';
+    toast.style.opacity = '0';
+    setTimeout(() => toast.remove(), 400);
+  }, duration);
+}
+
+
+// // 🟢 Supabase Database Save (adds result to test_result table)
+// async function saveResultToSupabase(result) {
+//   try {
+//     // पहले check करो कि यह registration पहले से मौजूद तो नहीं है
+//     const { data: existing, error: fetchError } = await supabase
+//       .from('test_result')
+//       .select('reg')
+//       .eq('reg', result.reg);
+
+//     if (fetchError) throw fetchError;
+
+//     if (existing && existing.length > 0) {
+//       alert('⚠️ This registration number has already submitted a result!');
+//       return;
+//     }
+
+//     // Insert new result
+//     const { data, error } = await supabase
+//       .from('test_result')
+//       .insert([result]);
+
+//     if (error) throw error;
+
+//     alert('✅ Result saved to Supabase database!');
+//   } catch (err) {
+//     console.error('Supabase insert error:', err);
+//     alert('❌ Error saving result to Supabase.');
+//   }
+// }
+/* Export CSV for all saved results */
+
+// 🟢 Supabase Database Save (adds result to test_result table)
+async function saveResultToSupabase(result) {
+  try {
+    showLoader("⏳ Checking registration...");
+
+    // पहले check करो कि यह registration पहले से मौजूद तो नहीं है
+    const { data: existing, error: fetchError } = await supabase
+      .from('test_result')
+      .select('reg')
+      .eq('reg', result.reg);
+
+    if (fetchError) throw fetchError;
+
+    if (existing && existing.length > 0) {
+      showLoader("⚠️ Already submitted!", 2000);
+      alert('⚠️ This registration number has already submitted a result!');
+      return;
+    }
+
+    showLoader("💾 Saving your result...");
+
+    // Insert new result
+    const { data, error } = await supabase
+      .from('test_result')
+      .insert([result]);
+
+    if (error) throw error;
+
+    showLoader("✅ Saved successfully!", 1800);
+    alert('✅ Result saved to Aryan_data_base!');
+
+  } catch (err) {
+    console.error('Aryan_data_base insert error:', err);
+    showLoader("❌ Error saving result!", 2000);
+    alert('❌ Error saving result to Aryan_data_base.');
+  }
+}
+
+// 🟢 Fetch all saved results from Supabase (Leaderboard)
+async function fetchAllResults() {
+  try {
+    showLoader("📡 Fetching results...");
+
+    const { data, error } = await supabase
+      .from('test_result')
+      .select('name, reg, correct, attempted, time, date')
+      .order('correct', { ascending: false }); // Highest score first
+
+    if (error) throw error;
+
+    showResultsTable(data); // show inside modal
+  } catch (err) {
+    console.error("Aryan_database fetch error:", err);
+    alert("❌ Error fetching results from Aryan_database!");
+  }
+}
+
+btnExport.addEventListener('click', ()=>{
+  const arr = JSON.parse(localStorage.getItem('ece249_results') || '[]');
+  if(arr.length === 0){ alert('No saved results to export.'); return; }
+  const headers = ['Name','Reg','Correct','Attempted','Time','Date'];
+  const rows = arr.map(r => [r.name, r.reg, r.correct, r.attempted, r.time, r.date]);
+  let csv = headers.join(',') + '\n' + rows.map(r => r.map(c => `"${String(c).replace(/"/g,'""')}"`).join(',')).join('\n');
+  const blob = new Blob([csv], {type: 'text/csv'});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a'); a.href = url; a.download = 'ece249_results.csv'; document.body.appendChild(a); a.click(); a.remove(); URL.revokeObjectURL(url);
+});
+
+/* View summary modal */
+function showSummaryModal(){
+  const correct = state.answeredCorrect.filter(x=>x).length;
+  const attempted = state.answers.filter(a=>a!==null).length;
+  modalRoot.innerHTML = '';
+  const backdrop = document.createElement('div'); backdrop.className = 'modal-backdrop';
+  const modal = document.createElement('div'); modal.className = 'modal';
+  const user = JSON.parse(localStorage.getItem('ece249_user') || '{}');
+  modal.innerHTML = `<h3>Test Summary</h3>
+    <p><strong>Name:</strong> ${user.name || inpName.value} &nbsp; • &nbsp; <strong>Reg:</strong> ${user.reg || inpReg.value}</p>
+    <p><strong>Score:</strong> ${correct} / ${totalQ} &nbsp; • &nbsp; <strong>Attempted:</strong> ${attempted}</p>
+    <p><strong>Time:</strong> ${formatTime(state.elapsedSec)}</p>
+    <div style="display:flex;gap:8px;justify-content:flex-end;margin-top:10px">
+      <button id="modalSave" class="btn">Save</button>
+      <button id="modalReview" class="btn ghost">Review Answers</button>
+      <button id="modalClose" class="btn ghost">Close</button>
+    </div>`;
+  backdrop.appendChild(modal); modalRoot.appendChild(backdrop); modalRoot.style.display = 'block';
+  document.getElementById('modalClose').addEventListener('click', ()=>{ modalRoot.innerHTML=''; modalRoot.style.display='none'; });
+  document.getElementById('modalSave').addEventListener('click', ()=>{ saveResult(); modalRoot.innerHTML=''; modalRoot.style.display='none'; });
+  document.getElementById('modalReview').addEventListener('click', ()=>{ modalRoot.innerHTML=''; modalRoot.style.display='none'; reviewAllAnswers(); });
+}
+
+/* Review answers (list with question and selected) */
+function reviewAllAnswers(){
+  modalRoot.innerHTML = ''; const backdrop = document.createElement('div'); backdrop.className='modal-backdrop';
+  const modal = document.createElement('div'); modal.className='modal';
+  modal.innerHTML = `<h3>Review Answers</h3><div style="max-height:60vh;overflow:auto"><table class="results-table"><thead><tr><th>#</th><th>Question</th><th>Your</th><th>Correct</th></tr></thead><tbody id="revBody"></tbody></table></div><div style="display:flex;justify-content:flex-end;margin-top:8px"><button id="closeRev" class="btn ghost">Close</button></div>`;
+  backdrop.appendChild(modal); modalRoot.appendChild(backdrop); modalRoot.style.display='block';
+  const body = modal.querySelector('#revBody');
+  QUESTIONS.forEach((q,i)=>{
+    const your = state.answers[i] === null ? '-' : String.fromCharCode(65 + state.answers[i]) + '. ' + q.options[state.answers[i]];
+    const corr = String.fromCharCode(65 + q.answer) + '. ' + q.options[q.answer];
+    const tr = document.createElement('tr'); tr.innerHTML = `<td>${i+1}</td><td style="max-width:380px">${q.q}</td><td>${your}</td><td>${corr}</td>`;
+    body.appendChild(tr);
+  });
+  document.getElementById('closeRev').addEventListener('click', ()=>{ modalRoot.innerHTML=''; modalRoot.style.display='none'; });
+}
+
+/* review finished. */
+
+/* idle reset on any interaction */
+['click','mousemove','keydown','touchstart'].forEach(ev => document.addEventListener(ev, resetIdleTimer));
+
+/* Before unload confirm if started */
+window.addEventListener('beforeunload', function(e){ if(state.started){ e.preventDefault(); e.returnValue = ''; } });
+
+/* init */
+(function init(){
+  // if previous user exists, prefill name/reg
+  const prevUser = JSON.parse(localStorage.getItem('ECE-249_user') || 'null');
+  if(prevUser){
+    if(prevUser.name) inpName.value = prevUser.name;
+    if(prevUser.reg) inpReg.value = prevUser.reg;
+    if(prevUser.pic){ imgPreview.src = prevUser.pic; imgPreview.style.display='block'; userPicSmall.src = prevUser.pic; userPicSmall.style.display='block'; }
+  }
+  checkStartInputs();
+  curQ.innerText = 0;
+  timeTop.innerText = '00:00';
+  timeSpentEl.innerText = '00:00';
+  topProgress.innerText = '0%';
+  topCorrect.innerText = '0';
+  topWrong.innerText = '0';
+  topAttempted.innerText = '0';
+  topQno.innerText = '0/' + totalQ;
+})();
+</script>
+</body>
+</html>
