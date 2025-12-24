@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>CHE-110 — Test Series (Units 1-6)</title>
+<title>ECE249 — Test Series (Units 1-6)</title>
 <style>
 /* ===================== CSS Variables ===================== */
 :root{
@@ -28,8 +28,8 @@ html,body{
 body{
     margin:0; /* Remove default margin */
     background:
-        radial-gradient(900px 500px at 10% 10%, rgba(210, 47, 142, 0.04), transparent), /* Decorative radial gradient */
-        linear-gradient(180deg,#3171e0 0%, #29cacf 100%); /* Main page gradient background */
+        radial-gradient(900px 500px at 10% 10%, rgba(244, 50, 163, 0.04), transparent), /* Decorative radial gradient */
+        linear-gradient(180deg,#5a7ab2 0%, #11bac0 100%); /* Main page gradient background */
     color:#070b0f; /* Default text color */
     min-height:100vh; /* Minimum height full viewport */
     display:flex; /* Flex layout */
@@ -103,10 +103,10 @@ input[type="text"], input[type="file"]{
 
 /* ===================== About box ===================== */
 .about{
-    background:linear-gradient(180deg, rgba(184, 11, 11, 0.01), rgba(156, 43, 43, 0.02)); /* Light background gradient */
+    background:linear-gradient(180deg, rgba(204, 66, 66, 0.01), rgba(156, 43, 43, 0.02)); /* Light background gradient */
     padding:12px; /* Inner spacing */
     border-radius:10px; /* Rounded corners */
-    border:1px solid rgba(105, 0, 0, 0.02); /* Light border */
+    border:1px solid rgba(150, 23, 23, 0.02); /* Light border */
     max-width:600px; /* Max width */
 }
 .about p{
@@ -123,7 +123,7 @@ input[type="text"], input[type="file"]{
     cursor:pointer; /* Pointer on hover */
     font-weight:700; /* Bold */
     background:var(--accent); /* Main accent color */
-    color:rgb(0, 0, 0); /* Text color */
+    color:#022; /* Text color */
     box-shadow:0 6px 20px rgba(14, 239, 164, 0.08); /* Shadow */
     transition:transform .14s ease, box-shadow .14s ease; /* Smooth interaction */
 }
@@ -132,8 +132,8 @@ input[type="text"], input[type="file"]{
 }
 .btn.ghost{
     background:transparent; /* Ghost button */
-    border:1px solid rgb(89, 33, 33); /* Light border */
-    color:rgb(142, 64, 0); /* Text color */
+    border:1px solid rgba(99, 46, 46, 0.06); /* Light border */
+    color:#1a5795; /* Text color */
 }
 .btn.warn{
     background:var(--danger); /* Red background for warning */
@@ -225,7 +225,7 @@ input[type="text"], input[type="file"]{
 }
 .option:hover{
     transform:translateY(-4px); /* Hover lift effect */
-    box-shadow:0 10px 30px rgba(24, 54, 185, 0.6);
+    box-shadow:0 10px 30px rgba(12, 49, 217, 0.6);
 }
 .option .label{
     font-weight:750;
@@ -307,7 +307,7 @@ input[type="text"], input[type="file"]{
     z-index:60;
 }
 .modal{
-    background:#d3d8e3;
+    background:#071025;
     padding:16px;
     border-radius:12px;
     width:90%;
@@ -352,7 +352,7 @@ input[type="text"], input[type="file"]{
       <header>
         <div class="title">
           <div style="display:flex;align-items:center;gap:10px">
-            <h1>CHE-110 — Test Series (Units 1-6)</h1>
+            <h1>ECE249 — Test Series (Units 1-6)</h1>
             <div class="accent-badge" id="badgeCount">300+ Qs</div>
           </div>
           <div class="small-by">Created by <strong>Aryan Singh</strong></div>
@@ -447,18 +447,9 @@ input[type="text"], input[type="file"]{
                 <div style="flex:1"><div class="label muted">Attempted</div><div id="attemptedCount" style="font-weight:800">0</div></div>
                 <div style="flex:1"><div class="label muted">Time</div><div id="timeSpent" style="font-weight:800">00:00</div></div>
               </div>
-               <div style="border: 2px solid #555; background-color: transparent; padding: 10px; width: fit-content; border-radius: 5px; font-family: sans-serif; font-size: 14px; color: inherit; margin: 15px 0;">
-                    <strong>How to View Answers:</strong>
-                    <ol style="margin: 5px 0 0 20px; padding: 0;">
-                        <li>Click <b>"End Test"</b></li>
-                        <li>Click <b>"OK"</b></li>
-                       <li>Click <b>"OK"</b> again</li>
-                        <li>Click <b>"Review Answers"</b></li>
-                    </ol>
-                </div>
 
               <div style="margin-top:10px;display:flex;gap:8px">
-                <!-- <button id="btnSave" class="btn">Save Result</button> -->
+                <button id="btnSave" class="btn">Save Result</button>
                 <button id="btnExport" class="btn ghost">Export CSV</button>
               </div>
             </div>
@@ -480,2042 +471,1553 @@ const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 </script>
 <script>const QUESTIONS = [
   {
-    q: "Environmental Studies is mainly concerned with:",
-    options: ["Space science", "Interaction of humans with environment", "Only plants", "Only animals"],
-    answer: 1, // "Interaction..." ab 2nd number (index 1) par hai
+    "q": "Environmental Studies mainly deals with:",
+    "options": ["Space science", "Only animals", "Interaction of humans with environment", "Only plants"],
+    "answer": 2,
+    "explanation": "Environmental Studies focuses on the relationship between humans and the environment."
   },
   {
-    q: "Environmental Science mainly integrates:",
-    options: ["Social sciences only", "Engineering only", "Medical sciences", "Physical, chemical, biological sciences"],
-    answer: 3,
+    "q": "Environmental Science mainly integrates:",
+    "options": ["Engineering only", "Social sciences only", "Physical, chemical, biological sciences", "Medical sciences"],
+    "answer": 2,
+    "explanation": "It combines core sciences to understand environmental processes and problems."
   },
   {
-    q: "Application of engineering principles to improve environment is called:",
-    options: ["Environmental Engineering", "Environmental Studies", "Ecology", "Environmental Science"],
-    answer: 0,
+    "q": "Environmental Engineering is concerned with:",
+    "options": ["Theory of environment", "Improving environmental quality", "Climate study", "Forest management"],
+    "answer": 1,
+    "explanation": "It applies engineering and science to provide healthy living conditions."
   },
   {
-    q: "Which is NOT a component of natural environment?",
-    options: ["Air", "Water", "Agricultural field", "Forest"],
-    answer: 2,
+    "q": "Importance of Environmental Studies includes:",
+    "options": ["Economic growth only", "Industrial development", "Only pollution control", "Understanding surroundings"],
+    "answer": 3,
+    "explanation": "It provides basic knowledge of our environment and helps solve environmental problems."
   },
   {
-    q: "Agricultural fields are examples of:",
-    options: ["Natural environment", "Anthropogenic environment", "Aquatic environment", "Atmospheric environment"],
-    answer: 1,
+    "q": "Environment is defined as:",
+    "options": ["Only living beings", "Only physical factors", "Surroundings affecting living organisms", "Only air and water"],
+    "answer": 2,
+    "explanation": "Environment includes physical, biological, chemical and social factors."
   },
   {
-    q: "Solid land mass of the Earth is called:",
-    options: ["Hydrosphere", "Lithosphere", "Atmosphere", "Biosphere"],
-    answer: 1,
+    "q": "Natural environment consists of:",
+    "options": ["Factories", "Cities and industries", "Agricultural fields", "Air, water, soil, forests"],
+    "answer": 3,
+    "explanation": "Natural environment exists without human modification."
   },
   {
-    q: "Which is NOT a layer of atmosphere?",
-    options: ["Troposphere", "Stratosphere", "Mesosphere", "Lithosphere"],
-    answer: 3,
+    "q": "Anthropogenic environment refers to:",
+    "options": ["Oceans", "Human-modified environment", "Natural forests", "Wildlife sanctuaries"],
+    "answer": 1,
+    "explanation": "It is created or altered by humans like farms and gardens."
   },
   {
-    q: "Most abundant gas in atmosphere is:",
-    options: ["Nitrogen", "Oxygen", "Carbon dioxide", "Argon"],
-    answer: 0,
+    "q": "Lithosphere represents:",
+    "options": ["Land part", "Water part", "Living part", "Air part"],
+    "answer": 0,
+    "explanation": "Lithosphere includes crust, mantle and core of Earth."
   },
   {
-    q: "Biosphere includes:",
-    options: ["Only plants", "Living organisms", "Only animals", "Non-living matter"],
-    answer: 1,
+    "q": "Hydrosphere includes:",
+    "options": ["Only rivers", "Only groundwater", "Only oceans", "All forms of water"],
+    "answer": 3,
+    "explanation": "It includes oceans, rivers, glaciers, groundwater and water vapour."
   },
   {
-    q: "Sustainability means:",
-    options: ["Using all resources fast", "Industrial growth only", "Meeting present needs without harming future", "Economic growth only"],
-    answer: 2,
+    "q": "Major gas in the atmosphere is:",
+    "options": ["Argon", "Carbon dioxide", "Oxygen", "Nitrogen"],
+    "answer": 3,
+    "explanation": "Nitrogen forms about 78% of the atmosphere."
   },
   {
-    q: "Three pillars of sustainability are:",
-    options: ["Water, air, soil", "Plant, animal, human", "Social, economic, environmental", "Energy, food, shelter"],
-    answer: 2,
+    "q": "Biosphere is also called:",
+    "options": ["Atmosphere", "Ecosphere", "Lithosphere", "Hydrosphere"],
+    "answer": 1,
+    "explanation": "It includes all living organisms and their interactions."
   },
   {
-    q: "Carrying capacity refers to:",
-    options: ["Maximum population environment can sustain", "Maximum pollution level", "Total resources on Earth", "Human population only"],
-    answer: 0,
+    "q": "Sustainability means:",
+    "options": ["Urban development", "Meeting present needs without harming future", "Economic growth", "Using resources fully"],
+    "answer": 1,
+    "explanation": "It ensures resources are conserved for future generations."
   },
   {
-    q: "Which sector consumes maximum water?",
-    options: ["Municipal", "Domestic", "Industrial", "Agriculture"],
-    answer: 3,
+    "q": "Three pillars of sustainability are:",
+    "options": ["Social, political, economic", "Industrial, economic, social", "Environmental, social, economic", "Only environmental"],
+    "answer": 2,
+    "explanation": "Balanced development requires all three pillars."
   },
   {
-    q: "Main cause of groundwater depletion:",
-    options: ["Rainfall", "Flood", "Over-exploitation", "Afforestation"],
-    answer: 2,
+    "q": "Carrying capacity refers to:",
+    "options": ["Birth rate", "Maximum population supported", "Population growth", "Death rate"],
+    "answer": 1,
+    "explanation": "It depends on food, water and environmental resources."
   },
   {
-    q: "Which is a water-borne disease problem during floods?",
-    options: ["Cancer", "Heart disease", "Diabetes", "Malaria"],
-    answer: 3,
+    "q": "Supporting capacity means:",
+    "options": ["Waste discharge", "Regeneration capacity", "Pollution tolerance", "Energy use"],
+    "answer": 1,
+    "explanation": "It is the ability of environment to regenerate resources."
   },
   {
-    q: "Meteorological drought is caused by:",
-    options: ["Less rainfall", "Low soil moisture", "Low stream flow", "High temperature only"],
-    answer: 0,
+    "q": "Assimilative capacity means:",
+    "options": ["Pollution tolerance", "Population control", "Resource creation", "Energy production"],
+    "answer": 0,
+    "explanation": "It is the ability to absorb environmental stress."
   },
   {
-    q: "One major disadvantage of dams is:",
-    options: ["Electricity generation", "Displacement of people", "Flood control", "Irrigation"],
-    answer: 1,
+    "q": "Highest water consuming sector is:",
+    "options": ["Municipal", "Power plants", "Industry", "Agriculture"],
+    "answer": 3,
+    "explanation": "Agriculture consumes the most water globally (approx 70%)."
   },
   {
-    q: "Rainwater harvesting helps in:",
-    options: ["Soil erosion", "Water pollution", "Groundwater recharge", "Flood increase"],
-    answer: 2,
+    "q": "Over-exploitation of groundwater leads to:",
+    "options": ["More rainfall", "Floods", "Lowering water table", "Rising water table"],
+    "answer": 2,
+    "explanation": "Excess withdrawal reduces groundwater levels."
   },
   {
-    q: "Study of soil in natural environment is called:",
-    options: ["Ecology", "Geology", "Pedology", "Hydrology"],
-    answer: 2,
+    "q": "Meteorological drought occurs due to:",
+    "options": ["Flood", "Less rainfall", "Low stream flow", "Low soil moisture"],
+    "answer": 1,
+    "explanation": "It is caused by prolonged rainfall deficiency."
   },
   {
-    q: "Removal of top soil layer is known as:",
-    options: ["Weathering", "Soil erosion", "Desertification", "Leaching"],
-    answer: 1,
+    "q": "Hydrological drought is related to:",
+    "options": ["Stream flow", "Rainfall", "Wind", "Soil moisture"],
+    "answer": 0,
+    "explanation": "It occurs when rivers and streams dry up."
   },
   {
-    q: "Wind erosion type includes:",
-    options: ["Saltation", "Splash", "Sheet", "Rill"],
-    answer: 0,
+    "q": "Agricultural drought is due to:",
+    "options": ["Low soil moisture", "Low rainfall", "Floods", "Cyclones"],
+    "answer": 0,
+    "explanation": "It affects crop growth due to lack of soil moisture."
   },
   {
-    q: "Forest cover more than 70% is called:",
-    options: ["Open forest", "Very dense forest", "Moderately dense", "Scrub land"],
-    answer: 1,
+    "q": "One major disadvantage of dams is:",
+    "options": ["Displacement of people", "Flood control", "Electricity generation", "Water storage"],
+    "answer": 0,
+    "explanation": "Large dams submerge forests and villages."
   },
   {
-    q: "Mangrove forests grow in:",
-    options: ["Desert", "River deltas", "Mountains", "Grasslands"],
-    answer: 1,
+    "q": "Rainwater harvesting helps in:",
+    "options": ["Soil erosion", "Water pollution", "Groundwater recharge", "Increasing runoff"],
+    "answer": 2,
+    "explanation": "It increases water table and reduces water scarcity."
   },
   {
-    q: "Cutting trees without planning leads to:",
-    options: ["Afforestation", "Reforestation", "Social forestry", "Deforestation"],
-    answer: 3,
+    "q": "Watershed is:",
+    "options": ["Desert region", "Area draining to a common point", "Forest area", "Urban land"],
+    "answer": 1,
+    "explanation": "It may range from small streams to large river basins."
   },
   {
-    q: "Coal is a:",
-    options: ["Renewable resource", "Biogas", "Non-renewable resource", "Nuclear fuel"],
-    answer: 2,
+    "q": "Soil is formed by:",
+    "options": ["Volcanoes", "Weathering of rocks", "Erosion", "Floods"],
+    "answer": 1,
+    "explanation": "Physical, chemical and biological processes form soil."
   },
   {
-    q: "Cleanest fossil fuel is:",
-    options: ["Coal", "Natural gas", "Petroleum", "Nuclear fuel"],
-    answer: 1,
+    "q": "Pedology is the study of:",
+    "options": ["Rocks", "Forests", "Water", "Soil"],
+    "answer": 3,
+    "explanation": "It studies soil in its natural environment."
   },
   {
-    q: "Nuclear energy is produced by:",
-    options: ["Fission or fusion", "Combustion", "Photosynthesis", "Oxidation"],
-    answer: 0,
+    "q": "Soil erosion means:",
+    "options": ["Increase fertility", "Soil formation", "Water retention", "Removal of top soil"],
+    "answer": 3,
+    "explanation": "Loss of fertile top soil reduces productivity."
   },
   {
-    q: "Energy from flowing water is:",
-    options: ["Wind energy", "Hydro-electric energy", "Solar energy", "Tidal energy"],
-    answer: 1,
+    "q": "Desertification refers to:",
+    "options": ["Flooding", "Forest growth", "Urbanization", "Land productivity loss"],
+    "answer": 3,
+    "explanation": "It degrades arid and semi-arid lands."
   },
   {
-    q: "Solar energy is converted to electricity using:",
-    options: ["Turbine", "Photovoltaic cells", "Generator", "Boiler"],
-    answer: 1,
+    "q": "Forest canopy cover above 70% is:",
+    "options": ["Very dense forest", "Moderate forest", "Open forest", "Scrub land"],
+    "answer": 0,
+    "explanation": "Such forests have rich biodiversity."
   },
   {
-    q: "Biomass energy source example:",
-    options: ["Coal", "Uranium", "Petrol", "Wood"],
-    answer: 3,
+    "q": "Mangrove forests grow in:",
+    "options": ["Deserts", "Coastal areas", "Plains", "Mountains"],
+    "answer": 1,
+    "explanation": "They tolerate saline and fresh water conditions."
   },
   {
-    q: "Environmental Studies is a:",
-    options: ["Single discipline", "Pure science", "Multidisciplinary subject", "Engineering subject"],
-    answer: 2, // "Multidisciplinary subject" ab index 2 par hai
+    "q": "Deforestation causes:",
+    "options": ["Better climate", "Biodiversity loss", "Soil formation", "More rainfall"],
+    "answer": 1,
+    "explanation": "It destroys habitats and ecological balance."
   },
   {
-    q: "Which environment is modified by humans?",
-    options: ["Natural", "Anthropogenic", "Aquatic", "Atmospheric"],
-    answer: 1,
+    "q": "Coal is a:",
+    "options": ["Non-renewable resource", "Clean fuel", "Renewable resource", "Biomass"],
+    "answer": 0,
+    "explanation": "Coal takes millions of years to form."
   },
   {
-    q: "Which sphere includes oceans, rivers, glaciers?",
-    options: ["Atmosphere", "Lithosphere", "Hydrosphere", "Biosphere"],
-    answer: 2,
+    "q": "Cleanest fossil fuel is:",
+    "options": ["Lignite", "Petroleum", "Natural gas", "Coal"],
+    "answer": 2,
+    "explanation": "Natural gas produces least pollution."
   },
   {
-    q: "Percentage of Nitrogen in atmosphere is:",
-    options: ["21%", "0.03%", "78%", "1%"],
-    answer: 2,
+    "q": "Nuclear energy is produced by:",
+    "options": ["Combustion", "Evaporation", "Fusion only", "Fission only"],
+    "answer": 3,
+    "explanation": "Splitting of heavy nuclei releases energy."
   },
   {
-    q: "Sustainable development concept was defined by:",
-    options: ["Brundtland Commission", "Kyoto Protocol", "UNEP", "WHO"],
-    answer: 0,
+    "q": "Hydroelectric power uses:",
+    "options": ["Flowing water energy", "Wind energy", "Solar energy", "Nuclear energy"],
+    "answer": 0,
+    "explanation": "Water rotates turbines to generate electricity."
   },
   {
-    q: "Which is NOT a pillar of sustainability?",
-    options: ["Social", "Technological", "Economic", "Environmental"],
-    answer: 1,
+    "q": "Solar energy disadvantage is:",
+    "options": ["High fuel cost", "Depends on sunlight", "Noise", "Pollution"],
+    "answer": 1,
+    "explanation": "Solar power works only when sunlight is available."
   },
   {
-    q: "Carrying capacity depends on:",
-    options: ["Technology only", "Available resources", "Population only", "Climate only"],
-    answer: 1,
+    "q": "Wind energy depends mainly on:",
+    "options": ["Rainfall", "Humidity", "Wind speed", "Temperature"],
+    "answer": 2,
+    "explanation": "Higher wind speed gives higher power output."
   },
   {
-    q: "Maximum freshwater use is in:",
-    options: ["Domestic", "Power plants", "Industry", "Agriculture"],
-    answer: 3,
+    "q": "Which of the following is a strong acid?",
+    "options": ["H2O", "HCl", "CH3COOH", "NH3"],
+    "answer": 1,
+    "explanation": "Hydrochloric acid (HCl) dissociates completely releasing H+ ions."
   },
   {
-    q: "Groundwater over-exploitation leads to:",
-    options: ["Ground subsidence", "Flood", "Tsunami", "Cyclone"],
-    answer: 0,
+    "q": "What type of bond is formed between sodium and chlorine in NaCl?",
+    "options": ["Covalent", "Metallic", "Ionic", "Hydrogen"],
+    "answer": 2,
+    "explanation": "Na gives electron to Cl forming ionic bond."
   },
   {
-    q: "River flood is mainly caused by:",
-    options: ["Heavy rainfall", "Earthquake", "Volcano", "Drought"],
-    answer: 0,
+    "q": "pH value of a neutral solution at 25°C is:",
+    "options": ["9", "8", "7", "6"],
+    "answer": 2,
+    "explanation": "Neutral water has pH = 7 at room temperature."
   },
   {
-    q: "Which drought is related to soil moisture?",
-    options: ["Meteorological", "Agricultural", "Hydrological", "Ecological"],
-    answer: 1,
+    "q": "Which gas is most responsible for greenhouse effect?",
+    "options": ["N2", "H2", "O2", "CO2"],
+    "answer": 3,
+    "explanation": "Carbon dioxide traps heat in the atmosphere."
   },
   {
-    q: "Major disadvantage of big dams:",
-    options: ["Displacement", "Electricity", "Irrigation", "Water supply"],
-    answer: 0,
+    "q": "Titration is used for:",
+    "options": ["Measuring pH", "Evaporation", "Quantitative analysis", "Separation of mixtures"],
+    "answer": 2,
+    "explanation": "Used to find concentration of unknown solutions."
   },
   {
-    q: "Roof-top rainwater harvesting mainly helps in:",
-    options: ["Flood increase", "Pollution", "Groundwater recharge", "Evaporation"],
-    answer: 2,
+    "q": "Catalyst is a substance that:",
+    "options": ["Speeds up reaction", "Stops reaction", "Changes product", "Slows reaction"],
+    "answer": 0,
+    "explanation": "Catalyst increases reaction rate without being consumed."
   },
   {
-    q: "Study of soil is called:",
-    options: ["Ecology", "Hydrology", "Meteorology", "Pedology"],
-    answer: 3,
+    "q": "Hard water contains:",
+    "options": ["H+ ions", "Ca2+ and Mg2+ ions", "Na+ and NO3- ions", "Cl- ions"],
+    "answer": 1,
+    "explanation": "Calcium and magnesium cause water hardness."
   },
   {
-    q: "Sheet erosion is caused by:",
-    options: ["Wind", "Glacier", "Slow flowing water", "Earthquake"],
-    answer: 2,
+    "q": "Which energy change occurs in endothermic reaction?",
+    "options": ["Energy released", "Energy scattered", "No energy change", "Energy absorbed"],
+    "answer": 3,
+    "explanation": "Endothermic reactions absorb energy."
   },
   {
-    q: "Desertification mostly occurs in:",
-    options: ["Coastal areas", "Semi-arid regions", "High rainfall areas", "Polar regions"],
-    answer: 1,
+    "q": "Oxidation is:",
+    "options": ["Gain of electrons", "Only combustion", "Loss of electrons", "Only heat release"],
+    "answer": 2,
+    "explanation": "Oxidation involves loss of electrons."
   },
   {
-    q: "Forest with 10–40% canopy cover is:",
-    options: ["Dense forest", "Scrub land", "Open forest", "Mangrove"],
-    answer: 2,
+    "q": "Corrosion of iron can be prevented by:",
+    "options": ["Heating", "Mixing with water", "Painting", "Freezing"],
+    "answer": 2,
+    "explanation": "Paint isolates iron from moisture and air."
   },
   {
-    q: "Mangrove forests grow in:",
-    options: ["River deltas", "Mountains", "Deserts", "Grasslands"],
-    answer: 0,
+    "q": "pH of strong base is:",
+    "options": ["<7", "=7", ">7", "Cannot be determined"],
+    "answer": 2,
+    "explanation": "Strong bases produce high OH- so pH >7."
   },
   {
-    q: "Reforestation means:",
-    options: ["Cutting trees", "New forest on barren land", "Urban plantation", "Regrowing forest in deforested area"],
-    answer: 3,
+    "q": "Distillation is used for separation of:",
+    "options": ["Solids from solids", "Gases", "Immiscible liquids", "Miscible liquids with different boiling points"],
+    "answer": 3,
+    "explanation": "Based on difference in boiling points."
   },
   {
-    q: "Cleanest fossil fuel is:",
-    options: ["Petroleum", "Natural gas", "Coal", "Nuclear fuel"],
-    answer: 1,
+    "q": "Which is a renewable energy source?",
+    "options": ["Natural gas", "Petroleum", "Wind", "Coal"],
+    "answer": 2,
+    "explanation": "Wind energy is renewable and sustainable."
   },
   {
-    q: "Highest grade of coal is:",
-    options: ["Lignite", "Anthracite", "Bituminous", "Sub-bituminous"],
-    answer: 1,
+    "q": "Which instrument measures pH?",
+    "options": ["Calorimeter", "Spectrometer", "pH meter", "Barometer"],
+    "answer": 2,
+    "explanation": "pH meter gives precise acidity/alkalinity reading."
   },
   {
-    q: "Nuclear energy is produced by:",
-    options: ["Combustion", "Fission", "Oxidation", "Photosynthesis"],
-    answer: 1,
+    "q": "A buffer solution resists change in:",
+    "options": ["Temperature", "Pressure", "Color", "pH"],
+    "answer": 3,
+    "explanation": "It stabilizes pH when small amounts of acid/base are added."
   },
-  {
-    q: "Energy from sunlight is converted using:",
-    options: ["Turbine", "Generator", "PV cells", "Boiler"],
-    answer: 2,
-  },
-  {
-    q: "India ranks ___ in wind energy production:",
-    options: ["1st", "4th", "2nd", "3rd"],
-    answer: 1,
-  },
-  {
-    q: "RDF stands for:",
-    options: ["Refuse Derived Fuel", "Renewable Development Fuel", "Recycled Domestic Fuel", "Residual Dump Fuel"],
-    answer: 0,
-  },
-  {
-    q: "Environmental Studies is a:",
-    options: ["Single discipline", "Engineering branch", "Multidisciplinary subject", "Medical science"],
-    answer: 2, // "Multidisciplinary subject" ab index 2 par hai
-  },
-  {
-    q: "Modification of natural environment by humans is called:",
-    options: ["Natural environment", "Anthropogenic environment", "Atmospheric environment", "Aquatic environment"],
-    answer: 1,
-  },
-  {
-    q: "Lithosphere represents:",
-    options: ["Water", "Living organisms", "Land", "Air"],
-    answer: 2,
-  },
-  {
-    q: "Percentage of Nitrogen in atmosphere is:",
-    options: ["21%", "1%", "0.03%", "78%"],
-    answer: 3,
-  },
-  {
-    q: "Sustainable development concept was given by:",
-    options: ["WHO", "Brundtland Commission", "UNEP", "UNDP"],
-    answer: 1,
-  },
-  {
-    q: "Which is NOT a pillar of sustainability?",
-    options: ["Social", "Political", "Environmental", "Economic"],
-    answer: 1,
-  },
-  {
-    q: "Carrying capacity means:",
-    options: ["Total population of Earth", "Maximum pollution level", "Maximum population an environment can sustain", "Resource exploitation rate"],
-    answer: 2,
-  },
-  {
-    q: "Sector using maximum freshwater is:",
-    options: ["Industrial", "Agriculture", "Domestic", "Municipal"],
-    answer: 1,
-  },
-  {
-    q: "Study of soil is called:",
-    options: ["Hydrology", "Pedology", "Ecology", "Geology"],
-    answer: 1,
-  },
-  {
-    q: "Removal of top fertile soil is known as:",
-    options: ["Soil erosion", "Weathering", "Desertification", "Leaching"],
-    answer: 0,
-  },
-  {
-    q: "Forest with more than 70% canopy cover:",
-    options: ["Scrub land", "Moderately dense", "Open forest", "Very dense forest"],
-    answer: 3,
-  },
-  {
-    q: "Mangrove forests grow in:",
-    options: ["Deserts", "River deltas", "Mountains", "Grasslands"],
-    answer: 1,
-  },
-  {
-    q: "Cleanest fossil fuel is:",
-    options: ["Coal", "Nuclear fuel", "Natural gas", "Petroleum"],
-    answer: 2,
-  },
-  {
-    q: "Highest grade of coal is:",
-    options: ["Lignite", "Bituminous", "Anthracite", "Sub-bituminous"],
-    answer: 2,
-  },
-  {
-    q: "Solar energy is converted into electricity using:",
-    options: ["PV cells", "Turbine", "Generator", "Boiler"],
-    answer: 0,
-  },{
-  q: "The term “Ecology” was coined by:",
-  options: ["Darwin", "Ernst Haeckel", "Linnaeus", "Arthur Tansley"],
-  answer: 1,
-},
-{
-  q: "Ecology was coined in the year:",
-  options: ["1865", "1905", "1866", "1859"],
-  answer: 2,
-},
-{
-  q: "The Greek word “Oikos” means:",
-  options: ["Nature", "Home", "Earth", "Life"],
-  answer: 1,
-},
-{
-  q: "Study of a single species is called:",
-  options: ["Population ecology", "Ecology", "Synecology", "Autecology"],
-  answer: 3,
-},
-{
-  q: "Study of multiple species is called:",
-  options: ["Autecology", "Biogeography", "Ethology", "Synecology"],
-  answer: 3,
-},
-{
-  q: "The term ecosystem was first used by:",
-  options: ["Ernst Haeckel", "Odum", "Arthur Tansley", "Charles Darwin"],
-  answer: 2,
-},
-{
-  q: "Ecosystem is a:",
-  options: ["Genetic unit", "Functional unit only", "Structural and functional unit", "Structural unit only"],
-  answer: 2,
-},
-{
-  q: "Grassland and forest are examples of:",
-  options: ["Engineered ecosystem", "Natural ecosystem", "Artificial ecosystem", "Urban ecosystem"],
-  answer: 1,
-},
-{
-  q: "Which is NOT a natural ecosystem?",
-  options: ["Forest", "Pond", "Crop field", "Desert"],
-  answer: 2,
-},
-{
-  q: "Marine ecosystem belongs to:",
-  options: ["Artificial", "Desert", "Terrestrial", "Aquatic"],
-  answer: 3,
-},
-{
-  q: "Sunlight and temperature are:",
-  options: ["Physical abiotic factors", "Biotic factors", "Chemical factors", "Geographic factors"],
-  answer: 0,
-},
-{
-  q: "Soil moisture and soil type are:",
-  options: ["Climatic factors", "Biotic factors", "Chemical factors", "Edaphic factors"],
-  answer: 3,
-},
-{
-  q: "Producers in ecosystem are:",
-  options: ["Decomposers", "Autotrophs", "Herbivores", "Carnivores"],
-  answer: 1,
-},
-{
-  q: "Nitrosomonas is a:",
-  options: ["Chemo-autotroph", "Producer", "Consumer", "Decomposer"],
-  answer: 0,
-},
-{
-  q: "Animals feeding on plants are:",
-  options: ["Omnivores", "Herbivores", "Carnivores", "Decomposers"],
-  answer: 1,
-},
-{
-  q: "Food chain represents:",
-  options: ["Matter cycle", "Mineral cycle", "Energy transfer", "Water cycle"],
-  answer: 2,
-},
-{
-  q: "Detritus food chain starts with:",
-  options: ["Dead organic matter", "Plants", "Consumers", "Animals"],
-  answer: 0,
-},
-{
-  q: "Interlinked food chains form:",
-  options: ["Pyramid", "Cycle", "Web", "Level"],
-  answer: 2,
-},
-{
-  q: "Each step of food chain is called:",
-  options: ["Trophic level", "Habitat", "Niche", "Biome"],
-  answer: 0,
-},
-{
-  q: "Pyramid that is always upright:",
-  options: ["Biomass", "Numbers", "Carbon", "Energy"],
-  answer: 3,
-},
-{
-  q: "Pyramid of numbers represents:",
-  options: ["Number of organisms", "Nutrient flow", "Energy flow", "Biomass"],
-  answer: 0,
-},
-{
-  q: "Energy flow in ecosystem is:",
-  options: ["Random", "Uni-directional", "Cyclic", "Reversible"],
-  answer: 1,
-},
-{
-  q: "Universal energy flow model shows:",
-  options: ["Single pathway", "Multiple pathways", "Heat loss only", "Nutrient flow"],
-  answer: 1,
-},
-{
-  q: "Y-shaped model represents:",
-  options: ["Single channel flow", "Nutrient recycling", "Double channel flow", "Energy loss"],
-  answer: 2,
-},
-{
-  q: "Nitrogen cycle is a:",
-  options: ["Gaseous cycle", "Closed cycle", "Sedimentary cycle", "Local cycle"],
-  answer: 0,
-},
-{
-  q: "Phosphorus cycle is a:",
-  options: ["Carbon cycle", "Hydrological cycle", "Gaseous cycle", "Sedimentary cycle"],
-  answer: 3,
-},
-{
-  q: "Biomass produced by plants is:",
-  options: ["Secondary production", "Net production", "Primary production", "Tertiary production"],
-  answer: 2,
-},
-{
-  q: "Biomass produced by consumers is:",
-  options: ["Gross", "Secondary", "Net", "Primary"],
-  answer: 1,
-},
-{
-  q: "Homeostasis means:",
-  options: ["Stability", "Competition", "Adaptation", "Growth"],
-  answer: 0,
-},
-{
-  q: "Term homeostasis was first used by:",
-  options: ["Walter Cannon", "Claude Bernard", "Haeckel", "Odum"],
-  answer: 0,
-},
-{
-  q: "Negative feedback helps in:",
-  options: ["Stability", "Sudden change", "Disturbance", "Succession"],
-  answer: 0,
-},
-{
-  q: "Succession on bare rock is called:",
-  options: ["Lithosere", "Hydrosere", "Halosere", "Xerosere"],
-  answer: 0,
-},
-{
-  q: "First community in succession is:",
-  options: ["Climax", "Pioneer", "Seral", "Stable"],
-  answer: 1,
-},
-{
-  q: "Final stable community is:",
-  options: ["Seral", "Temporary", "Climax", "Pioneer"],
-  answer: 2,
-},
-{
-  q: "Succession on previously occupied land is:",
-  options: ["Primary", "Secondary", "Lithic", "Tertiary"],
-  answer: 1,
-},
-{
-  q: "Formation of bare area is:",
-  options: ["Nudation", "Invasion", "Reaction", "Stabilization"],
-  answer: 0,
-},
-{
-  q: "Establishment of organisms is:",
-  options: ["Aggregation", "Reaction", "Migration", "Ecesis"],
-  answer: 3,
-},
-{
-  q: "Primary consumers in forest are:",
-  options: ["Tiger", "Deer", "Snake", "Eagle"],
-  answer: 1,
-},
-{
-  q: "Tertiary consumers are:",
-  options: ["Snake", "Tiger", "Deer", "Herbs"],
-  answer: 1,
-},
-{
-  q: "Tropical rainforests are found near:",
-  options: ["Tropic lines", "Poles", "Equator", "Mountains"],
-  answer: 2,
-},
-{
-  q: "Grasslands near equator are:",
-  options: ["Polar", "Tropical", "Desert", "Temperate"],
-  answer: 1,
-},
-{
-  q: "Savannas are:",
-  options: ["Temperate forest", "Tundra", "Tropical grassland", "Desert"],
-  answer: 2,
-},
-{
-  q: "Permafrost is found in:",
-  options: ["Tropical forest", "Polar grassland", "Desert", "Savanna"],
-  answer: 1,
-},
-{
-  q: "Bottom dwellers are called:",
-  options: ["Nekton", "Plankton", "Neuston", "Benthos"],
-  answer: 3,
-},
-{
-  q: "Warm surface layer of lake is:",
-  options: ["Thermocline", "Hypolimnion", "Benthic zone", "Epilimnion"],
-  answer: 3,
-},
-{
-  q: "Lake with high nutrients is:",
-  options: ["Eutrophic", "Endemic", "Oligotrophic", "Dystrophic"],
-  answer: 0,
-},
-{
-  q: "Zone with sufficient sunlight is:",
-  options: ["Bathyal", "Abyssal", "Euphotic", "Hadal"],
-  answer: 2,
-},
 {
-  q: "Darkest ocean zone is:",
-  options: ["Abyssal", "Coastal", "Bathyal", "Open sea"],
-  answer: 0,
-},{
-  q: "Ecology term was coined by:",
-  options: ["Darwin", "Ernst Haeckel", "Odum", "Arthur Tansley"],
-  answer: 1,
+    "q": "Who coined the term 'Oekologie' (Ecology) in the year 1866?",
+    "options": ["Arthur Tansley", "Ernst Haeckel", "Claude Bernard", "Walter Bradford Cannon"],
+    "answer": 1,
+    "explanation": "The term Oekologie (Ecology) was coined by the German biologist Ernst Haeckel in 1866."
 },
 {
-  q: "Study of single species is called:",
-  options: ["Population ecology", "Autecology", "Synecology", "Community ecology"],
-  answer: 1,
+    "q": "Which branch of ecology deals with the study of a single species or organism?",
+    "options": ["Synecology", "Autecology", "Community Ecology", "Biosphere Ecology"],
+    "answer": 1,
+    "explanation": "Autecology is defined as the study of single species or organisms, whereas Synecology is the study of multiple species or groups of organisms."
 },
 {
-  q: "Ecosystem is a:",
-  options: ["Structural unit only", "Functional unit only", "Structural and functional unit", "Genetic unit"],
-  answer: 2,
+    "q": "Who first used the term 'Ecosystem' in 1935?",
+    "options": ["Ernst Haeckel", "Charles Darwin", "Arthur Tansley", "E.P. Odum"],
+    "answer": 2,
+    "explanation": "The term Ecosystem was first used in 1935 in a publication by British ecologist Arthur Tansley."
 },
 {
-  q: "Ecosystem term was given by:",
-  options: ["Haeckel", "Darwin", "Tansley", "Linnaeus"],
-  answer: 2,
+    "q": "Which of the following is an example of a Chemo-autotroph?",
+    "options": ["Green plants", "Nitrosomonas", "Fungi", "Zooplankton"],
+    "answer": 1,
+    "explanation": "Chemo-autotrophs include organisms like Nitrosomonas, Iron bacteria, and Methanogens."
 },
 {
-  q: "Producers are also called:",
-  options: ["Decomposers", "Consumers", "Autotrophs", "Heterotrophs"],
-  answer: 2,
+    "q": "Which abiotic component relates to soil type and soil moisture?",
+    "options": ["Climatic", "Edaphic", "Geographic", "Biotic"],
+    "answer": 1,
+    "explanation": "Edaphic factors refer to soil-related components such as soil type, soil moisture, and soil reaction."
 },
 {
-  q: "Nitrosomonas is an example of:",
-  options: ["Photo-autotroph", "Consumer", "Chemo-autotroph", "Decomposer"],
-  answer: 2,
+    "q": "A Detritus food chain begins with:",
+    "options": ["Living green plants", "Solar energy", "Dead organic matter", "Herbivores"],
+    "answer": 2,
+    "explanation": "Energy flow in a detritus food chain begins with dead organic matter broken down by decomposers."
 },
 {
-  q: "Detritus food chain starts with:",
-  options: ["Herbivores", "Dead organic matter", "Plants", "Carnivores"],
-  answer: 1,
+    "q": "What does the 'Pyramid of Energy' depict?",
+    "options": ["The number of organisms at each level", "The biomass standing crop", "The rate at which food is produced", "The inverse relationship of parasites"],
+    "answer": 2,
+    "explanation": "The Pyramid of Energy depicts the rate at which food is being produced and is always upright."
 },
 {
-  q: "Interconnected food chains form:",
-  options: ["Cycle", "Food web", "Trophic level", "Pyramid"],
-  answer: 1,
+    "q": "Which energy flow model is known as the 'double channel' or 'Y-shaped' model?",
+    "options": ["Universal energy flow model", "Single channel energy flow model", "Two-channel energy flow model", "Biogeochemical cycle model"],
+    "answer": 2,
+    "explanation": "The Y-shaped or 2-channel energy flow model shows energy flowing through both the grazing food chain and the detritus food chain."
 },
 {
-  q: "Each step in food chain is called:",
-  options: ["Trophic level", "Niche", "Biome", "Habitat"],
-  answer: 0,
+    "q": "Which of the following is classified as a Sedimentary Cycle?",
+    "options": ["Nitrogen Cycle", "Carbon Cycle", "Phosphorus Cycle", "Oxygen Cycle"],
+    "answer": 2,
+    "explanation": "The Phosphorus Cycle and Sulphur Cycle are classified as Sedimentary Cycles."
 },
 {
-  q: "Pyramid always upright is:",
-  options: ["Biomass", "Number", "Energy", "Carbon"],
-  answer: 2,
+    "q": "Homeostasis refers to:",
+    "options": ["The tendency to change with the environment", "The tendency to maintain a stable internal environment", "The rapid evolution of a species", "The migration of species"],
+    "answer": 1,
+    "explanation": "Homeostasis is the tendency to maintain a stable, relatively constant internal environment."
 },
 {
-  q: "Energy flow in ecosystem is:",
-  options: ["Bidirectional", "Random", "Cyclic", "Unidirectional"],
-  answer: 3,
+    "q": "Which feedback mechanism is responsible for the sudden appearance of rapid changes within an ecosystem?",
+    "options": ["Negative feedback", "Positive feedback", "Neutral feedback", "Homeostatic loop"],
+    "answer": 1,
+    "explanation": "Positive feedback stimulates change and is responsible for the sudden appearance of rapid changes within ecosystems."
 },
 {
-  q: "Nitrogen cycle is a:",
-  options: ["Sedimentary cycle", "Local cycle", "Gaseous cycle", "Closed cycle"],
-  answer: 2,
+    "q": "What is the first community to inhabit a bare area called?",
+    "options": ["Climax community", "Intermediate species", "Pioneer community", "Seral stage"],
+    "answer": 2,
+    "explanation": "Primary succession starts with a Pioneer Species (or community) on a new habitat like bare rock."
 },
 {
-  q: "Phosphorus cycle is a:",
-  options: ["Sedimentary cycle", "Atmospheric cycle", "Gaseous cycle", "Hydrological cycle"],
-  answer: 0,
+    "q": "Secondary succession occurs on:",
+    "options": ["Bare rocks", "Newly formed sand dunes", "Volcanic lava", "Previously colonized but disturbed land"],
+    "answer": 3,
+    "explanation": "Secondary succession takes place on a previously colonized, but disturbed or damaged habitat."
 },
 {
-  q: "Primary production is done by:",
-  options: ["Decomposers", "Fungi", "Plants", "Animals"],
-  answer: 2,
+    "q": "Succession initiating in a dry area is known as:",
+    "options": ["Hydrarch", "Mesarch", "Xerarch", "Halosere"],
+    "answer": 2,
+    "explanation": "Xerarch or Xerosere refers to succession occurring on dry lands."
 },
 {
-  q: "Homeostasis means:",
-  options: ["Succession", "Stability", "Competition", "Growth"],
-  answer: 1,
+    "q": "In the process of succession, 'Nudation' refers to:",
+    "options": ["The arrival of seeds", "The formation of a bare area", "Competition between species", "Stabilization of the community"],
+    "answer": 1,
+    "explanation": "Nudation is the formation of a bare area by reasons such as volcanic eruption or flooding."
 },
 {
-  q: "Homeostasis term was first used by:",
-  options: ["Ernst Haeckel", "Odum", "Walter Cannon", "Claude Bernard"],
-  answer: 2,
+    "q": "Which layer of the Tropical Rain Forest contains the tallest trees that rise above the rest?",
+    "options": ["Canopy", "Understory", "Forest Floor", "Emergent Layer"],
+    "answer": 3,
+    "explanation": "The Emergent Layer is the top layer, followed by the Canopy, Understory, and Forest Floor."
 },
 {
-  q: "Succession on bare rock is:",
-  options: ["Lithosere", "Xerosere", "Hydrosere", "Halosere"],
-  answer: 0,
+    "q": "Which type of forest is found on the eastern slopes of the Western Ghats and sheds leaves for a specific period?",
+    "options": ["Tropical Rain Forest", "Tropical Deciduous Forest", "Temperate Rain Forest", "Evergreen Coniferous Forest"],
+    "answer": 1,
+    "explanation": "Tropical Deciduous Forests are found on the eastern slopes of Western Ghats and shed their leaves for a particular period."
 },
 {
-  q: "First community in succession is:",
-  options: ["Climax", "Stable", "Seral", "Pioneer"],
-  answer: 3,
+    "q": "Permafrost is a characteristic feature of which ecosystem?",
+    "options": ["Tropical Desert", "Polar Grassland (Tundra)", "Temperate Deciduous Forest", "Savanna"],
+    "answer": 1,
+    "explanation": "Permafrost is soil or rock frozen for more than two consecutive years, found in Polar Grasslands (Arctic Tundra)."
 },
 {
-  q: "Final stable community is:",
-  options: ["Temporary", "Climax", "Pioneer", "Seral"],
-  answer: 1,
+    "q": "The 'Limnetic Zone' in a lake ecosystem refers to:",
+    "options": ["The bottom mud layer", "The open water zone", "The shallow water near the shore", "The dark deep zone"],
+    "answer": 1,
+    "explanation": "The Limnetic Zone refers to the open water, while the Littoral Zone is the shore area."
 },
 {
-  q: "Warm surface layer of lake is:",
-  options: ["Hypolimnion", "Epilimnion", "Benthos", "Thermocline"],
-  answer: 1,
+    "q": "Which term describes a lake with high nutrient content?",
+    "options": ["Oligotrophic", "Eutrophic", "Dystrophic", "Mermictic"],
+    "answer": 1,
+    "explanation": "Eutrophic lakes have high nutrient content, while Oligotrophic lakes have low nutrient content."
 },
-{
-  q: "Bottom-dwelling organisms are:",
-  options: ["Nekton", "Benthos", "Neuston", "Plankton"],
-  answer: 1,
-},
-{
-  q: "Tropical grassland is called:",
-  options: ["Tundra", "Savanna", "Steppe", "Pampas"],
-  answer: 1,
-},
-{
-  q: "Permafrost is found in:",
-  options: ["Savanna", "Tropical forest", "Desert", "Polar grassland"],
-  answer: 3,
-},
-{
-  q: "Zone with maximum photosynthesis in ocean:",
-  options: ["Hadal", "Euphotic", "Abyssal", "Bathyal"],
-  answer: 1,
-},
-{
-  q: "Lake with high nutrient content:",
-  options: ["Eutrophic", "Dystrophic", "Endemic", "Oligotrophic"],
-  answer: 0,
-},{
-  q: "The term biodiversity is derived from:",
-  options: ["Life + Variety", "Bio + Ecology", "Bio + Diversity", "Bio + Life"],
-  answer: 2,
-},
-{
-  q: "“Bio” refers to:",
-  options: ["Earth", "Living organisms", "Nature", "Ecosystem"],
-  answer: 1,
-},
-{
-  q: "Biodiversity includes variability among organisms from:",
-  options: ["Marine ecosystems only", "Terrestrial ecosystems only", "Terrestrial, marine and other ecosystems", "Forest ecosystems only"],
-  answer: 2,
-},
-{
-  q: "The term “Biodiversity” was coined by:",
-  options: ["Lovejoy", "Norman Myers", "Walter G. Rosen", "IUCN"],
-  answer: 2,
-},
-{
-  q: "Biodiversity term was coined in the year:",
-  options: ["1992", "1980", "1998", "1985"],
-  answer: 3,
-},
-{
-  q: "“Biological Diversity” term was introduced by:",
-  options: ["Myers", "Lovejoy", "Rosen", "Haeckel"],
-  answer: 1,
-},
-{
-  q: "Convention on Biological Diversity took place in:",
-  options: ["Kyoto (1997)", "Stockholm (1972)", "Rio Earth Summit (1992)", "Paris (2015)"],
-  answer: 2,
-},
-{
-  q: "India accounts for how much world land area?",
-  options: ["7%", "2.4%", "1.5%", "5%"],
-  answer: 1,
-},
-{
-  q: "India contributes approximately how much of world species?",
-  options: ["2–3%", "4–5%", "7–8%", "10–12%"],
-  answer: 2,
-},
-{
-  q: "Number of plant species in India is about:",
-  options: ["45,000", "25,000", "65,000", "35,000"],
-  answer: 0,
-},
-{
-  q: "India ranks ______ among plant-rich countries:",
-  options: ["6th", "8th", "12th", "10th"],
-  answer: 3,
-},
-{
-  q: "India ranks 11th in:",
-  options: ["Endemic mammals", "Agricultural crops", "Endemic higher vertebrates", "Total species"],
-  answer: 2,
-},
-{
-  q: "Mega-biodiverse countries were identified by:",
-  options: ["Conservation International", "WHO", "UNEP", "IUCN"],
-  answer: 0,
-},
-{
-  q: "Mega-biodiverse countries contain about:",
-  options: ["60% of biodiversity", "50% of biodiversity", "70% of biodiversity", "40% of biodiversity"],
-  answer: 2,
-},
-{
-  q: "Year of identification of mega-biodiverse countries:",
-  options: ["1985", "1992", "2001", "1998"],
-  answer: 3,
-},
-{
-  q: "Total biogeographic zones of India are:",
-  options: ["12", "9", "10", "8"],
-  answer: 2,
-},
-{
-  q: "Andaman, Nicobar and Lakshadweep fall under:",
-  options: ["Islands", "Coasts", "Deccan plateau", "Gangetic plains"],
-  answer: 0,
-},
-{
-  q: "Western Ghats belong to:",
-  options: ["Himalayan zone", "Western Ghat zone", "Coastal zone", "Semi-arid zone"],
-  answer: 1,
-},
-{
-  q: "Variation among genes of same species is:",
-  options: ["Species diversity", "Ecosystem diversity", "Genetic diversity", "Habitat diversity"],
-  answer: 2,
-},
-{
-  q: "Diversity among species in a given area is:",
-  options: ["Community", "Ecosystem", "Genetic", "Species"],
-  answer: 3,
-},
-{
-  q: "Diversity of habitats is called:",
-  options: ["Population diversity", "Ecosystem diversity", "Genetic diversity", "Species diversity"],
-  answer: 1,
-},
-{
-  q: "Silk is obtained from:",
-  options: ["Goat", "Insects", "Silk worm", "Sheep"],
-  answer: 2,
-},
-{
-  q: "Prevention of floods and soil erosion comes under:",
-  options: ["Aesthetic value", "Productive value", "Ecological service", "Ethical value"],
-  answer: 2,
-},
-{
-  q: "Fossil fuels are products of:",
-  options: ["Species diversity", "Fossilized biodiversity", "Modern biodiversity", "Genetic diversity"],
-  answer: 1,
-},
-{
-  q: "About how much world population depends on plant-based medicine?",
-  options: ["25%", "60%", "75%", "40%"],
-  answer: 2,
-},
-{
-  q: "Biodiversity hotspot concept was given by:",
-  options: ["Rosen", "IUCN", "Norman Myers", "Lovejoy"],
-  answer: 2,
-},{
-  q: "Year of hotspot concept:",
-  options: ["1985", "1988", "1992", "1980"],
-  answer: 1,
-},
-{
-  q: "Number of biodiversity hotspots in the world:",
-  options: ["36", "30", "25", "34"],
-  answer: 0,
-},
-{
-  q: "Indian biodiversity hotspots include:",
-  options: ["Himalayas", "Indo-Burma", "All of the above", "Western Ghats"],
-  answer: 2,
-},
-{
-  q: "Red Data Book is maintained by:",
-  options: ["WHO", "WWF", "UNEP", "IUCN"],
-  answer: 3,
-},
-{
-  q: "Red colour in Red Data Book indicates:",
-  options: ["Rare species", "Vulnerable species", "Extinct species", "Critically endangered species"],
-  answer: 3,
-},
-{
-  q: "Black colour indicates:",
-  options: ["Extinct", "Vulnerable", "Rare", "Endangered"],
-  answer: 0,
-},
-{
-  q: "Total IUCN categories are:",
-  options: ["7", "10", "9", "8"],
-  answer: 1,
-},
-{
-  q: "Species on verge of extinction are:",
-  options: ["Endemic", "Endangered", "Vulnerable", "Rare"],
-  answer: 1,
-},
-{
-  q: "Black buck is also known as:",
-  options: ["Chinkara", "Nilgai", "Kala hiran", "Barasingha"],
-  answer: 2,
-},
-{
-  q: "Vulnerable species are mainly affected due to:",
-  options: ["Climate change", "Overpopulation", "Habitat loss", "Migration"],
-  answer: 2,
-},
-{
-  q: "Species restricted to a particular region are:",
-  options: ["Rare", "Endemic", "Vulnerable", "Endangered"],
-  answer: 1,
-},
-{
-  q: "Protection in natural habitat is:",
-  options: ["Ex-situ", "Genetic", "In-situ", "Artificial"],
-  answer: 2,
-},
-{
-  q: "Total national parks in India:",
-  options: ["106", "120", "90", "100"],
-  answer: 0,
-},
-{
-  q: "Number of wildlife sanctuaries in India:",
-  options: ["650", "500", "573", "450"],
-  answer: 2,
-},
-{
-  q: "Number of biosphere reserves in India:",
-  options: ["12", "18", "25", "15"],
-  answer: 1,
-},
-{
-  q: "Human activity is completely prohibited in:",
-  options: ["Core zone", "Transition zone", "Restoration zone", "Buffer zone"],
-  answer: 0,
-},
-{
-  q: "Conservation outside natural habitat is:",
-  options: ["In-situ", "Ex-situ", "Artificial", "In-vivo"],
-  answer: 1,
-},
-{
-  q: "Tissue culture is mainly used for:",
-  options: ["Plants", "Bacteria", "Animals", "Fungi"],
-  answer: 0,
-},
-{
-  q: "Total zoological parks in India:",
-  options: ["180", "120", "155", "140"],
-  answer: 2,
-},
-{
-  q: "Main cause of man-wildlife conflict:",
-  options: ["Tourism", "Climate change", "Migration", "Shrinkage of habitat"],
-  answer: 3,
-},
-{
-  q: "Corbett National Park is famous for:",
-  options: ["Elephants", "Man-eater leopards", "Crocodiles", "Tigers"],
-  answer: 1,
-},{
-  q: "The term “Biodiversity” was coined by:",
-  options: ["Lovejoy", "Walter G. Rosen", "IUCN", "Norman Myers"],
-  answer: 1,
-},
-{
-  q: "“Biological Diversity” term was first used by:",
-  options: ["Darwin", "Myers", "Haeckel", "Lovejoy"],
-  answer: 3,
-},
-{
-  q: "Convention on Biological Diversity was held at:",
-  options: ["Stockholm", "Rio de Janeiro", "Paris", "Kyoto"],
-  answer: 1,
-},
-{
-  q: "India has about ___ of the world’s land area:",
-  options: ["5%", "2.4%", "7%", "1.5%"],
-  answer: 1,
-},
-{
-  q: "India contributes nearly ___ of global species:",
-  options: ["4–5%", "2–3%", "7–8%", "10–12%"],
-  answer: 2,
-},
-{
-  q: "Number of biogeographic zones in India:",
-  options: ["12", "10", "8", "9"],
-  answer: 1,
-},
-{
-  q: "Diversity within species is called:",
-  options: ["Ecosystem diversity", "Genetic diversity", "Community diversity", "Species diversity"],
-  answer: 1,
-},
-{
-  q: "Diversity between different species is:",
-  options: ["Genetic diversity", "Ecosystem diversity", "Habitat diversity", "Species diversity"],
-  answer: 3,
-},
-{
-  q: "Diversity of habitats is known as:",
-  options: ["Population", "Ecosystem", "Species", "Genetic"],
-  answer: 1,
-},
-{
-  q: "Concept of biodiversity hotspot was given by:",
-  options: ["Norman Myers", "IUCN", "Rosen", "Lovejoy"],
-  answer: 0,
-},
-{
-  q: "Total biodiversity hotspots in the world:",
-  options: ["30", "25", "36", "34"],
-  answer: 2,
-},
-{
-  q: "Which is NOT an Indian biodiversity hotspot?",
-  options: ["Indo-Burma", "Thar Desert", "Western Ghats", "Himalayas"],
-  answer: 1,
-},
-{
-  q: "Red Data Book is published by:",
-  options: ["FAO", "UNEP", "WWF", "IUCN"],
-  answer: 3,
-},
-{
-  q: "Red colour in Red Data Book indicates:",
-  options: ["Extinct species", "Endangered species", "Rare species", "Vulnerable species"],
-  answer: 1,
-},
-{
-  q: "Species found only in a particular area are:",
-  options: ["Vulnerable", "Endangered", "Rare", "Endemic"],
-  answer: 3,
-},
-{
-  q: "Conservation in natural habitat is called:",
-  options: ["Ex-situ", "Artificial", "In-situ", "Genetic"],
-  answer: 2,
-},
-{
-  q: "Human activity is totally prohibited in:",
-  options: ["Peripheral zone", "Core zone", "Transition zone", "Buffer zone"],
-  answer: 1,
-},
-{
-  q: "Conservation outside natural habitat is:",
-  options: ["In-situ", "Ex-situ", "In-vivo", "Ecosystem"],
-  answer: 1,
-},
-{
-  q: "Blackbuck is also known as:",
-  options: ["Nilgai", "Barasingha", "Kala hiran", "Chinkara"],
-  answer: 2,
-},
-{
-  q: "Main cause of biodiversity loss is:",
-  options: ["Migration", "Climate change", "Natural disasters", "Habitat destruction"],
-  answer: 3,
-},{
-  q: "Pollutants are substances that:",
-  options: ["Improve environment", "Increase biodiversity", "Contaminate environment", "Reduce temperature"],
-  answer: 2,
-},
-{
-  q: "Volcanoes and forest fires are:",
-  options: ["Secondary pollutants", "Natural pollutants", "Anthropogenic pollutants", "Persistent pollutants"],
-  answer: 1,
-},
-{
-  q: "Biodegradable pollutants are:",
-  options: ["Radioactive", "Non-persistent", "Synthetic", "Persistent"],
-  answer: 1,
-},
-{
-  q: "Pollution is an undesirable change in:",
-  options: ["Only physical properties", "Only biological properties", "Physical, chemical or biological properties", "Only chemical properties"],
-  answer: 2,
-},
-{
-  q: "Which is NOT a type of pollution?",
-  options: ["Water", "Soil", "Genetic", "Air"],
-  answer: 2,
-},
-{
-  q: "Air pollution exists when atmospheric substances harm:",
-  options: ["Living beings or materials", "Plants only", "Humans only", "Materials only"],
-  answer: 0,
-},
-{
-  q: "Vehicular exhaust is a major source of:",
-  options: ["NH₃", "SO₂", "CO", "O₃"],
-  answer: 2,
-},
-{
-  q: "Methane (CH₄) from microbes is a:",
-  options: ["Secondary pollutant", "Natural cause", "Man-made cause", "Indoor pollutant"],
-  answer: 1,
-},
-{
-  q: "Bleaching of leaf pigment is caused by:",
-  options: ["NOx", "O₃", "SOx", "CO"],
-  answer: 2,
-},
-{
-  q: "Greenhouse effect leads to:",
-  options: ["Ozone depletion", "Smog", "Acid rain", "Global warming"],
-  answer: 3,
-},
-{
-  q: "Indoor air pollution can be up to ___ times worse than outdoor:",
-  options: ["5", "2", "10", "20"],
-  answer: 2,
-},
-{
-  q: "Radon is a major:",
-  options: ["Indoor pollutant", "Particulate", "Secondary pollutant", "Outdoor pollutant"],
-  answer: 0,
-},
-{
-  q: "Asbestos is used as:",
-  options: ["Fertilizer", "Insulation", "Fuel", "Pesticide"],
-  answer: 1,
-},
-{
-  q: "Primary pollutants are:",
-  options: ["Always gaseous", "Released directly", "Formed by reactions", "Always secondary"],
-  answer: 1,
-},
-{
-  q: "Ozone is a:",
-  options: ["Natural pollutant", "Indoor pollutant", "Secondary pollutant", "Primary pollutant"],
-  answer: 2,
-},
-{
-  q: "PAN stands for:",
-  options: ["Poly Aromatic Nitrogen", "Photo Active Nitrite", "Peroxy Acetyl Nitrate", "Particulate Air Nitrate"],
-  answer: 2,
-},
-{
-  q: "CFCs mainly destroy:",
-  options: ["Stratospheric clouds", "Ionosphere", "Ozone layer", "Troposphere"],
-  answer: 2,
-},
-{
-  q: "NO₂ is responsible for:",
-  options: ["Eutrophication", "Blue baby syndrome", "Acid rain & smog", "Fluorosis"],
-  answer: 2,
-},
-{
-  q: "Fine particulate matter increases risk of:",
-  options: ["Skin disease", "Flu", "Eye infection", "Heart & lung disease"],
-  answer: 3,
-},
-{
-  q: "Which is NOT an APC device?",
-  options: ["Cyclone separator", "Bioreactor", "Bag filter", "Electrostatic precipitator"],
-  answer: 1,
-},
-{
-  q: "Adsorption/absorption control is for:",
-  options: ["Gases", "Particulates", "Radiation", "Noise"],
-  answer: 0,
-},
-{
-  q: "AQI includes PM2.5 and:",
-  options: ["PM1", "PM10", "PM20", "PM5"],
-  answer: 1,
-},
-{
-  q: "CPCB AQI considers how many pollutants?",
-  options: ["6", "5", "8", "7"],
-  answer: 2,
-},
-{
-  q: "Minimum pollutants needed to calculate AQI:",
-  options: ["1", "5", "3", "2"],
-  answer: 2,
-},
-{
-  q: "Water pollution reduces:",
-  options: ["Evaporation", "Rainfall", "Water hardness", "Water usability"],
-  answer: 3,
-},
-{
-  q: "BOD measures:",
-  options: ["Oxygen present", "Oxygen required by microbes", "Turbidity", "Chemical toxicity"],
-  answer: 1,
-},
-{
-  q: "DO suitable for active fish is:",
-  options: ["1–2 mg/L", "5–8 mg/L", "10–15 mg/L", "3 mg/L"],
-  answer: 1,
-},
-{
-  q: "Excess N & P cause:",
-  options: ["Biomagnification", "Eutrophication", "Salination", "Acid rain"],
-  answer: 1,
-},
-{
-  q: "Mercury causes:",
-  options: ["Itai-Itai disease", "Blue baby syndrome", "Fluorosis", "Minamata disease"],
-  answer: 3,
-},
-{
-  q: "Nitrates cause:",
-  options: ["Fluorosis", "Blue baby syndrome", "Cancer", "Jaundice"],
-  answer: 1,
-},
-{
-  q: "Grit removal is part of:",
-  options: ["Secondary treatment", "Anaerobic treatment", "Tertiary treatment", "Primary treatment"],
-  answer: 3,
-},
-{
-  q: "Activated sludge is:",
-  options: ["Tertiary", "Physical", "Secondary", "Primary"],
-  answer: 2,
-},
-{
-  q: "UASB reactor is:",
-  options: ["Chemical", "Anaerobic", "Aerobic", "Thermal"],
-  answer: 1,
-},
-{
-  q: "Thermal pollution mainly reduces:",
-  options: ["Salinity", "DO", "pH", "Turbidity"],
-  answer: 1,
-},
-{
-  q: "About ___ marine pollution originates from land:",
-  options: ["80%", "40%", "90%", "60%"],
-  answer: 0,
-},
-{
-  q: "Soil pollution reduces:",
-  options: ["Soil fertility", "Water table", "Wind speed", "Rainfall"],
-  answer: 0,
-},
-{
-  q: "Agrochemicals include:",
-  options: ["Plastics", "Detergents", "Fertilizers & pesticides", "Metals"],
-  answer: 2,
-},
-{
-  q: "Putrescible waste is called:",
-  options: ["Refuse", "Rubbish", "Scrap", "Garbage"],
-  answer: 3,
-},
-{
-  q: "Non-putrescible waste is:",
-  options: ["Sludge", "Sewage", "Rubbish", "Garbage"],
-  answer: 2,
-},
-{
-  q: "Biomedical waste includes:",
-  options: ["Plastics", "Manure", "Needles & syringes", "Fly ash"],
-  answer: 2,
-},
-{
-  q: "SWM main steps include collection, transport and:",
-  options: ["Segregation", "Generation", "Storage", "Disposal"],
-  answer: 3,
-},
-{
-  q: "Sanitary landfill prevents:",
-  options: ["Leachate percolation", "Compaction", "Gas formation", "Decomposition"],
-  answer: 0,
-},
-{
-  q: "Incineration disadvantage:",
-  options: ["No pollution", "No residue", "Low cost", "Dioxin formation"],
-  answer: 3,
-},
-{
-  q: "Unit of sound pressure level:",
-  options: ["Hz", "dB", "Watt", "Pascal"],
-  answer: 1,
-},
-{
-  q: "Noise becomes painful above:",
-  options: ["100 dB", "130 dB", "120 dB", "75 dB"],
-  answer: 2,
-},
-{
-  q: "Noise above ___ dB is pollution:",
-  options: ["60", "65", "55", "70"],
-  answer: 1,
-},
-{
-  q: "Half-life is time for:",
-  options: ["Energy release", "Full decay", "Half atoms to decay", "Radiation stop"],
-  answer: 2,
-},
-{
-  q: "Unit of radioactive exposure:",
-  options: ["Gray", "Rem", "Sievert", "dB"],
-  answer: 1,
-},
-{
-  q: "Genetic effects of radiation affect:",
-  options: ["DNA", "Skin only", "Organs only", "Body cells"],
-  answer: 0,
-},
-{
-  q: "Radon-222 is a:",
-  options: ["Non-ionizing radiation", "Natural radioactive gas", "Man-made source", "Secondary pollutant"],
-  answer: 1,
-},
-{
-  q: "Pollution is defined as:",
-  options: ["Undesirable change in physical, chemical or biological properties", "Climate change", "Resource depletion", "Natural change in environment"],
-  answer: 0,
-},
-{
-  q: "Which of the following is a natural air pollutant?",
-  options: ["CO", "PAN", "SO₂", "Volcanic ash"],
-  answer: 3,
-},
-{
-  q: "Major source of carbon monoxide is:",
-  options: ["Power plants", "Vehicles", "Industries", "Forest fires"],
-  answer: 1,
-},
-{
-  q: "Ozone in lower atmosphere is:",
-  options: ["Beneficial", "Secondary pollutant", "Harmless", "Primary pollutant"],
-  answer: 1,
-},
-{
-  q: "CFCs are responsible for:",
-  options: ["Ozone layer depletion", "Smog", "Acid rain", "Global cooling"],
-  answer: 0,
-},
-{
-  q: "Device used to remove fine particulates:",
-  options: ["Electrostatic precipitator", "Settling chamber", "Scrubber", "Cyclone separator"],
-  answer: 0,
-},
-{
-  q: "BOD indicates:",
-  options: ["Water hardness", "Organic pollution level", "Amount of oxygen present", "Turbidity"],
-  answer: 1,
-},
-{
-  q: "Excess nutrients in water cause:",
-  options: ["Eutrophication", "Acidification", "Salination", "Biomagnification"],
-  answer: 0,
-},
-{
-  q: "Minamata disease is caused by:",
-  options: ["Lead", "Arsenic", "Mercury", "Cadmium"],
-  answer: 2,
-},
-{
-  q: "Blue baby syndrome is due to:",
-  options: ["Phosphates", "Sulphates", "Nitrates", "Chlorides"],
-  answer: 2,
-},
-{
-  q: "Secondary treatment of sewage involves:",
-  options: ["Activated sludge process", "Grit removal", "Chlorination", "Screening"],
-  answer: 0,
-},
-{
-  q: "Thermal pollution mainly affects:",
-  options: ["Turbidity", "Salinity", "Dissolved oxygen", "pH of water"],
-  answer: 2,
-},
-{
-  q: "Land-based activities contribute about ___ marine pollution:",
-  options: ["40%", "90%", "60%", "80%"],
-  answer: 3,
-},
-{
-  q: "Garbage refers to:",
-  options: ["Construction waste", "Industrial waste", "Plastic waste", "Putrescible solid waste"],
-  answer: 3,
-},
-{
-  q: "Best method for safe disposal of solid waste:",
-  options: ["Incineration", "Composting", "Sanitary landfill", "Open dumping"],
-  answer: 2,
-},
-{
-  q: "Noise pollution is measured in:",
-  options: ["Decibel", "Pascal", "Hertz", "Watt"],
-  answer: 0,
-},
-{
-  q: "Noise above ___ dB causes hearing damage:",
-  options: ["80", "120", "60", "90"],
-  answer: 1,
-},
-{
-  q: "Radon is a:",
-  options: ["Natural radioactive gas", "Man-made pollutant", "Non-pollutant", "Secondary air pollutant"],
-  answer: 0,
-},{
-  q: "Greenhouse effect refers to:",
-  options: ["Ozone depletion", "Heat trapping by greenhouse gases", "Acid rain", "Cooling of Earth"],
-  answer: 1,
-},
-{
-  q: "Greenhouse gases are transparent to:",
-  options: ["Gamma rays", "UV radiation", "Incoming solar radiation", "Infrared radiation"],
-  answer: 2,
-},
-{
-  q: "Global warming is:",
-  options: ["Ozone depletion", "Short-term cooling", "Rise in Earth’s average temperature", "Acidification"],
-  answer: 2,
-},
-{
-  q: "Incoming solar energy is converted into:",
-  options: ["Electricity", "Sound", "Heat", "Radiation"],
-  answer: 2,
-},
-{
-  q: "Infrared radiation is re-emitted by:",
-  options: ["Greenhouse gas molecules", "Clouds", "Oceans", "Soil"],
-  answer: 0,
-},
-{
-  q: "Major greenhouse gas is:",
-  options: ["Argon", "Carbon dioxide", "Nitrogen", "Oxygen"],
-  answer: 1,
-},
-{
-  q: "Which is NOT a greenhouse gas?",
-  options: ["CH₄", "N₂O", "SO₂", "CO₂"],
-  answer: 2,
-},
-{
-  q: "Livestock contributes mainly to:",
-  options: ["Nitrous oxide", "Methane", "CFCs", "CO₂"],
-  answer: 1,
-},
-{
-  q: "Biomass burning releases:",
-  options: ["Helium", "Only oxygen", "Greenhouse gases", "Nitrogen only"],
-  answer: 2,
-},
-{
-  q: "GWP measures:",
-  options: ["Lifetime of gas", "Energy absorbed by gas", "Toxicity of gas", "Weight of gas"],
-  answer: 1,
-},
-{
-  q: "GWP is measured relative to:",
-  options: ["Carbon dioxide", "Oxygen", "Methane", "Nitrous oxide"],
-  answer: 0,
-},
-{
-  q: "Standard GWP time period is:",
-  options: ["100 years", "20 years", "50 years", "200 years"],
-  answer: 0,
-},
-{
-  q: "20-year GWP prioritizes gases with:",
-  options: ["Long lifetime", "Infinite lifetime", "Short lifetime", "No lifetime"],
-  answer: 2,
-},
-{
-  q: "Increase in CO₂ causes:",
-  options: ["No effect", "Cooling of surface", "Only ocean cooling", "Warming of surface"],
-  answer: 3,
-},
-{
-  q: "Global warming leads to:",
-  options: ["Reduction of ice cover", "Soil formation", "No climate change", "Increase in ice cover"],
-  answer: 0,
-},
-{
-  q: "Excess warmth increases:",
-  options: ["Evaporation", "Condensation", "Precipitation only", "Freezing"],
-  answer: 0,
-},
-{
-  q: "Global warming affects:",
-  options: ["Climate, agriculture, health & biodiversity", "Human health only", "Climate only", "Agriculture only"],
-  answer: 0,
-},
-{
-  q: "Acid rain occurs due to reaction with:",
-  options: ["Methane", "SO₂ and NO₂", "Oxygen", "CO₂"],
-  answer: 1,
-},
-{
-  q: "SO₂ converts into:",
-  options: ["Sulphurous acid", "Carbonic acid", "Nitric acid", "Sulphuric acid"],
-  answer: 0,
-},
-{
-  q: "Nitrogen dioxide forms:",
-  options: ["Hydrochloric acid", "Acetic acid", "Nitric acid", "Sulphurous acid"],
-  answer: 2,
-},
-{
-  q: "Acid rain affects:",
-  options: ["Aquatic life only", "Buildings only", "All of these", "Humans only"],
-  answer: 2,
-},
-{
-  q: "Ozone layer depletion occurs in:",
-  options: ["Mesosphere", "Stratosphere", "Troposphere", "Ionosphere"],
-  answer: 1,
-},
-{
-  q: "Ozone hole was first observed over:",
-  options: ["Antarctica", "Africa", "Arctic", "Asia"],
-  answer: 0,
-},
-{
-  q: "Ozone thickness is measured in:",
-  options: ["Tesla", "ppm", "Dobson Units", "dB"],
-  answer: 2,
-},
-{
-  q: "Normal ozone thickness is about:",
-  options: ["2 mm", "1 mm", "3 mm", "5 mm"],
-  answer: 2,
-},
-{
-  q: "World Ozone Day is:",
-  options: ["22 April", "5 June", "11 December", "16 September"],
-  answer: 3,
-},
-{
-  q: "Major cause of ozone depletion:",
-  options: ["NO₂", "Methane", "CFCs", "CO₂"],
-  answer: 2,
-},
-{
-  q: "Ozone depletion increases:",
-  options: ["Rainfall", "Skin cancer", "Vision power", "Oxygen"],
-  answer: 1,
-},
-{
-  q: "Ozone depletion affects:",
-  options: ["Plants only", "Humans only", "All living organisms", "Aquatic life only"],
-  answer: 2,
-},
-{
-  q: "Substitute for CFCs are:",
-  options: ["Methane", "SO₂", "HCFCs & HFCs", "CO₂"],
-  answer: 2,
-},
-{
-  q: "Montreal Protocol deals with:",
-  options: ["Climate change", "Pollution", "Ozone depletion", "Biodiversity"],
-  answer: 2,
-},
-{
-  q: "Montreal Protocol was adopted in:",
-  options: ["1987", "1997", "1992", "1985"],
-  answer: 0,
-},
-{
-  q: "Parties phased out about ___ ODS:",
-  options: ["90%", "70%", "85%", "98%"],
-  answer: 3,
-},
-{
-  q: "Kyoto Protocol is related to:",
-  options: ["Ozone layer", "Biodiversity", "Global warming", "Wildlife"],
-  answer: 2,
-},
-{
-  q: "Kyoto Protocol adopted in:",
-  options: ["1997", "1995", "1992", "2005"],
-  answer: 0,
-},
-{
-  q: "Kyoto Protocol entered into force in:",
-  options: ["2003", "2005", "2010", "2000"],
-  answer: 1,
-},
-{
-  q: "Carbon credit equals:",
-  options: ["1 ton CO₂", "100 tons CO₂", "1 kg CO₂", "10 tons CO₂"],
-  answer: 0,
-},
-{
-  q: "CDM stands for:",
-  options: ["Clean Development Mechanism", "Clean Data Method", "Climate Development Model", "Carbon Development Market"],
-  answer: 0,
-},
-{
-  q: "CBD focuses on:",
-  options: ["Climate", "Biodiversity", "Ozone", "Pollution"],
-  answer: 1,
-},
-{
-  q: "CBD was opened for signature in:",
-  options: ["1997", "1987", "1992", "2000"],
-  answer: 2,
-},
-{
-  q: "CBD entered into force in:",
-  options: ["1992", "1995", "1997", "1993"],
-  answer: 3,
-},
-{
-  q: "CBD Secretariat is located in:",
-  options: ["New York", "Paris", "Montreal", "Geneva"],
-  answer: 2,
-},
-{
-  q: "Cartagena Protocol deals with:",
-  options: ["LMOs & biosafety", "Wildlife", "Climate", "Pollution"],
-  answer: 0,
-},
-{
-  q: "Cartagena Protocol adopted in:",
-  options: ["1997", "2000", "2003", "2010"],
-  answer: 1,
-},
-{
-  q: "Nagoya–Kuala Lumpur Protocol relates to:",
-  options: ["Noise control", "Liability & redress", "Climate finance", "Air pollution"],
-  answer: 1,
-},
-{
-  q: "Wildlife Protection Act year:",
-  options: ["1981", "1972", "1986", "1974"],
-  answer: 1,
-},
-{
-  q: "Water Act enacted in:",
-  options: ["1981", "1974", "1986", "1972"],
-  answer: 1,
-},
-{
-  q: "Air Act enacted in:",
-  options: ["1976", "1974", "1981", "1986"],
-  answer: 2,
-},
-{
-  q: "Environment Protection Act enacted in:",
-  options: ["1974", "1986", "1981", "1972"],
-  answer: 1,
-},
-{
-  q: "EPA was enacted after:",
-  options: ["Oil spill", "Bhopal Gas Tragedy", "Fukushima accident", "Chernobyl disaster"],
-  answer: 1,
-},
-{
-  q: "EPA empowers government to:",
-  options: ["Set standards", "Regulate pollution", "All of these", "Close industries"],
-  answer: 2,
-},
-{
-  q: "Maximum imprisonment under EPA:",
-  options: ["5 years", "2 years", "10 years", "3 years"],
-  answer: 0,
-},
-{
-  q: "Aim of National Forest Policy:",
-  options: ["Mining", "Urbanization", "Industrial growth", "Ecological balance"],
-  answer: 3,
-},
-{
-  q: "Joint Forest Management involves:",
-  options: ["Local communities", "Government only", "Foreign agencies", "Industries"],
-  answer: 0,
-},
-{
-  q: "Scheduled Tribes are included in:",
-  options: ["Schedules of Constitution", "Fundamental Rights", "Amendments", "Directive Principles"],
-  answer: 0,
-},
-{
-  q: "Article 46 deals with:",
-  options: ["Forests", "Welfare of SCs & STs", "Environment", "Education of women"],
-  answer: 1,
-},
-{
-  q: "Article 21 ensures:",
-  options: ["Right to property", "Right to religion", "Right to life", "Right to vote"],
-  answer: 2,
-},
-{
-  q: "Best way to reduce GHG emissions:",
-  options: ["Renewable energy", "Deforestation", "Fossil fuels", "More vehicles"],
-  answer: 0,
-},
-{
-  q: "Planting trees helps in:",
-  options: ["Soil pollution", "Noise increase", "Carbon sequestration", "Emission increase"],
-  answer: 2,
-},{
-  q: "Greenhouse effect is caused by:",
-  options: ["Reflection of sunlight", "Acid rain", "Trapping of heat by gases", "Ozone depletion"],
-  answer: 2,
-},
-{
-  q: "Major greenhouse gas responsible for global warming:",
-  options: ["N₂", "O₂", "CO₂", "SO₂"],
-  answer: 2,
-},
-{
-  q: "Global Warming Potential (GWP) is measured relative to:",
-  options: ["Methane", "Oxygen", "Nitrous oxide", "Carbon dioxide"],
-  answer: 3,
-},
-{
-  q: "Standard time horizon for GWP is:",
-  options: ["100 years", "20 years", "50 years", "200 years"],
-  answer: 0,
-},
-{
-  q: "Acid rain is mainly caused by:",
-  options: ["O₃ & CO", "CFCs", "SO₂ & NO₂", "CO₂ & CH₄"],
-  answer: 2,
-},
-{
-  q: "Ozone layer depletion occurs in:",
-  options: ["Mesosphere", "Stratosphere", "Troposphere", "Ionosphere"],
-  answer: 1,
-},
-{
-  q: "Ozone hole was first detected over:",
-  options: ["Asia", "Europe", "Antarctica", "Arctic"],
-  answer: 2,
-},
-{
-  q: "Ozone thickness is measured in:",
-  options: ["Decibel", "Tesla", "ppm", "Dobson Units"],
-  answer: 3,
-},
-{
-  q: "World Ozone Day is celebrated on:",
-  options: ["16 September", "11 December", "22 April", "5 June"],
-  answer: 0,
-},
-{
-  q: "Montreal Protocol deals with:",
-  options: ["Ozone-depleting substances", "Biodiversity", "Climate change", "Wildlife protection"],
-  answer: 0,
-},
-{
-  q: "Montreal Protocol was adopted in:",
-  options: ["1987", "1997", "1992", "1985"],
-  answer: 0,
-},
-{
-  q: "Kyoto Protocol is related to:",
-  options: ["Biodiversity", "Ozone depletion", "Forest conservation", "Global warming"],
-  answer: 3,
-},
-{
-  q: "Kyoto Protocol was adopted in:",
-  options: ["1992", "2005", "1997", "1995"],
-  answer: 2,
-},
-{
-  q: "One carbon credit is equal to:",
-  options: ["100 tonnes CO₂", "10 tonnes CO₂", "1 tonne CO₂", "1 kg CO₂"],
-  answer: 2,
-},
-{
-  q: "CDM stands for:",
-  options: ["Clean Development Mechanism", "Carbon Development Market", "Climate Development Model", "Clean Data Method"],
-  answer: 0,
-},
-{
-  q: "Convention on Biological Diversity (CBD) was held at:",
-  options: ["Stockholm", "Rio de Janeiro", "Kyoto", "Paris"],
-  answer: 1,
-},
-{
-  q: "CBD came into force in:",
-  options: ["1995", "1993", "1992", "1997"],
-  answer: 1,
-},
-{
-  q: "Wildlife Protection Act in India was enacted in:",
-  options: ["1986", "1972", "1974", "1981"],
-  answer: 1,
-},
-{
-  q: "Environment Protection Act (EPA) was enacted in:",
-  options: ["1974", "1981", "1986", "1972"],
-  answer: 2,
-},
-{
-  q: "EPA was enacted after:",
-  options: ["Bhopal Gas Tragedy", "Oil spill", "Chernobyl disaster", "Fukushima accident"],
-  answer: 0,
-},
-{
-  q: "The word “Disaster” is derived from:",
-  options: ["Latin word", "French word “Desastre”", "Greek word", "English word"],
-  answer: 1,
-},
-{
-  q: "“Desastre” means:",
-  options: ["Flood", "Bad wind", "Natural damage", "Evil star"],
-  answer: 3,
-},
-{
-  q: "Disaster is caused due to:",
-  options: ["Climatic causes only", "Natural or man-made causes", "Only natural causes", "Only man-made causes"],
-  answer: 1,
-},
-{
-  q: "A disaster leads to:",
-  options: ["Seasonal variation", "Gradual change", "Sudden disruption of normal life", "Economic growth"],
-  answer: 2,
-},
-{
-  q: "Disaster causes damage to:",
-  options: ["Property only", "Life only", "Infrastructure only", "Life and property"],
-  answer: 3,
-},
-{
-  q: "Disaster overwhelms:",
-  options: ["Climate cycle", "Government systems", "Natural balance", "Social and economic protection mechanisms"],
-  answer: 3,
-},
-{
-  q: "Disaster can be classified into:",
-  options: ["Small and large scale", "Large scale only", "Medium scale only", "Small scale only"],
-  answer: 0,
-},
-{
-  q: "Floods, hailstorms and cloudbursts are:",
-  options: ["Hydrological disasters", "Biological disasters", "Industrial disasters", "Geological disasters"],
-  answer: 0,
-},
-{
-  q: "Cyclones fall under:",
-  options: ["Meteorological", "Geological", "Climatological", "Biological"],
-  answer: 0,
-},
-{
-  q: "Heat waves, cold waves and droughts are:",
-  options: ["Meteorological", "Climatological", "Geological", "Hydrological"],
-  answer: 1,
-},
-{
-  q: "Earthquakes and volcanic eruptions are:",
-  options: ["Biological", "Meteorological", "Industrial", "Geological"],
-  answer: 3,
-},
-{
-  q: "Urban fires and oil spills are:",
-  options: ["Natural disasters", "Man-made disasters", "Hydrological disasters", "Geological disasters"],
-  answer: 1,
-},
-{
-  q: "Viral outbreaks and pest invasions are:",
-  options: ["Biological disasters", "Nuclear disasters", "Industrial disasters", "Geological disasters"],
-  answer: 0,
-},
-{
-  q: "Chemical mishaps and mining shaft fires are:",
-  options: ["Biological disasters", "Meteorological disasters", "Nuclear disasters", "Industrial disasters"],
-  answer: 3,
-},
-{
-  q: "Nuclear core meltdown causes:",
-  options: ["Cyclone", "Earthquake", "Radiation illness", "Flood"],
-  answer: 2,
-},
-{
-  q: "Disaster impacts individuals:",
-  options: ["Economically only", "Physically only", "Physically and psychologically", "Psychologically only"],
-  answer: 2,
-},
-{
-  q: "Loss of biodiversity is a:",
-  options: ["Impact of disaster", "Cause of disaster", "Type of disaster", "Control measure"],
-  answer: 0,
-},
-{
-  q: "Displacement of people is:",
-  options: ["Impact", "Prevention", "Preparedness", "Cause"],
-  answer: 0,
-},
-{
-  q: "Industrialization is a:",
-  options: ["Natural cause", "Cause of disaster", "Effect", "Impact"],
-  answer: 1,
-},
-{
-  q: "Environmental degradation leads to:",
-  options: ["Disaster control", "Disaster occurrence", "Disaster reduction", "Disaster recovery"],
-  answer: 1,
-},
-{
-  q: "Political issues can:",
-  options: ["Cause disasters", "Eliminate hazards", "Prevent disasters", "Control environment"],
-  answer: 0,
-},
-{
-  q: "Disaster management is a:",
-  options: ["Economic process", "Random activity", "Temporary process", "Systematic process"],
-  answer: 3,
-},
-{
-  q: "Disaster management aims to:",
-  options: ["Increase disasters", "Control population", "Lessen disaster impact", "Stop development"],
-  answer: 2,
-},
-{
-  q: "Pre-disaster management occurs:",
-  options: ["At recovery stage", "Before disaster", "After disaster", "During disaster"],
-  answer: 1,
-},
-{
-  q: "Management during disaster mainly involves:",
-  options: ["Immediate response", "Policy making", "Planning", "Research"],
-  answer: 0,
-},
-{
-  q: "Post-disaster management includes:",
-  options: ["Prevention", "Preparedness", "Mitigation", "Recovery"],
-  answer: 3,
-},
-{
-  q: "DRR focuses on:",
-  options: ["Eliminating hazards", "Increasing exposure", "Ignoring risks", "Reducing causal factors"],
-  answer: 3,
-},
-{
-  q: "Mitigation refers to:",
-  options: ["Emergency relief", "Recovery process", "Proactive measures before disaster", "Actions after disaster"],
-  answer: 2,
-},
-{
-  q: "Preparedness helps to:",
-  options: ["Create disasters", "Increase vulnerability", "Stop hazards", "Reduce effects of disasters"],
-  answer: 3,
-},
-{
-  q: "Rescue includes:",
-  options: ["Risk mapping", "Long-term planning", "Evacuation and immediate help", "Infrastructure repair"],
-  answer: 2,
-},
-{
-  q: "Food, water and medicines come under:",
-  options: ["Relief", "Preparedness", "Recovery", "Mitigation"],
-  answer: 0,
-},
-{
-  q: "Repair of damaged infrastructure is:",
-  options: ["Mitigation", "Recovery", "Relief", "Rescue"],
-  answer: 1,
-},
-{
-  q: "Risk assessment helps in:",
-  options: ["Identifying vulnerabilities", "Creating disasters", "Ignoring hazards", "Increasing damage"],
-  answer: 0,
-},
-{
-  q: "Climate change adaptation is a:",
-  options: ["Cause", "Disaster type", "Impact", "Mitigation measure"],
-  answer: 3,
-},
-{
-  q: "Urban planning helps in:",
-  options: ["Disaster mitigation", "Increasing risk", "Environmental degradation", "Hazard creation"],
-  answer: 0,
-},
-{
-  q: "Landslide involves movement of:",
-  options: ["Lava only", "Ice only", "Water only", "Rocks, soil and debris"],
-  answer: 3,
-},
-{
-  q: "Landslides can move:",
-  options: ["Only downward", "Only slow", "Only fast", "Slowly or rapidly"],
-  answer: 3,
-},
-{
-  q: "Landslides do NOT always involve:",
-  options: ["Gravity", "Slope", "Vegetation", "Water"],
-  answer: 3,
-},
-{
-  q: "Deforestation increases:",
-  options: ["Rainfall", "Soil fertility", "Stability", "Landslide risk"],
-  answer: 3,
-},
-{
-  q: "Avalanche is movement of:",
-  options: ["Ice and snow", "Soil and water", "Lava", "Rock and mud"],
-  answer: 0,
-},
-{
-  q: "Avalanche risk is highest during:",
-  options: ["December–April", "September–October", "June–August", "May–June"],
-  answer: 0,
-},
-{
-  q: "Loose snow avalanche is:",
-  options: ["Highly dangerous", "Slab-based", "Caused by rain only", "Low volume and speed"],
-  answer: 3,
-},
-{
-  q: "Slab avalanche speed can reach:",
-  options: ["10 km/h", "50–100 km/h", "150 km/h", "25 km/h"],
-  answer: 1,
-},
-{
-  q: "Wet-snow avalanche is triggered by:",
-  options: ["Rising temperature or rain", "Earthquake only", "Wind only", "Snowfall only"],
-  answer: 0,
-},
-{
-  q: "Heatwave occurs when temperature exceeds normal by:",
-  options: ["3°C or more", "1°C", "2°C", "5°C"],
-  answer: 0,
-},
-{
-  q: "Heat index measures:",
-  options: ["Pressure", "Rainfall", "Humidity effect on heat", "Wind speed"],
-  answer: 2,
-},
-{
-  q: "Cold wave in plains occurs below:",
-  options: ["5°C", "12°C", "15°C", "10°C"],
-  answer: 3,
-},
-{
-  q: "Cold wave is associated with:",
-  options: ["Low pressure", "High humidity", "Frost and icing", "Cyclones"],
-  answer: 2,
-},
-{
-  q: "Chairperson of NDMA is:",
-  options: ["Prime Minister", "President", "Home Minister", "Governor"],
-  answer: 0,
-},
-{
-  q: "State Disaster Management Authority is headed by:",
-  options: ["District Collector", "Governor", "Chief Minister", "Prime Minister"],
-  answer: 2,
-},
-{
-  q: "District Disaster Management Chairperson is:",
-  options: ["Principal", "Superintendent of Police", "Deputy Commissioner", "Chief Minister"],
-  answer: 2,
-},
-{
-  q: "School Disaster Management Chairperson is:",
-  options: ["Teacher", "Administrator", "Principal", "Headmaster"],
-  answer: 2,
-},
+  {
+    "q": "Which of the following is considered a 'Geographic' abiotic component of an ecosystem?",
+    "options": ["Temperature", "Soil moisture", "Latitude", "pH"],
+    "answer": 2,
+    "explanation": "Geographic abiotic components include Latitude, Longitude, and Altitude."
+  },
+  {
+    "q": "The inter-linkage between different food chains in an ecosystem is known as:",
+    "options": ["Trophic level", "Food web", "Energy pyramid", "Biomass cycle"],
+    "answer": 1,
+    "explanation": "A Food Web is defined as the inter-linkage between different food chains."
+  },
+  {
+    "q": "Which ecological pyramid depicts the quantitative relationships of standing crops?",
+    "options": ["Pyramid of Numbers", "Pyramid of Energy", "Pyramid of Biomass", "Pyramid of Species"],
+    "answer": 2,
+    "explanation": "The Pyramid of Biomass depicts the quantitative relationships of the standing crops rather than geometric factors."
+  },
+  {
+    "q": "Energy flow in an environment is always:",
+    "options": ["Multi-directional", "Uni-directional", "Cyclic", "Reversible"],
+    "answer": 1,
+    "explanation": "Energy flow in the environment is uni-directional, moving from producers to consumers and eventually lost as heat."
+  },
+  {
+    "q": "Which of the following is an example of a Gaseous Biogeochemical Cycle?",
+    "options": ["Phosphorus Cycle", "Sulphur Cycle", "Nitrogen Cycle", "Sedimentary Cycle"],
+    "answer": 2,
+    "explanation": "Gaseous cycles include Carbon, Nitrogen, Oxygen, and the Hydrological Cycle."
+  },
+  {
+    "q": "Secondary production in an ecosystem refers to:",
+    "options": ["Biomass production by photosynthesis", "Biomass production by consuming producers", "Production of inorganic nutrients", "Decomposition of organic matter"],
+    "answer": 1,
+    "explanation": "Secondary production is defined as biomass production by consuming producers."
+  },
+  {
+    "q": "In the process of ecological succession, 'Reaction' refers to:",
+    "options": ["The arrival of new species", "The formation of bare rock", "The modification of the environment by living organisms", "The final stabilization of the community"],
+    "answer": 2,
+    "explanation": "Reaction is the modification of the environment through the influence of the living organisms present on it, causing changes in soil and temperature."
+  },
+  {
+    "q": "The final, stabilized community in ecological succession is called the:",
+    "options": ["Pioneer community", "Seral community", "Climax community", "Intermediate community"],
+    "answer": 2,
+    "explanation": "The final or terminal community that becomes more or less stabilized for a long period is called the Climax Community."
+  },
+  {
+    "q": "Ecological succession that occurs in a pond, swamp, or bog is termed:",
+    "options": ["Xerarch", "Lithosere", "Hydrarch", "Psammosere"],
+    "answer": 2,
+    "explanation": "Hydrarch or Hydrosere refers to succession that takes place in wet areas like ponds, swamps, or bogs."
+  },
+  {
+    "q": "In an aquatic ecosystem, active swimmers like fishes are classified as:",
+    "options": ["Planktons", "Nektons", "Neustons", "Benthos"],
+    "answer": 1,
+    "explanation": "Nektons are organisms that are active swimmers, such as fishes, in an aquatic ecosystem."
+  },
+  {
+    "q": "Which of the following is an example of a Cold Desert?",
+    "options": ["Sahara", "Thar", "Gobi", "Mojave"],
+    "answer": 2,
+    "explanation": "The Gobi desert is an example of a Cold Desert, which occurs in temperate regions at higher latitudes."
+  },
+  {
+    "q": "Oxbow lakes are a characteristic feature of which stage of a stream?",
+    "options": ["Mountain highland", "Youthful stream", "Mature stream", "Old age stream"],
+    "answer": 3,
+    "explanation": "Oxbow lakes are associated with the 'Old age stream' or the third phase of a river's ecosystem."
+  },
+  {
+    "q": "In which type of forest do trees change color and lose their leaves during the fall?",
+    "options": ["Tropical Rain Forest", "Temperate Deciduous Forest", "Evergreen Coniferous Forest", "Sub-Tropical Forest"],
+    "answer": 1,
+    "explanation": "In Temperate Deciduous Forests, trees change color and lose their leaves during the fall season."
+  },
+  {
+    "q": "Organisms that are bottom dwellers in an aquatic ecosystem are called:",
+    "options": ["Periphytons", "Planktons", "Benthos", "Nektons"],
+    "answer": 2,
+    "explanation": "Benthos are organisms defined as bottom dwellers, such as snails."
+  },
+  {
+    "q": "Which zone of the ocean is characterized by abundant sunlight and high photosynthetic activity?",
+    "options": ["Bathyal zone", "Abyssal zone", "Euphotic zone", "Benthic zone"],
+    "answer": 2,
+    "explanation": "The Euphotic zone in the open sea is characterized by abundant sunlight and high photosynthetic activity."
+  },
+  {
+    "q": "The term 'Biodiversity' was coined by whom in the year 1985?",
+    "options": ["Lovejoy", "Walter G Rosen", "Ernst Haeckel", "Norman Myers"],
+    "answer": 1,
+    "explanation": "Walter G Rosen coined the term biodiversity in 1985. It is a compound word for 'Biological Diversity'."
+  },
+  {
+    "q": "Who introduced the term 'Biological Diversity' in 1980?",
+    "options": ["Walter G Rosen", "Arthur Tansley", "Lovejoy", "E.P. Odum"],
+    "answer": 2,
+    "explanation": "Lovejoy introduced the term 'Biological Diversity' in 1980 to express the number of species present in a community."
+  },
+  {
+    "q": "Where was the Convention on Biological Diversity (1992) held?",
+    "options": ["Stockholm Conference", "Rio Earth Summit", "Paris Agreement", "Kyoto Protocol"],
+    "answer": 1,
+    "explanation": "The Convention on Biological Diversity (1992) took place at the Rio Earth Summit."
+  },
+  {
+    "q": "India accounts for approximately what percentage of the world's recorded species?",
+    "options": ["2.4%", "7-8%", "10-12%", "15%"],
+    "answer": 1,
+    "explanation": "India accounts for 7-8% of all recorded species with only 2.4% of the world's land area."
+  },
+  {
+    "q": "How many Mega-biodiverse countries were identified by Conservation International in 1998?",
+    "options": ["10", "12", "18", "34"],
+    "answer": 2,
+    "explanation": "Conservation International identified 18 mega-diverse countries in 1998, which contain more than 70% of the earth's biodiversity."
+  },
+  {
+    "q": "Which country is home to the greatest number of reptiles, with 755 species?",
+    "options": ["Brazil", "Australia", "India", "Mexico"],
+    "answer": 1,
+    "explanation": "Australia has the greatest number of reptiles of any country, with 755 species."
+  },
+  {
+    "q": "Into how many Bio-geographic regions is India divided?",
+    "options": ["5", "8", "10", "12"],
+    "answer": 2,
+    "explanation": "India is divided into 10 Bio-geographic regions, including Himalayas, Desert, Western Ghats, etc."
+  },
+  {
+    "q": "Which of the following is NOT one of the 10 Bio-geographic zones of India?",
+    "options": ["Trans-Himalayan", "Semi-Arid", "Gangetic plain", "Amazon Basin"],
+    "answer": 3,
+    "explanation": "Amazon Basin is in South America. The Indian zones include Trans-Himalayan, Desert, Western Ghats, Gangetic plain, etc."
+  },
+  {
+    "q": "Variations among the genes of the same species are known as:",
+    "options": ["Species diversity", "Genetic diversity", "Ecosystem diversity", "Habitat diversity"],
+    "answer": 1,
+    "explanation": "Genetic diversity refers to variations among the genes of the same species, such as different varieties of rice or mangoes."
+  },
+  {
+    "q": "Diversity arising due to variations among species present in specific areas is called:",
+    "options": ["Genetic diversity", "Species diversity", "Cultural diversity", "Climatic diversity"],
+    "answer": 1,
+    "explanation": "Species diversity is defined as the diversity which arises due to variations among species present in specific areas."
+  },
+  {
+    "q": "About what percentage of the world population depends upon plants for medicines?",
+    "options": ["25%", "50%", "75%", "90%"],
+    "answer": 2,
+    "explanation": "About 75% of the world population depends upon different plants or plant extracts for medicines."
+  },
+  {
+    "q": "Who proposed the concept of Biodiversity Hotspots in 1988?",
+    "options": ["Walter G Rosen", "Norman Myers", "Charles Darwin", "Rachel Carson"],
+    "answer": 1,
+    "explanation": "The concept of Biodiversity Hotspots was given by Sir Norman Myers in the year 1988."
+  },
+  {
+    "q": "Which of the following is a criterion for identifying a Biodiversity Hotspot?",
+    "options": ["Large land area", "Low species count", "Endemism and degree of threat", "Presence of large mammals"],
+    "answer": 2,
+    "explanation": "Biodiversity hotspots are identified based on the number of species present, endemism, and the degree of threat they face."
+  },
+  {
+    "q": "Which of the following is listed as a Biodiversity Hotspot in India?",
+    "options": ["Thar Desert", "Western Ghats", "Gangetic Plains", "Deccan Plateau"],
+    "answer": 1,
+    "explanation": "The Western Ghats is one of the identified biodiversity hotspots in India, along with the Himalayas, Indo-Burma, and Sundaland."
+  },
+  {
+    "q": "Which organization established the Red Data Book?",
+    "options": ["WWF", "UNESCO", "IUCN", "UNEP"],
+    "answer": 2,
+    "explanation": "The Red Data Book is the document established by the International Union for Conservation of Nature (IUCN)."
+  },
+  {
+    "q": "In the Red Data Book, what does the color 'Red' represent?",
+    "options": ["Extinct species", "Critically Endangered Species", "Vulnerable Species", "Rare species"],
+    "answer": 1,
+    "explanation": "The color Red represents Critically Endangered Species. Black represents Extinct, and Orange represents Endangered."
+  },
+  {
+    "q": "Species confined to a particular region and not found anywhere else are called:",
+    "options": ["Endangered species", "Vulnerable species", "Endemic species", "Exotic species"],
+    "answer": 2,
+    "explanation": "Endemic species are those confined to a particular region and having originated there."
+  },
+  {
+    "q": "In-situ conservation refers to:",
+    "options": ["Protection in a zoo", "Protection in a botanical garden", "Protection in natural habitat", "Seed banks"],
+    "answer": 2,
+    "explanation": "In-situ Conservation is the protection of species in their natural habitat, such as National Parks."
+  },
+  {
+    "q": "Which of the following is strictly prohibited in a National Park?",
+    "options": ["Tourism", "Grazing of domestic animals", "Photography", "Research"],
+    "answer": 1,
+    "explanation": "In National Parks, all private rights are non-existent and activities such as grazing of domestic animals are prohibited."
+  },
+  {
+    "q": "Which zone of a Biosphere Reserve allows limited human activities like research and education?",
+    "options": ["Core zone", "Buffer zone", "Transition zone", "Restoration zone"],
+    "answer": 1,
+    "explanation": "The Buffer zone allows limited human activities like research, education, and research strategy."
+  },
+  {
+    "q": "What is the Transition zone in a Biosphere Reserve used for?",
+    "options": ["Strict protection only", "Research only", "Human settlements and cropping", "Restoring degraded areas"],
+    "answer": 2,
+    "explanation": "The Transition zone allows several human activities like settlements, cropping, recreation, and forestry."
+  },
+  {
+    "q": "Which of the following is an example of Ex-situ conservation?",
+    "options": ["National Park", "Wildlife Sanctuary", "Biosphere Reserve", "Botanical Garden"],
+    "answer": 3,
+    "explanation": "Botanical Gardens, Zoos, and Aquaria are examples of Ex-situ conservation, where protection occurs away from the natural habitat."
+  },
+  {
+    "q": "Which technique is used for asexual propagation of plants in Ex-situ conservation?",
+    "options": ["Hybridization", "Tissue Culture", "Grafting", "Layering"],
+    "answer": 1,
+    "explanation": "Tissue Culture is a technique used for asexual propagation where a small piece of plant is cultured in a sterile environment."
+  },
+  {
+    "q": "What is a major disadvantage of Ex-situ conservation for animals?",
+    "options": ["Animals are not protected from poachers", "Animals may not behave normally", "It requires very large areas", "It prevents evolution"],
+    "answer": 1,
+    "explanation": "A disadvantage is that animals may not behave as normal, making reproduction difficult, and may not survive reintroduction."
+  },
+  {
+    "q": "Which of the following is a cause of Man-wildlife conflict?",
+    "options": ["Abundance of food", "Expansion of forest cover", "Shrinkage of habitat", "Decrease in human population"],
+    "answer": 2,
+    "explanation": "Causes of Man-animal conflicts include shrinkage of habitat, food scarcity, and man-eating tendency."
+  },
+  {
+    "q": "India ranks at what position among the plant-rich countries of the world?",
+    "options": ["1st", "6th", "10th", "12th"],
+    "answer": 2,
+    "explanation": "India ranks 10th among the plant-rich countries of the world."
+  },
+  {
+    "q": "Which country possesses 1/10th of the world's total species?",
+    "options": ["Colombia", "Brazil", "China", "Indonesia"],
+    "answer": 1,
+    "explanation": "Brazil contains 1/10th of the world's species, including 55,000 plant species and 103,870 animal species."
+  },
+  {
+    "q": "How many Phyto-Geographical regions is India divided into based on flora?",
+    "options": ["6", "9", "10", "12"],
+    "answer": 1,
+    "explanation": "India has been divided into 9 Phyto-Geographical regions, such as the Western Himalayas, Gangetic Plains, etc."
+  },
+  {
+    "q": "Which type of diversity refers to the variety of ecosystems within a biogeographical boundary?",
+    "options": ["Genetic Diversity", "Species Diversity", "Ecosystem Diversity", "Functional Diversity"],
+    "answer": 2,
+    "explanation": "Ecosystem diversity refers to the diversity of habitats and ecosystems found within a biogeographical or political boundary."
+  },
+  {
+    "q": "Which of the following represents the 'Aesthetic Value' of biodiversity?",
+    "options": ["Prevention of soil erosion", "Production of silk and wool", "Eco-tourism", "Carbon sinks"],
+    "answer": 2,
+    "explanation": "Eco-tourism, where people visit wilderness areas for pleasure, represents the aesthetic value of biodiversity."
+  },
+  {
+    "q": "According to the document, how many Biodiversity Hotspots are there in the world?",
+    "options": ["18", "25", "34", "50"],
+    "answer": 2,
+    "explanation": "There are a total of 34 Biodiversity Hotspots in the world (though the list shows 36, the text explicitly states 34)."
+  },
+  {
+    "q": "Which Indian Biodiversity Hotspot includes the Nicobar Islands?",
+    "options": ["The Himalayas", "Western Ghats", "Indo-Burma", "Sundaland"],
+    "answer": 3,
+    "explanation": "Sundaland covers the Nicobar Islands."
+  },
+  {
+    "q": "In the IUCN Red Data Book, what does the color 'Black' represent?",
+    "options": ["Endangered species", "Vulnerable species", "Extinct species", "Rare species"],
+    "answer": 2,
+    "explanation": "The color Black represents Extinct species in the Red Data Book."
+  },
+  {
+    "q": "Which color code in the Red Data Book indicates 'Out of Danger' species?",
+    "options": ["White", "Green", "Amber", "Grey"],
+    "answer": 1,
+    "explanation": "The color Green represents 'Out of Danger' species."
+  },
+  {
+    "q": "Which of the following is an example of a 'Vulnerable' species in India?",
+    "options": ["Black buck", "Asiatic elephant", "House sparrow", "Red panda"],
+    "answer": 2,
+    "explanation": "The House sparrow, along with the Sarus crane and Great Indian bustard, is listed as a Vulnerable species in India."
+  },
+  {
+    "q": "What defines 'Rare Species' according to the text?",
+    "options": ["Species that are extinct in the wild", "Species with small populations that are uncommon or scarce", "Species found only in zoos", "Species that are widely distributed"],
+    "answer": 1,
+    "explanation": "Rare species are groups of organisms that are very uncommon, scarce, or infrequently encountered, like the Red panda."
+  },
+  {
+    "q": "How many bird species are estimated to be found in India?",
+    "options": ["500", "900", "1,317", "2,000"],
+    "answer": 2,
+    "explanation": "The number of bird species in India is listed as 1,317."
+  },
+  {
+    "q": "What does the term 'EDGE species' stand for?",
+    "options": ["Endangered Domestically and Globally Extinct", "Evolutionarily Distinct and Globally Endangered", "Ecologically Diverse and Genetically Evolved", "Environmentally Damaged and Globally Extinct"],
+    "answer": 1,
+    "explanation": "EDGE stands for Evolutionarily Distinct and Globally Endangered species."
+  },
+  {
+    "q": "How many National Parks are there in India according to the document?",
+    "options": ["85", "96", "106", "120"],
+    "answer": 2,
+    "explanation": "There are 106 national parks in India."
+  },
+  {
+    "q": "How many Wildlife Sanctuaries are there in India?",
+    "options": ["450", "500", "573", "600"],
+    "answer": 2,
+    "explanation": "In India, there are about 573 wildlife sanctuaries."
+  },
+  {
+    "q": "Which conservation zone allows restoration activities to return degraded areas to their natural form?",
+    "options": ["Core zone", "Transition zone", "Restoration zone", "Tourism zone"],
+    "answer": 2,
+    "explanation": "The Restoration zone is a selected degraded area where activities are carried out to restore it to its natural form."
+  },
+  {
+    "q": "How many Biosphere Reserves are there in India?",
+    "options": ["10", "12", "18", "25"],
+    "answer": 2,
+    "explanation": "There are 18 biosphere reserves in India."
+  },
+  {
+    "q": "Which of the following is NOT an advantage of In-situ conservation?",
+    "options": ["Maintains ecological integrity", "Cheaper way of conservation", "Protection from pollution", "Potential for evolution"],
+    "answer": 2,
+    "explanation": "A disadvantage of In-situ conservation is that it offers less protection against pollution."
+  },
+  {
+    "q": "How many Botanical Gardens are mentioned in the document for Ex-situ conservation?",
+    "options": ["50", "100", "122", "150"],
+    "answer": 2,
+    "explanation": "The document lists 122 Botanical Gardens under Ex-situ conservation."
+  },
+  {
+    "q": "Which animal is cited as a notable man-eater in Corbett National Park?",
+    "options": ["Tiger", "Lion", "Leopard", "Elephant"],
+    "answer": 2,
+    "explanation": "Corbett National Park is famous for notable man-eater leopards, responsible for at least 400 attacks."
+  },
+  {
+    "q": "What is a major cause of the Black buck's decline?",
+    "options": ["Competition with domestic cattle", "Destruction of dense forests", "Poaching and destruction of open plain habitat", "Flooding"],
+    "answer": 2,
+    "explanation": "The existence of the black buck is restricted due to large-scale poaching and destruction of habitat (open plains)."
+  },
+  {
+    "q": "The undesirable change in the physico-chemical or biological properties of the environment is defined as:",
+    "options": ["Ecosystem regulation", "Pollution", "Biomagnification", "Homeostasis"],
+    "answer": 1,
+    "explanation": "Pollution is defined as the undesirable change in the physical-chemical or biological properties of the environment that may have harmful effects."
+  },
+  {
+    "q": "Which of the following is an example of a biodegradable pollutant?",
+    "options": ["Plastic", "DDT", "Domestic sewage", "Heavy metals"],
+    "answer": 2,
+    "explanation": "Biodegradable pollutants are non-persistent, such as domestic sewage, whereas plastics and heavy metals are non-biodegradable."
+  },
+  {
+    "q": "Which gas is formed from incomplete combustion and causes Carboxyhaemoglobinemia?",
+    "options": ["Carbon dioxide", "Carbon monoxide", "Sulphur dioxide", "Nitrogen dioxide"],
+    "answer": 1,
+    "explanation": "Carbon monoxide is produced by incomplete combustion and causes Carboxyhaemoglobinemia by reducing oxygen capacity in blood."
+  },
+  {
+    "q": "Pollutants that are produced from chemical reactions involving primary pollutants are called:",
+    "options": ["Secondary pollutants", "Tertiary pollutants", "Particulate matter", "Natural pollutants"],
+    "answer": 0,
+    "explanation": "Secondary pollutants are produced from chemical reactions involving primary pollutants. Examples include Ozone and Photochemical smog."
+  },
+  {
+    "q": "Which air pollutant is responsible for the 'bleaching of leaf pigment' in plants?",
+    "options": ["Nitrogen dioxide", "Ozone", "Sulphur dioxide (SOx)", "Carbon monoxide"],
+    "answer": 2,
+    "explanation": "Bleaching of the leaf pigment is caused by Sulphur oxides (SOx), while NOx causes the development of necrotic spots."
+  },
+  {
+    "q": "Which of the following is a major indoor air pollutant often found in basements?",
+    "options": ["Radon", "Oxygen", "Nitrogen", "Argon"],
+    "answer": 0,
+    "explanation": "Major indoor air pollutants include Carbon monoxide, tobacco smoke, and Radon, along with molds and solvents."
+  },
+  {
+    "q": "According to the EPA Air Quality Index (AQI), a value between 301-500 is classified as:",
+    "options": ["Good", "Moderate", "Unhealthy", "Hazardous"],
+    "answer": 3,
+    "explanation": "An AQI value between 301 and 500 is classified as Hazardous, representing a severe health warning."
+  },
+  {
+    "q": "In fireworks, fumes of which metal are known to cause 'Metal Fume Fever'?",
+    "options": ["Lead", "Copper", "Magnesium", "Cadmium"],
+    "answer": 2,
+    "explanation": "Magnesium and Zinc fumes from fireworks can cause metal fume fever. Copper causes respiratory irritation."
+  },
+  {
+    "q": "Water pollution from 'Surface run-off' is classified as:",
+    "options": ["Point source", "Non-point source", "Industrial source", "Thermal source"],
+    "answer": 1,
+    "explanation": "Surface run-off is a non-point source as pollutants enter from scattered sources, unlike point sources like factory discharge pipes."
+  },
+  {
+    "q": "High Biochemical Oxygen Demand (BOD) in water indicates:",
+    "options": ["High dissolved oxygen", "Low level of organic waste", "Depletion of oxygen", "Safe drinking water"],
+    "answer": 2,
+    "explanation": "High BOD implies high organic waste decomposed by bacteria, which deplete the oxygen and cause the death of fish."
+  },
+  {
+    "q": "Eutrophication is primarily caused by an excess of which nutrients?",
+    "options": ["Iron and Calcium", "Nitrogen and Phosphorus", "Sulphur and Carbon", "Potassium and Magnesium"],
+    "answer": 1,
+    "explanation": "Inorganic nutrients like Nitrogen and Phosphorus from fertilizers cause algal blooms, leading to Eutrophication."
+  },
+  {
+    "q": "Which disease is caused by Mercury contamination in water?",
+    "options": ["Blue Baby Syndrome", "Black Foot Disease", "Minamata Disease", "Itai-Itai Disease"],
+    "answer": 2,
+    "explanation": "Mercury causes Minamata disease. Nitrates cause Blue Baby Syndrome, and Cadmium causes Itai-Itai Disease."
+  },
+  {
+    "q": "The 'Blue Baby' syndrome is caused by the presence of excess ______ in drinking water.",
+    "options": ["Chlorides", "Nitrates", "Fluorides", "Arsenic"],
+    "answer": 1,
+    "explanation": "Nitrates restrict the oxygen supply in the brain and cause the 'blue baby' syndrome."
+  },
+  {
+    "q": "Biomagnification refers to:",
+    "options": ["Decomposition of pollutants", "Increase in pollutant concentration up the food chain", "Dilution of pollutants in water", "Filtering of pollutants by plants"],
+    "answer": 1,
+    "explanation": "Biomagnification is the increase in concentration of a substance, such as a pesticide, as it moves up the food chain."
+  },
+  {
+    "q": "In wastewater treatment, 'Trickling filters' and 'Activated sludge process' are part of:",
+    "options": ["Primary treatment", "Secondary treatment", "Tertiary treatment", "Disposal"],
+    "answer": 1,
+    "explanation": "Secondary treatment involves biological processes like Trickling filters and the Activated sludge process."
+  },
+  {
+    "q": "Thermal pollution leads to which of the following changes in aquatic bodies?",
+    "options": ["Increase in dissolved oxygen", "Decrease in dissolved oxygen", "Decrease in metabolic activities", "Formation of ice"],
+    "answer": 1,
+    "explanation": "Thermal pollution decreases the dissolved oxygen content of water and increases the metabolic activities of aquatic organisms."
+  },
+  {
+    "q": "About what percentage of marine pollution originates from land-based activities?",
+    "options": ["20%", "40%", "60%", "80%"],
+    "answer": 3,
+    "explanation": "Approximately 80% of the pollution in oceans originates on land and is caused by humans."
+  },
+  {
+    "q": "The term 'Garbage' specifically refers to:",
+    "options": ["Non-combustible waste", "Putrescible solid waste", "Electronic waste", "Construction debris"],
+    "answer": 1,
+    "explanation": "Garbage refers to putrescible solid waste that contains organic matter capable of being decomposed, unlike rubbish."
+  },
+  {
+    "q": "Solid Waste Management (SWM) is described as a three-step process consisting of:",
+    "options": ["Collection, Transportation, Disposal", "Reduce, Reuse, Recycle", "Burning, Burying, Dumping", "Storage, Processing, Energy"],
+    "answer": 0,
+    "explanation": "SWM is a three-step process: Collection of solid waste, Transportation of solid waste, and Disposal of solid waste."
+  },
+  {
+    "q": "In a sanitary landfill, which gas is produced that can be converted into electricity?",
+    "options": ["Oxygen", "Nitrogen", "Methane", "Chlorine"],
+    "answer": 2,
+    "explanation": "Landfill gas (Methane) is produced in sanitary landfills and can be captured for electricity conversion."
+  },
+  {
+    "q": "Incineration involves burning waste at temperatures greater than:",
+    "options": ["100°C", "500°C", "850°C", "1500°C"],
+    "answer": 2,
+    "explanation": "Incineration is the burning of waste at very high temperatures, typically greater than 850°C."
+  },
+  {
+    "q": "Noise pollution is generally considered harmful when it exceeds:",
+    "options": ["25 dB", "45 dB", "65 dB", "75 dB"],
+    "answer": 3,
+    "explanation": "Noise is considered harmful when it exceeds 75 dB, though noise above 65 dB is defined as noise pollution."
+  },
+  {
+    "q": "What is the day-time noise limit for a Residential area in India?",
+    "options": ["75 dB", "65 dB", "55 dB", "50 dB"],
+    "answer": 2,
+    "explanation": "For a Residential area, the day-time noise limit is 55 dB, and the night-time limit is 45 dB."
+  },
+  {
+    "q": "The unit 'Rem' (Roentgen equivalent man) is used to measure:",
+    "options": ["Sound pressure", "Radioactive exposure", "Air quality", "Water turbidity"],
+    "answer": 1,
+    "explanation": "The unit of radioactive exposure is Rem (Roentgen equivalent man)."
+  },
+  {
+    "q": "Which type of effect from radiation pollution involves changes in DNA?",
+    "options": ["Somatic Effects", "Genetic Effects", "Thermal Effects", "Auditory Effects"],
+    "answer": 1,
+    "explanation": "Genetic Effects involve changes in DNA, leading to abnormal children and infant mortality, unlike somatic effects which affect body cells."
+  },
+  {
+    "q": "Which of the following is considered a 'Primary Pollutant'?",
+    "options": ["Ozone", "Sulphur dioxide", "PAN", "Sulphuric acid"],
+    "answer": 1,
+    "explanation": "Primary pollutants are released directly from a source, such as Sulphur dioxide (SO2) and Carbon monoxide. Ozone and PAN are secondary pollutants."
+  },
+  {
+    "q": "Which air pollution control device uses a high-voltage transformer to charge and collect particulate matter?",
+    "options": ["Cyclone Separator", "Venturi Scrubber", "Electrostatic Precipitator", "Bag House Filter"],
+    "answer": 2,
+    "explanation": "Electrostatic Precipitators use a high-voltage transformer-rectifier to charge particles, which are then attracted to grounded collecting surfaces."
+  },
+  {
+    "q": "For active fish species, the required Dissolved Oxygen (DO) level in water is:",
+    "options": ["1-2 mg/L", "3 mg/L", "5-8 mg/L", "Above 15 mg/L"],
+    "answer": 2,
+    "explanation": "Active fish species require a Dissolved Oxygen (DO) level of 5-8 mg/L to survive."
+  },
+  {
+    "q": "Which disease is associated with Cadmium pollution in water?",
+    "options": ["Minamata Disease", "Itai-Itai Disease", "Blue Baby Syndrome", "Fluorosis"],
+    "answer": 1,
+    "explanation": "Cadmium pollution is responsible for Itai-Itai Disease. Mercury causes Minamata, and Nitrates cause Blue Baby Syndrome."
+  },
+  {
+    "q": "Black Foot Disease is caused by chronic exposure to which element?",
+    "options": ["Lead", "Mercury", "Arsenic", "Fluoride"],
+    "answer": 2,
+    "explanation": "Arsenic contamination causes liver damage, skin cancer, and vascular diseases known as Black Foot Disease."
+  },
+  {
+    "q": "In the context of solid waste, 'Rubbish' refers to:",
+    "options": ["Putrescible organic waste", "Non-putrescible solid waste", "Human excreta", "Radioactive waste"],
+    "answer": 1,
+    "explanation": "Rubbish is defined as non-putrescible solid waste constituents, which can be combustible (paper, wood) or non-combustible (glass, metal)."
+  },
+  {
+    "q": "Which term describes the modification of the environment by living organisms in ecological succession?",
+    "options": ["Nudation", "Migration", "Reaction", "Stabilization"],
+    "answer": 2,
+    "explanation": "Reaction is the modification of the environment through the influence of living organisms, such as changes in soil or temperature."
+  },
+  {
+    "q": "Which of the following is an example of 'Pathological Waste'?",
+    "options": ["Paper and plastic", "Meat, hair, and bones", "Fly ash", "Radioactive isotopes"],
+    "answer": 1,
+    "explanation": "Pathological waste includes anatomical wastes such as meat, hair, bones, skin, and excreta."
+  },
+  {
+    "q": "What is the primary function of a 'Transfer Station' in solid waste management?",
+    "options": ["To incinerate waste", "To reduce transportation costs", "To compost organic waste", "To generate electricity"],
+    "answer": 1,
+    "explanation": "Transfer stations are used to transfer waste from smaller collection vehicles to larger ones, reducing overall transportation costs and vehicular emissions."
+  },
+  {
+    "q": "Which method of disposal involves the use of earthworms to decompose organic waste?",
+    "options": ["Sanitary Landfill", "Incineration", "Vermicomposting", "Ocean dumping"],
+    "answer": 2,
+    "explanation": "Vermicomposting utilizes earthworms to break down biodegradable waste into nutrient-rich manure."
+  },
+  {
+    "q": "The noise limit for a 'Silence Zone' during the day is:",
+    "options": ["75 dB", "65 dB", "55 dB", "50 dB"],
+    "answer": 3,
+    "explanation": "According to the CPCB, the noise limit for Silence zones is 50 dB during the day and 40 dB at night."
+  },
+  {
+    "q": "The threshold of pain for human hearing is approximately:",
+    "options": ["80 dB", "100 dB", "120 dB", "130 dB"],
+    "answer": 3,
+    "explanation": "The threshold of pain for noise is considered to be 130 dB."
+  },
+  {
+    "q": "Which radioactive isotope has a half-life of 2.34 x 10^7 years?",
+    "options": ["Radon-222", "Bismuth-209", "Uranium-235", "Carbon-14"],
+    "answer": 2,
+    "explanation": "Uranium-235 has a half-life of approximately 2.34 x 10^7 years."
+  },
+  {
+    "q": "Cosmic rays from outer space are an example of:",
+    "options": ["Anthropogenic radiation", "Natural radiation", "Thermal pollution", "Non-ionizing radiation"],
+    "answer": 1,
+    "explanation": "Cosmic rays from outer space are classified as a natural source of radiation pollution."
+  },
+  {
+    "q": "Which gas is primarily responsible for the development of necrotic spots on leaves?",
+    "options": ["SO2", "NOx", "CO2", "O3"],
+    "answer": 1,
+    "explanation": "Nitrogen oxides (NOx) cause the development of necrotic spots on plant leaves, while SOx causes bleaching."
+  },
+  {
+    "q": "What is the 'Break Even' point in the context of solid waste transportation?",
+    "options": ["The point where recycling becomes profitable", "The distance where hauling costs of different vehicle types intersect", "The limit of landfill capacity", "The maximum noise level allowed"],
+    "answer": 1,
+    "explanation": "The Break Even point refers to the distance (approx 10 km) where the hauling cost with smaller collection vehicles equals that of larger transfer vehicles."
+  },
+  {
+    "q": "Which functional element of solid waste management immediately follows 'Storage'?",
+    "options": ["Disposal", "Collection", "Processing", "Transfer"],
+    "answer": 1,
+    "explanation": "The functional elements order is Waste generation -> Waste management -> Storage -> Collection -> Transfer/transport."
+  },
+  {
+    "q": "Excessive extraction of groundwater can lead to natural pollution by:",
+    "options": ["Nitrates", "Fluoride and Arsenic", "Lead and Mercury", "Pesticides"],
+    "answer": 1,
+    "explanation": "Excessive extraction can lead to natural pollution of groundwater with contaminants like fluoride and arsenic."
+  },
+  {
+    "q": "Which of the following is a 'Point Source' of water pollution?",
+    "options": ["Surface runoff", "Agricultural fields", "Sewage treatment plant discharge", "Acid rain"],
+    "answer": 2,
+    "explanation": "A sewage treatment plant is a point source because pollutants enter water bodies from a specific, identifiable site."
+  },
+  {
+    "q": "The Bhopal Gas Tragedy is primarily associated with which type of pollution?",
+    "options": ["Soil Pollution", "Air Pollution", "Thermal Pollution", "Marine Pollution"],
+    "answer": 1,
+    "explanation": "The Bhopal Gas Tragedy is a major case study of industrial Air Pollution (release of MIC gas)."
+  },
+  {
+    "q": "The term 'Greenhouse Effect' refers to:",
+    "options": ["The cooling of the earth's surface", "A heat-trapping process caused by gases like CO2", "The reflection of solar radiation by clouds", "The growth of plants in a controlled environment"],
+    "answer": 1,
+    "explanation": "The greenhouse effect is a heat-trapping process caused by gases such as carbon dioxide and water vapour that re-emit infrared radiations."
+  },
+  {
+    "q": "Which of the following is NOT a major Greenhouse Gas?",
+    "options": ["Carbon dioxide (CO2)", "Methane (CH4)", "Nitrogen (N2)", "Nitrous oxide (N2O)"],
+    "answer": 2,
+    "explanation": "The primary greenhouse gases are Carbon dioxide, Methane, Nitrous oxide, and water vapor. Nitrogen (N2) is not a greenhouse gas."
+  },
+  {
+    "q": "Which layer of the atmosphere contains the Ozone layer that protects us from UV radiation?",
+    "options": ["Troposphere", "Stratosphere", "Mesosphere", "Thermosphere"],
+    "answer": 1,
+    "explanation": "The Ozone layer is found in the Stratosphere, approximately 15-35 km above the Earth's surface, and it absorbs harmful UV-B radiation."
+  },
+  {
+    "q": "Who discovered the 'Ozone Hole' over Antarctica in 1985?",
+    "options": ["Rowland and Molina", "Farman", "Arrhenius", "Fourier"],
+    "answer": 1,
+    "explanation": "The Ozone Hole was discovered by Farman in 1985 over Antarctica."
+  },
+  {
+    "q": "The thickness of the Ozone layer is measured in which units?",
+    "options": ["Decibels", "Dobson Units (DU)", "Parts per million (ppm)", "Sieverts"],
+    "answer": 1,
+    "explanation": "The thickness of the ozone layer is measured in Dobson Units (DU). 1 DU is equivalent to 0.01 mm thickness at STP."
+  },
+  {
+    "q": "Which substances are primarily responsible for Ozone Layer Depletion?",
+    "options": ["Greenhouse gases", "Ozone Depleting Substances (ODS) like CFCs", "Sulfur dioxide", "Particulate matter"],
+    "answer": 1,
+    "explanation": "Ozone Depleting Substances (ODS) such as Chlorofluorocarbons (CFCs), Halons, and Methyl bromide are responsible for destroying ozone molecules."
+  },
+  {
+    "q": "Rainwater is considered 'Acid Rain' when its pH is below:",
+    "options": ["7.0", "6.5", "5.6", "4.0"],
+    "answer": 2,
+    "explanation": "Acid rain is defined as rainfall with a pH of less than 5.6."
+  },
+  {
+    "q": "Which gases are the primary causes of Acid Rain?",
+    "options": ["CO2 and CH4", "SO2 and NOx", "O3 and CFCs", "CO and NH3"],
+    "answer": 1,
+    "explanation": "Acid rain is caused by chemical reactions of Sulfur dioxide (SO2) and Nitrogen oxides (NOx) with water and oxygen in the atmosphere."
+  },
+  {
+    "q": "The Environment (Protection) Act was enacted in India in which year?",
+    "options": ["1972", "1981", "1986", "1992"],
+    "answer": 2,
+    "explanation": "The Environment (Protection) Act was enacted in 1986 under Article 253 of the Constitution, often considered a reaction to the Bhopal Gas Tragedy."
+  },
+  {
+    "q": "Which Act provides for the protection of wild animals, birds, and plants in India?",
+    "options": ["Forest Conservation Act", "Environment Protection Act", "Wild Life (Protection) Act", "Biodiversity Act"],
+    "answer": 2,
+    "explanation": "The Wild Life (Protection) Act, enacted in 1972, provides for the protection of wild animals, birds, and plants."
+  },
+  {
+    "q": "The Wild Life (Protection) Act, 1972, contains how many schedules?",
+    "options": ["4", "5", "6", "8"],
+    "answer": 2,
+    "explanation": "The Wild Life (Protection) Act, 1972 has 6 schedules giving varying degrees of protection to different species."
+  },
+  {
+    "q": "The Water (Prevention and Control of Pollution) Act was enacted in:",
+    "options": ["1972", "1974", "1981", "1986"],
+    "answer": 1,
+    "explanation": "The Water (Prevention and Control of Pollution) Act was enacted in 1974 to prevent and control water pollution."
+  },
+  {
+    "q": "Which Act was enacted in 1981 to prevent, control, and abate air pollution?",
+    "options": ["Environment Protection Act", "Air (Prevention and Control of Pollution) Act", "Forest Conservation Act", "Motor Vehicles Act"],
+    "answer": 1,
+    "explanation": "The Air (Prevention and Control of Pollution) Act was enacted in 1981."
+  },
+  {
+    "q": "The Forest (Conservation) Act, 1980 is primarily aimed at:",
+    "options": ["Planting new forests", "Stopping the diversion of forest land for non-forest purposes", "Selling timber", "Protecting wildlife only"],
+    "answer": 1,
+    "explanation": "The Forest (Conservation) Act, 1980 was enacted to control the diversion of forest land for non-forest purposes like mining or industrial projects."
+  },
+  {
+    "q": "The Montreal Protocol (1987) is related to:",
+    "options": ["Reducing Greenhouse Gases", "Protecting the Ozone Layer", "Conserving Biodiversity", "Controlling Hazardous Wastes"],
+    "answer": 1,
+    "explanation": "The Montreal Protocol on Substances that Deplete the Ozone Layer is an international treaty designed to protect the ozone layer by phasing out ODS."
+  },
+  {
+    "q": "The Kyoto Protocol (1997) commits state parties to reduce:",
+    "options": ["Ozone depleting substances", "Greenhouse gas emissions", "Plastic waste", "Nuclear weapons"],
+    "answer": 1,
+    "explanation": "The Kyoto Protocol commits state parties to reduce greenhouse gas emissions based on the scientific consensus on global warming."
+  },
+  {
+    "q": "Which international treaty was a key outcome of the 1992 Rio Earth Summit?",
+    "options": ["Kyoto Protocol", "Montreal Protocol", "Convention on Biological Diversity (CBD)", "Paris Agreement"],
+    "answer": 2,
+    "explanation": "The Convention on Biological Diversity (CBD) was opened for signature at the Earth Summit in Rio de Janeiro in 1992."
+  },
+  {
+    "q": "The 'Scheduled Tribes and Other Traditional Forest Dwellers (Recognition of Forest Rights) Act' was passed in:",
+    "options": ["2000", "2002", "2006", "2010"],
+    "answer": 2,
+    "explanation": "This Act, often called the Forest Rights Act, was passed in 2006 to recognize the rights of forest-dwelling communities."
+  },
+  {
+    "q": "What is the phenomenon called when acid rain damages buildings and historical monuments?",
+    "options": ["Global warming", "Stone Leprosy", "Eutrophication", "Bioaccumulation"],
+    "answer": 1,
+    "explanation": "Acid rain reacts with the calcium carbonate in stones (like marble), causing them to flake off or dissolve, a phenomenon known as Stone Leprosy."
+  },
+  {
+    "q": "The 'Kondh community' mentioned in the text is known for:",
+    "options": ["Hunting tigers", "Protesting to protect their environment", "Commercial logging", "Inventing plastic"],
+    "answer": 1,
+    "explanation": "The Kondh community marched into the streets of Bhubaneshwar to prevent their nature and living area from potential environmental violators."
+  },
+  {
+    "q": "Which article of the Indian Constitution directs the 'State' to protect and improve the environment?",
+    "options": ["Article 14", "Article 21", "Article 48-A", "Article 51-A"],
+    "answer": 2,
+    "explanation": "Article 48-A (Directive Principles of State Policy) states that the State shall endeavour to protect and improve the environment and to safeguard forests and wildlife."
+  },
+  {
+    "q": "Which article makes it a 'Fundamental Duty' of every citizen to protect the natural environment?",
+    "options": ["Article 48-A", "Article 51-A(g)", "Article 21", "Article 32"],
+    "answer": 1,
+    "explanation": "Article 51-A(g) states that it shall be the duty of every citizen of India to protect and improve the natural environment including forests, lakes, rivers, and wildlife."
+  },
+  {
+    "q": "The 'Kyoto Protocol' targets which specific category of gases?",
+    "options": ["Ozone Depleting Substances", "Greenhouse Gases (GHGs)", "Noble Gases", "Industrial Aerosols"],
+    "answer": 1,
+    "explanation": "The Kyoto Protocol targets the reduction of Greenhouse Gases (GHGs) to combat global warming."
+  },
+  {
+    "q": "Which of the following is a major consequence of Global Warming?",
+    "options": ["Decrease in sea levels", "Thickening of the ozone layer", "Melting of polar ice caps and glaciers", "Reduction in respiratory diseases"],
+    "answer": 2,
+    "explanation": "Global warming leads to the melting of polar ice caps and glaciers, causing a rise in sea levels."
+  },
+  {
+    "q": "Which radiation is primarily absorbed by the Ozone layer?",
+    "options": ["Infrared radiation", "Visible light", "UV-B radiation", "Radio waves"],
+    "answer": 2,
+    "explanation": "The Ozone layer absorbs the harmful Ultraviolet-B (UV-B) radiation from the sun, protecting life on Earth."
+  },
+  {
+    "q": "Exposure to UV-B radiation due to ozone depletion can cause:",
+    "options": ["Lung cancer", "Skin cancer and Cataracts", "Bone density loss", "Liver cirrhosis"],
+    "answer": 1,
+    "explanation": "Increased exposure to UV-B radiation can lead to skin cancer, cataracts, and suppression of the immune system."
+  },
+  {
+    "q": "Which chemical is often used as a coolant in refrigerators and is a major Ozone Depleting Substance?",
+    "options": ["Methane", "Carbon dioxide", "Chlorofluorocarbon (CFC)", "Ammonia"],
+    "answer": 2,
+    "explanation": "Chlorofluorocarbons (CFCs), used in refrigerators and air conditioners, are major contributors to ozone depletion."
+  },
+  {
+    "q": "The 'Taj Trapezium Zone' was established to protect the Taj Mahal from:",
+    "options": ["Flood waters", "Tourist overcrowding", "Acid Rain and Air Pollution", "Sound pollution"],
+    "answer": 2,
+    "explanation": "The Taj Trapezium Zone protects the Taj Mahal from pollution and acid rain, which causes the yellowing of the marble (Stone Leprosy)."
+  },
+  {
+    "q": "Which metal can be leached from the soil into water bodies due to Acid Rain, harming fish?",
+    "options": ["Calcium", "Aluminum", "Iron", "Magnesium"],
+    "answer": 1,
+    "explanation": "Acid rain causes aluminum to leach from soil into lakes and streams, which is toxic to fish and other aquatic life."
+  },
+  {
+    "q": "The Convention on Biological Diversity (CBD) has how many main objectives?",
+    "options": ["One", "Two", "Three", "Five"],
+    "answer": 2,
+    "explanation": "The CBD has three main objectives: conservation of biological diversity, sustainable use of its components, and fair and equitable sharing of benefits."
+  },
+  {
+    "q": "Which Schedule of the Wild Life (Protection) Act, 1972 provides 'Absolute Protection' to species?",
+    "options": ["Schedule I", "Schedule IV", "Schedule V", "Schedule VI"],
+    "answer": 0,
+    "explanation": "Schedule I and Part II of Schedule II provide absolute protection, and offenses under these are prescribed the highest penalties."
+  },
+  {
+    "q": "Which animals are listed as 'Vermin' under Schedule V of the Wild Life (Protection) Act?",
+    "options": ["Tigers and Lions", "Common Crows and Rats", "Peacocks and Dolphins", "Elephants and Rhinos"],
+    "answer": 1,
+    "explanation": "Schedule V lists animals that can be hunted (vermin), such as common crows, fruit bats, mice, and rats."
+  },
+  {
+    "q": "The Central Pollution Control Board (CPCB) was constituted under which Act?",
+    "options": ["Environment Protection Act, 1986", "Water (Prevention and Control of Pollution) Act, 1974", "Air Act, 1981", "Forest Act, 1980"],
+    "answer": 1,
+    "explanation": "The CPCB was constituted under the Water (Prevention and Control of Pollution) Act, 1974."
+  },
+  {
+    "q": "Who coined the term 'Greenhouse Effect'?",
+    "options": ["Joseph Fourier", "Ernst Haeckel", "Arthur Tansley", "Svante Arrhenius"],
+    "answer": 0,
+    "explanation": "The term 'Greenhouse Effect' was first coined by Joseph Fourier in 1824."
+  },
+  {
+    "q": "The Forest Rights Act (2006) is also known as:",
+    "options": ["The Tribal Land Act", "The Scheduled Tribes and Other Traditional Forest Dwellers Act", "The Forest Conservation Act", "The Wildlife Protection Act"],
+    "answer": 1,
+    "explanation": "It is officially known as 'The Scheduled Tribes and Other Traditional Forest Dwellers (Recognition of Forest Rights) Act, 2006'."
+  },
+  {
+    "q": "Which of the following is a simple step to reduce Greenhouse Gas emissions mentioned in the text?",
+    "options": ["Using incandescent bulbs", "Using more hot water", "Replacing light bulbs with CFL/LED", "Driving more frequently"],
+    "answer": 2,
+    "explanation": "Replacing incandescent bulbs with CFL or LED bulbs is a measure to save energy and reduce greenhouse gas emissions."
+  },
+  {
+    "q": "Man-Wildlife conflict often arises due to:",
+    "options": ["Increase in forest area", "Habitat fragmentation and shrinkage", "Abundance of prey base", "Strict wildlife laws"],
+    "answer": 1,
+    "explanation": "Man-wildlife conflict is primarily caused by the shrinkage and fragmentation of wildlife habitats, leading animals to enter human settlements."
+  },
+  {
+    "q": "The 'Bishnoi' community of Rajasthan is famous for protecting:",
+    "options": ["Water bodies", "Blackbuck and Khejri trees", "Tigers", "Elephants"],
+    "answer": 1,
+    "explanation": "The Bishnoi community is well-known for their traditional protection of the Blackbuck and Khejri trees."
+  },
+  {
+    "q": "In the context of environmental law, what does 'PIL' stand for?",
+    "options": ["Public Interest Litigation", "Pollution Index Level", "Private Industry Law", "Protected Island Land"],
+    "answer": 0,
+    "explanation": "PIL stands for Public Interest Litigation, a legal tool often used for environmental protection in India."
+  },
+  {
+    "q": "Which international day is observed on September 16th?",
+    "options": ["World Environment Day", "World Ozone Day", "Earth Day", "Water Day"],
+    "answer": 1,
+    "explanation": "September 16th is observed as the International Day for the Preservation of the Ozone Layer (World Ozone Day)."
+  }, {
+    "q": "The term 'Disaster' is derived from the French word 'Desastre', which means:",
+    "options": ["Sudden event", "Bad or Evil star", "Great destruction", "Earth shaking"],
+    "answer": 1,
+    "explanation": "The word is derived from the French word 'Desastre', meaning 'Bad or Evil star'."
+  },
+  {
+    "q": "Which of the following is an example of a 'Hydrological Disaster'?",
+    "options": ["Earthquake", "Flood", "Cyclone", "Forest fire"],
+    "answer": 1,
+    "explanation": "Floods, hailstorms, and cloudbursts are classified as Hydrological Disasters."
+  },
+  {
+    "q": "Landslides and Volcanic eruptions are classified under which type of disaster?",
+    "options": ["Meteorological", "Climatological", "Geological", "Biological"],
+    "answer": 2,
+    "explanation": "Geological Disasters include landslides, earthquakes, volcanic eruptions, and tornadoes."
+  },
+  {
+    "q": "Which of the following represents a 'Man-made Disaster'?",
+    "options": ["Tsunami", "Heat wave", "Oil spill", "Locust plague"],
+    "answer": 2,
+    "explanation": "Man-made disasters include urban and forest fires, oil spills, transportation accidents, and acts of terrorism."
+  },
+  {
+    "q": "Viral outbreaks and pest invasions are examples of:",
+    "options": ["Chemical Disasters", "Biological Disasters", "Hydrological Disasters", "Geophysical Disasters"],
+    "answer": 1,
+    "explanation": "Biological Disasters include viral outbreaks, pest invasions, livestock epidemics, and locust plagues."
+  },
+  {
+    "q": "Which phase of the Disaster Management Cycle involves 'Mitigation' and 'Prevention'?",
+    "options": ["Pre-Disaster", "During Disaster", "Post-Disaster", "Recovery"],
+    "answer": 0,
+    "explanation": "The Pre-Disaster phase includes Prevention, Mitigation, and Preparedness."
+  },
+  {
+    "q": "The 'Response' phase occurs:",
+    "options": ["Before the disaster", "During the disaster", "Months after the disaster", "During reconstruction"],
+    "answer": 1,
+    "explanation": "Response is the phase that occurs During the Disaster to minimize loss of life and property."
+  },
+  {
+    "q": "Restoration of basic services and reconstruction of infrastructure belongs to which phase?",
+    "options": ["Mitigation", "Preparedness", "Response", "Recovery"],
+    "answer": 3,
+    "explanation": "The Post-Disaster phase involves Recovery, Rehabilitation, and Reconstruction."
+  },
+  {
+    "q": "Who is the Chairperson of the National Disaster Management Authority (NDMA) in India?",
+    "options": ["President of India", "Prime Minister of India", "Home Minister", "Chief Justice of India"],
+    "answer": 1,
+    "explanation": "The Prime Minister of India is the Chairperson of the National Disaster Management Authority (NDMA)."
+  },
+  {
+    "q": "The NDMA is hosted by which Ministry?",
+    "options": ["Ministry of Environment", "Ministry of Earth Sciences", "Ministry of Home Affairs", "Ministry of Defence"],
+    "answer": 2,
+    "explanation": "The NDMA is hosted by the Ministry of Home Affairs."
+  },
+  {
+    "q": "At the State level, who serves as the Chairperson of the State Disaster Management Authority (SDMA)?",
+    "options": ["Governor", "Chief Minister", "Home Minister of State", "Chief Secretary"],
+    "answer": 1,
+    "explanation": "The Chief Minister is the Chairperson of the State Disaster Management Authority (SDMA)."
+  },
+  {
+    "q": "Who chairs the District Disaster Management Authority (DDMA)?",
+    "options": ["Superintendent of Police", "District Magistrate / Deputy Commissioner", "Mayor", "Local MLA"],
+    "answer": 1,
+    "explanation": "The DDMA is chaired by the District Magistrate (DM) or Deputy Commissioner (DC)."
+  },
+  {
+    "q": "Which committee acts as the executive body at the National level for disaster management?",
+    "options": ["National Executive Committee (NEC)", "Cabinet Committee on Security", "Finance Commission", "Planning Commission"],
+    "answer": 0,
+    "explanation": "The National Executive Committee (NEC), chaired by the Home Secretary, operates at the national level."
+  },
+  {
+    "q": "At the School level, who is designated as the Chairperson for disaster management?",
+    "options": ["Head Boy/Girl", "District Education Officer", "Principal", "Class Teacher"],
+    "answer": 2,
+    "explanation": "At the School Level, the Principal is the Chairperson for disaster management activities."
+  },
+  {
+    "q": "Which of the following is NOT a member of the State Disaster Management Authority?",
+    "options": ["Chief Minister", "Chief Medical Officer", "Superintendent of Police", "Prime Minister"],
+    "answer": 3,
+    "explanation": "The Prime Minister chairs the National authority, not the State authority. The State authority includes the CM, Deputy Commissioner, SP, etc."
+  },
+  {
+    "q": "What constitutes the 'psychological impact' of a disaster?",
+    "options": ["Loss of property", "PTSD, grief, and depression", "Soil erosion", "Economic loss"],
+    "answer": 1,
+    "explanation": "Psychological impacts include PTSD, grief, depression, and anxiety."
+  },
+  {
+    "q": "Which activity is part of 'Preparedness' in disaster management?",
+    "options": ["Rebuilding houses", "Planning and training for emergencies", "Rescue operations", "Assessing damage after the event"],
+    "answer": 1,
+    "explanation": "Preparedness involves planning, training, and educational activities for events that cannot be prevented."
+  },
+  {
+    "q": "What is 'Mitigation' in the context of disaster management?",
+    "options": ["Providing food during floods", "Measures to reduce the severity or likelihood of a disaster", "Reconstructing bridges", "Search and rescue"],
+    "answer": 1,
+    "explanation": "Mitigation refers to measures taken to prevent a disaster or reduce its severity and impact."
+  },
+  {
+    "q": "Nuclear core meltdowns are classified as:",
+    "options": ["Geological Disasters", "Nuclear Disasters", "Hydrological Disasters", "Meteorological Disasters"],
+    "answer": 1,
+    "explanation": "Nuclear Disasters include nuclear core meltdowns and radiation-related burns and illnesses."
+  },
+  {
+    "q": "Which body co-chairs the District Disaster Management Authority along with the DC/DM?",
+    "options": ["Superintendent of Police", "Chairperson, Zila Parishad", "Chief Medical Officer", "Mayor"],
+    "answer": 1,
+    "explanation": "The DDMA is chaired by the DM/DC and Co-chaired by the Chairperson, Zila Parishad."
+  },
+  {
+    "q": "Identify the type of memory required for the execution of programs.",
+    "options": ["RAM", "ROM", "HDD", "Cache"],
+    "answer": 1,
+    "explanation": "RAM (Random Access Memory) is the volatile memory used to store data and programs currently being executed by the CPU."
+  },
+  {
+    "q": "RAM is ________.",
+    "options": ["Non-Volatile, Temporary", "Volatile, Temporary", "Volatile, Permanent", "Non-Volatile, Permanent"],
+    "answer": 2,
+    "explanation": "RAM is volatile, meaning it loses data when power is lost, and it is used for temporary storage during program execution."
+  },
+  {
+    "q": "The core computing unit of a computer System consists of:",
+    "options": ["Central Processing Unit", "Power Supply", "Motherboard", "All of the above"],
+    "answer": 1,
+    "explanation": "The Central Processing Unit (CPU) is considered the core computing unit or the 'brain' of the computer."
+  },
+  {
+    "q": "DRAM is made of:",
+    "options": ["Capacitors", "D Flip Flop", "SSD", "Decoders"],
+    "answer": 1,
+    "explanation": "Dynamic RAM (DRAM) stores each bit of data in a separate capacitor within an integrated circuit."
+  },
+  {
+    "q": "Which kind of RAM is used for cache memory?",
+    "options": ["DRAM", "SRAM", "EERAM", "None of the above"],
+    "answer": 2,
+    "explanation": "Static RAM (SRAM) is faster and more expensive than DRAM, making it suitable for CPU cache memory."
+  },
+  {
+    "q": "Mirroring for Fault Tolerance is used in:",
+    "options": ["RAID 0", "RAID 1", "RAID 3", "RAID 5"],
+    "answer": 2,
+    "explanation": "RAID 1 consists of an exact copy (or mirror) of a set of data on two or more disks."
+  },
+  {
+    "q": "Machine Language is a ________ language.",
+    "options": ["High-Level Language", "Low-Level Language", "Medium Level Language", "Assembly Level Language"],
+    "answer": 2,
+    "explanation": "Machine language is the lowest-level programming language, consisting of binary code directly executable by the CPU."
+  },
+  {
+    "q": "Which of the following is not a backup storage?",
+    "options": ["CD", "DVD", "PenDrive", "RAM"],
+    "answer": 4,
+    "explanation": "RAM is volatile memory and cannot retain data without power, so it is not used for backup storage."
+  },
+  {
+    "q": "Identify the correct flow of steps in program development.",
+    "options": ["Load-Compile-Link-Execute", "Load-Compile-Execute-Link", "Compile-Link-Load-Execute", "Link-Compile-Load-Execute"],
+    "answer": 3,
+    "explanation": "The standard sequence is Compiling source code, Linking object files, Loading into memory, and Executing."
+  },
+  {
+    "q": "The full form of BIOS is:",
+    "options": ["Binary Input Output System", "Basic Input/Output System", "Basic Input off System", "None of the above"],
+    "answer": 2,
+    "explanation": "BIOS stands for Basic Input/Output System, the firmware used to perform hardware initialization."
+  },
+  {
+    "q": "System Configuration files are present in the ________ directory in Linux.",
+    "options": ["/bin", "/usr", "/etc", "None of the mentioned"],
+    "answer": 3,
+    "explanation": "The /etc directory contains all the system-related configuration files in Linux."
+  },
+  {
+    "q": "Which file system was primarily designed for flash drives?",
+    "options": ["HFS", "FAT", "NDFS", "Extended file system"],
+    "answer": 2,
+    "explanation": "FAT (specifically FAT32 and exFAT) is widely used for flash drives due to its broad compatibility."
+  },
+  {
+    "q": "Which command is used to find and replace text in files in a Unix/Linux shell?",
+    "options": ["grep", "sed", "awk", "diff"],
+    "answer": 2,
+    "explanation": "The 'sed' (stream editor) command is commonly used for finding and replacing text strings within files."
+  },
+  {
+    "q": "What does the acronym 'NTFS' stand for in Windows file systems?",
+    "options": ["New Technology File System", "Network Transfer File System", "Non-Text File System", "Native Transfer File System"],
+    "answer": 1,
+    "explanation": "NTFS stands for New Technology File System, the proprietary file system developed by Microsoft."
+  },
+  {
+    "q": "Which signal asks the process to terminate voluntarily?",
+    "options": ["SIGKILL", "SIGSTOP", "SIGTERMINATE", "SIGTERM"],
+    "answer": 4,
+    "explanation": "SIGTERM is the signal sent to a process to request its termination, allowing it to clean up before exiting."
+  },
+  {
+    "q": "Which of the following usually observe each activity on the internet of the victim, gather all information in the background, and send it to someone else?",
+    "options": ["Malware", "Spyware", "Adware", "All of the above"],
+    "answer": 2,
+    "explanation": "Spyware is malicious software designed to gather information about a person or organization and send it to another entity."
+  },
+  {
+    "q": "What is Machine learning?",
+    "options": ["The autonomous acquisition of knowledge through the use of computer programs", "The autonomous acquisition of knowledge through the use of manual programs", "The selective acquisition of knowledge through the use of computer programs", "The selective acquisition of knowledge through the use of manual programs"],
+    "answer": 1,
+    "explanation": "Machine learning involves computer programs (algorithms) autonomously learning from data to improve performance."
+  },
+  {
+    "q": "Directing the output into a file instead of the terminal is called:",
+    "options": ["Pipes", "Redirection", "Signals", "Inter-process communication"],
+    "answer": 2,
+    "explanation": "Redirection (using symbols like >) is used to send the output of a command to a file instead of the standard output (screen)."
+  },
+  {
+    "q": "FAANG is an acronym referring to the stocks of the five most popular and best-performing:",
+    "options": ["American technology companies", "European technology companies", "Korean technology companies", "Indian technology companies"],
+    "answer": 1,
+    "explanation": "FAANG stands for Facebook (Meta), Amazon, Apple, Netflix, and Google (Alphabet), which are major American tech companies."
+  },
+  {
+    "q": "Which of the following is NOT a competitive coding platform?",
+    "options": ["Hackerrank", "CodeChef", "LeetCode", "StackOverflow"],
+    "answer": 4,
+    "explanation": "StackOverflow is a question-and-answer website for programmers, whereas the others are platforms for coding challenges."
+  }
+  
 ];
 // end QUESTIONS array
 
@@ -2782,7 +2284,7 @@ btnStart.addEventListener('click', ()=>{
 });
 function startTest(user){
   // store last user
-  localStorage.setItem('CHE-110_user', JSON.stringify(user));
+  localStorage.setItem('ECE-249_user', JSON.stringify(user));
   // show test page
   startPage.style.display = 'none';
   testPage.style.display = 'block';
@@ -2811,7 +2313,7 @@ btnResetStart.addEventListener('click', ()=>{ if(confirm('Reset start form?')){ 
 function saveResult(){
   const correct = state.answeredCorrect.filter(x=>x).length;
   const attempted = state.answers.filter(a=>a!==null).length;
-  const user = JSON.parse(localStorage.getItem('CHE-110_user') || '{}');
+  const user = JSON.parse(localStorage.getItem('ECE-249_user') || '{}');
   const result = { name: user.name || inpName.value, reg: user.reg || inpReg.value, pic: user.pic || null, correct, attempted, time: formatTime(state.elapsedSec), date: (new Date()).toLocaleString() };
   
   // 🔗 also save online
@@ -2849,34 +2351,34 @@ function showLoader(msg, duration = 1500) {
 
 
 // // 🟢 Supabase Database Save (adds result to test_result table)
-async function saveResultToSupabase(result) {
-  try {
-    // पहले check करो कि यह registration पहले से मौजूद तो नहीं है
-    const { data: existing, error: fetchError } = await supabase
-      .from('test_result')
-      .select('reg')
-      .eq('reg', result.reg);
+// async function saveResultToSupabase(result) {
+//   try {
+//     // पहले check करो कि यह registration पहले से मौजूद तो नहीं है
+//     const { data: existing, error: fetchError } = await supabase
+//       .from('test_result')
+//       .select('reg')
+//       .eq('reg', result.reg);
 
-    if (fetchError) throw fetchError;
+//     if (fetchError) throw fetchError;
 
-    if (existing && existing.length > 0) {
-      alert('⚠️ This registration number has already submitted a result!');
-      return;
-    }
+//     if (existing && existing.length > 0) {
+//       alert('⚠️ This registration number has already submitted a result!');
+//       return;
+//     }
 
-    // Insert new result
-    const { data, error } = await supabase
-      .from('test_result')
-      .insert([result]);
+//     // Insert new result
+//     const { data, error } = await supabase
+//       .from('test_result')
+//       .insert([result]);
 
-    if (error) throw error;
+//     if (error) throw error;
 
-    alert('✅ Result saved to Supabase database!');
-  } catch (err) {
-    console.error('Supabase insert error:', err);
-    alert('❌ Error saving result to Supabase.');
-  }
-}
+//     alert('✅ Result saved to Supabase database!');
+//   } catch (err) {
+//     console.error('Supabase insert error:', err);
+//     alert('❌ Error saving result to Supabase.');
+//   }
+// }
 /* Export CSV for all saved results */
 
 // 🟢 Supabase Database Save (adds result to test_result table)
@@ -2912,8 +2414,8 @@ async function saveResultToSupabase(result) {
 
   } catch (err) {
     console.error('Aryan_data_base insert error:', err);
-    showLoader("❌ 🥲🥲 Error saving result!", 2000);
-    alert('❌ 🥲🥲 Error saving result to Aryan_data_base.');
+    showLoader("❌ Error saving result!", 2000);
+    alert('❌ Error saving result to Aryan_data_base.');
   }
 }
 
@@ -2937,14 +2439,14 @@ async function fetchAllResults() {
 }
 
 btnExport.addEventListener('click', ()=>{
-  const arr = JSON.parse(localStorage.getItem('CHE-110_results') || '[]');
+  const arr = JSON.parse(localStorage.getItem('ece249_results') || '[]');
   if(arr.length === 0){ alert('No saved results to export.'); return; }
   const headers = ['Name','Reg','Correct','Attempted','Time','Date'];
   const rows = arr.map(r => [r.name, r.reg, r.correct, r.attempted, r.time, r.date]);
   let csv = headers.join(',') + '\n' + rows.map(r => r.map(c => `"${String(c).replace(/"/g,'""')}"`).join(',')).join('\n');
   const blob = new Blob([csv], {type: 'text/csv'});
   const url = URL.createObjectURL(blob);
-  const a = document.createElement('a'); a.href = url; a.download = 'CHE-110_results.csv'; document.body.appendChild(a); a.click(); a.remove(); URL.revokeObjectURL(url);
+  const a = document.createElement('a'); a.href = url; a.download = 'ece249_results.csv'; document.body.appendChild(a); a.click(); a.remove(); URL.revokeObjectURL(url);
 });
 
 /* View summary modal */
@@ -2954,7 +2456,7 @@ function showSummaryModal(){
   modalRoot.innerHTML = '';
   const backdrop = document.createElement('div'); backdrop.className = 'modal-backdrop';
   const modal = document.createElement('div'); modal.className = 'modal';
-  const user = JSON.parse(localStorage.getItem('CHE-110_user') || '{}');
+  const user = JSON.parse(localStorage.getItem('ece249_user') || '{}');
   modal.innerHTML = `<h3>Test Summary</h3>
     <p><strong>Name:</strong> ${user.name || inpName.value} &nbsp; • &nbsp; <strong>Reg:</strong> ${user.reg || inpReg.value}</p>
     <p><strong>Score:</strong> ${correct} / ${totalQ} &nbsp; • &nbsp; <strong>Attempted:</strong> ${attempted}</p>
@@ -2997,7 +2499,7 @@ window.addEventListener('beforeunload', function(e){ if(state.started){ e.preven
 /* init */
 (function init(){
   // if previous user exists, prefill name/reg
-  const prevUser = JSON.parse(localStorage.getItem('CHE-110_user') || 'null');
+  const prevUser = JSON.parse(localStorage.getItem('ECE-249_user') || 'null');
   if(prevUser){
     if(prevUser.name) inpName.value = prevUser.name;
     if(prevUser.reg) inpReg.value = prevUser.reg;
