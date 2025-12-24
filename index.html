@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>ECE249 — Test Series (Units 1-6)</title>
+<title>CHE-110 — Test Series (Units 1-6)</title>
 <style>
 /* ===================== CSS Variables ===================== */
 :root{
@@ -28,8 +28,8 @@ html,body{
 body{
     margin:0; /* Remove default margin */
     background:
-        radial-gradient(900px 500px at 10% 10%, rgba(244, 50, 163, 0.04), transparent), /* Decorative radial gradient */
-        linear-gradient(180deg,#5a7ab2 0%, #11bac0 100%); /* Main page gradient background */
+        radial-gradient(900px 500px at 10% 10%, rgba(210, 47, 142, 0.04), transparent), /* Decorative radial gradient */
+        linear-gradient(180deg,#3171e0 0%, #29cacf 100%); /* Main page gradient background */
     color:#070b0f; /* Default text color */
     min-height:100vh; /* Minimum height full viewport */
     display:flex; /* Flex layout */
@@ -103,10 +103,10 @@ input[type="text"], input[type="file"]{
 
 /* ===================== About box ===================== */
 .about{
-    background:linear-gradient(180deg, rgba(204, 66, 66, 0.01), rgba(156, 43, 43, 0.02)); /* Light background gradient */
+    background:linear-gradient(180deg, rgba(184, 11, 11, 0.01), rgba(156, 43, 43, 0.02)); /* Light background gradient */
     padding:12px; /* Inner spacing */
     border-radius:10px; /* Rounded corners */
-    border:1px solid rgba(150, 23, 23, 0.02); /* Light border */
+    border:1px solid rgba(105, 0, 0, 0.02); /* Light border */
     max-width:600px; /* Max width */
 }
 .about p{
@@ -123,7 +123,7 @@ input[type="text"], input[type="file"]{
     cursor:pointer; /* Pointer on hover */
     font-weight:700; /* Bold */
     background:var(--accent); /* Main accent color */
-    color:#022; /* Text color */
+    color:rgb(0, 0, 0); /* Text color */
     box-shadow:0 6px 20px rgba(14, 239, 164, 0.08); /* Shadow */
     transition:transform .14s ease, box-shadow .14s ease; /* Smooth interaction */
 }
@@ -132,8 +132,8 @@ input[type="text"], input[type="file"]{
 }
 .btn.ghost{
     background:transparent; /* Ghost button */
-    border:1px solid rgba(99, 46, 46, 0.06); /* Light border */
-    color:#1a5795; /* Text color */
+    border:1px solid rgb(89, 33, 33); /* Light border */
+    color:rgb(142, 64, 0); /* Text color */
 }
 .btn.warn{
     background:var(--danger); /* Red background for warning */
@@ -225,7 +225,7 @@ input[type="text"], input[type="file"]{
 }
 .option:hover{
     transform:translateY(-4px); /* Hover lift effect */
-    box-shadow:0 10px 30px rgba(12, 49, 217, 0.6);
+    box-shadow:0 10px 30px rgba(24, 54, 185, 0.6);
 }
 .option .label{
     font-weight:750;
@@ -307,7 +307,7 @@ input[type="text"], input[type="file"]{
     z-index:60;
 }
 .modal{
-    background:#071025;
+    background:#d3d8e3;
     padding:16px;
     border-radius:12px;
     width:90%;
@@ -343,8 +343,6 @@ input[type="text"], input[type="file"]{
     .options{grid-template-columns:1fr;} /* Single column for options */
 }
 </style>
-<!-- Supabase client JS (must be above your custom <script>) -->
-<script src="https://unpkg.com/@supabase/supabase-js@2"></script>
 </head>
 <body>
   <div class="wrap">
@@ -352,7 +350,7 @@ input[type="text"], input[type="file"]{
       <header>
         <div class="title">
           <div style="display:flex;align-items:center;gap:10px">
-            <h1>ECE249 — Test Series (Units 1-6)</h1>
+            <h1>CHE-110 — Test Series (Units 1-6)</h1>
             <div class="accent-badge" id="badgeCount">300+ Qs</div>
           </div>
           <div class="small-by">Created by <strong>Aryan Singh</strong></div>
@@ -447,9 +445,18 @@ input[type="text"], input[type="file"]{
                 <div style="flex:1"><div class="label muted">Attempted</div><div id="attemptedCount" style="font-weight:800">0</div></div>
                 <div style="flex:1"><div class="label muted">Time</div><div id="timeSpent" style="font-weight:800">00:00</div></div>
               </div>
+               <div style="border: 2px solid #555; background-color: transparent; padding: 10px; width: fit-content; border-radius: 5px; font-family: sans-serif; font-size: 14px; color: inherit; margin: 15px 0;">
+                    <strong>How to View Answers:</strong>
+                    <ol style="margin: 5px 0 0 20px; padding: 0;">
+                        <li>Click <b>"End Test"</b></li>
+                        <li>Click <b>"OK"</b></li>
+                       <li>Click <b>"OK"</b> again</li>
+                        <li>Click <b>"Review Answers"</b></li>
+                    </ol>
+                </div>
 
               <div style="margin-top:10px;display:flex;gap:8px">
-                <button id="btnSave" class="btn">Save Result</button>
+                <!-- <button id="btnSave" class="btn">Save Result</button> -->
                 <button id="btnExport" class="btn ghost">Export CSV</button>
               </div>
             </div>
@@ -460,17 +467,17 @@ input[type="text"], input[type="file"]{
     </div>
   </div>
 
-  <!-- modal container -->
-  <div id="modalRoot" style="display:none"></div>
-  <!-- 🟢 Supabase Connection Setup -->
-<script>
-const SUPABASE_URL = "https://kqfdyvqrhytbjyszsxmr.supabase.co"; // Supabase Project URL
-const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImtxZmR5dnFyaHl0Ymp5c3pzeG1yIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjQ2NDkzNzQsImV4cCI6MjA4MDIyNTM3NH0.-WpfPxH7Q3xE5UF5448ERdsdSjYTiefF4nVymSM9cu0";
-// Create Supabase client
-const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+  <script type="module">
+  import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm';
+
+  const SUPABASE_URL = "https://kqfdyvqrhytbjyszsxmr.supabase.co";
+  const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImtxZmR5dnFyaHl0Ymp5c3pzeG1yIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjQ2NDkzNzQsImV4cCI6MjA4MDIyNTM3NH0.-WpfPxH7Q3xE5UF5448ERdsdSjYTiefF4nVymSM9cu0";
+
+  const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+  window.supabase = supabase;
 </script>
 <script>const QUESTIONS = [
-  {
+    {
     "q": "Environmental Studies mainly deals with:",
     "options": ["Space science", "Only animals", "Interaction of humans with environment", "Only plants"],
     "answer": 2,
@@ -2017,13 +2024,11 @@ const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
     "answer": 4,
     "explanation": "StackOverflow is a question-and-answer website for programmers, whereas the others are platforms for coding challenges."
   }
-  
+
 ];
 // end QUESTIONS array
 
 /* 300 QUESTIONS: We created 300 items above. */
-
-/* ============== App State ============== */
 /* If you paste the full 300 questions, make sure to update totalQ below automatically. */
 
 const totalQ = QUESTIONS.length || 300;
@@ -2409,13 +2414,13 @@ async function saveResultToSupabase(result) {
 
     if (error) throw error;
 
-    showLoader("✅ Saved successfully!", 1800);
-    alert('✅ Result saved to Aryan_data_base!');
+    showLoader("✅ 😃Saved successfully!", 1800);
+    alert('✅  😃Result saved to Aryan_data_base!');
 
   } catch (err) {
     console.error('Aryan_data_base insert error:', err);
-    showLoader("❌ Error saving result!", 2000);
-    alert('❌ Error saving result to Aryan_data_base.');
+    showLoader("❌🥲🥲 Error saving result!", 2000);
+    alert('❌🥲🥲 Error saving result to Aryan_data_base.');
   }
 }
 
