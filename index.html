@@ -29,7 +29,7 @@ body{
     margin:0; /* Remove default margin */
     background:
         radial-gradient(900px 500px at 10% 10%, rgba(210, 47, 142, 0.04), transparent), /* Decorative radial gradient */
-        linear-gradient(180deg,#3b7ced 0%, #29cacf 100%); /* Main page gradient background */
+        linear-gradient(180deg,#3171e0 0%, #29cacf 100%); /* Main page gradient background */
     color:#070b0f; /* Default text color */
     min-height:100vh; /* Minimum height full viewport */
     display:flex; /* Flex layout */
@@ -447,9 +447,18 @@ input[type="text"], input[type="file"]{
                 <div style="flex:1"><div class="label muted">Attempted</div><div id="attemptedCount" style="font-weight:800">0</div></div>
                 <div style="flex:1"><div class="label muted">Time</div><div id="timeSpent" style="font-weight:800">00:00</div></div>
               </div>
+               <div style="border: 2px solid #555; background-color: transparent; padding: 10px; width: fit-content; border-radius: 5px; font-family: sans-serif; font-size: 14px; color: inherit; margin: 15px 0;">
+                    <strong>How to View Answers:</strong>
+                    <ol style="margin: 5px 0 0 20px; padding: 0;">
+                        <li>Click <b>"End Test"</b></li>
+                        <li>Click <b>"OK"</b></li>
+                       <li>Click <b>"OK"</b> again</li>
+                        <li>Click <b>"Review Answers"</b></li>
+                    </ol>
+                </div>
 
               <div style="margin-top:10px;display:flex;gap:8px">
-                <button id="btnSave" class="btn">Save Result</button>
+                <!-- <button id="btnSave" class="btn">Save Result</button> -->
                 <button id="btnExport" class="btn ghost">Export CSV</button>
               </div>
             </div>
