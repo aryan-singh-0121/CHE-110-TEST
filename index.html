@@ -28,8 +28,8 @@ html,body{
 body{
     margin:0; /* Remove default margin */
     background:
-        radial-gradient(900px 500px at 10% 10%, rgba(244, 50, 163, 0.04), transparent), /* Decorative radial gradient */
-        linear-gradient(180deg,#5a7ab2 0%, #11bac0 100%); /* Main page gradient background */
+        radial-gradient(900px 500px at 10% 10%, rgba(210, 47, 142, 0.04), transparent), /* Decorative radial gradient */
+        linear-gradient(180deg,#3b7ced 0%, #29cacf 100%); /* Main page gradient background */
     color:#070b0f; /* Default text color */
     min-height:100vh; /* Minimum height full viewport */
     display:flex; /* Flex layout */
@@ -103,10 +103,10 @@ input[type="text"], input[type="file"]{
 
 /* ===================== About box ===================== */
 .about{
-    background:linear-gradient(180deg, rgba(204, 66, 66, 0.01), rgba(156, 43, 43, 0.02)); /* Light background gradient */
+    background:linear-gradient(180deg, rgba(184, 11, 11, 0.01), rgba(156, 43, 43, 0.02)); /* Light background gradient */
     padding:12px; /* Inner spacing */
     border-radius:10px; /* Rounded corners */
-    border:1px solid rgba(150, 23, 23, 0.02); /* Light border */
+    border:1px solid rgba(105, 0, 0, 0.02); /* Light border */
     max-width:600px; /* Max width */
 }
 .about p{
@@ -123,7 +123,7 @@ input[type="text"], input[type="file"]{
     cursor:pointer; /* Pointer on hover */
     font-weight:700; /* Bold */
     background:var(--accent); /* Main accent color */
-    color:#022; /* Text color */
+    color:rgb(0, 0, 0); /* Text color */
     box-shadow:0 6px 20px rgba(14, 239, 164, 0.08); /* Shadow */
     transition:transform .14s ease, box-shadow .14s ease; /* Smooth interaction */
 }
@@ -133,7 +133,7 @@ input[type="text"], input[type="file"]{
 .btn.ghost{
     background:transparent; /* Ghost button */
     border:1px solid rgba(99, 46, 46, 0.06); /* Light border */
-    color:#1a5795; /* Text color */
+    color:#570721; /* Text color */
 }
 .btn.warn{
     background:var(--danger); /* Red background for warning */
@@ -225,7 +225,7 @@ input[type="text"], input[type="file"]{
 }
 .option:hover{
     transform:translateY(-4px); /* Hover lift effect */
-    box-shadow:0 10px 30px rgba(12, 49, 217, 0.6);
+    box-shadow:0 10px 30px rgba(24, 54, 185, 0.6);
 }
 .option .label{
     font-weight:750;
@@ -2928,14 +2928,14 @@ async function fetchAllResults() {
 }
 
 btnExport.addEventListener('click', ()=>{
-  const arr = JSON.parse(localStorage.getItem('ece249_results') || '[]');
+  const arr = JSON.parse(localStorage.getItem('CHE-110_results') || '[]');
   if(arr.length === 0){ alert('No saved results to export.'); return; }
   const headers = ['Name','Reg','Correct','Attempted','Time','Date'];
   const rows = arr.map(r => [r.name, r.reg, r.correct, r.attempted, r.time, r.date]);
   let csv = headers.join(',') + '\n' + rows.map(r => r.map(c => `"${String(c).replace(/"/g,'""')}"`).join(',')).join('\n');
   const blob = new Blob([csv], {type: 'text/csv'});
   const url = URL.createObjectURL(blob);
-  const a = document.createElement('a'); a.href = url; a.download = 'ece249_results.csv'; document.body.appendChild(a); a.click(); a.remove(); URL.revokeObjectURL(url);
+  const a = document.createElement('a'); a.href = url; a.download = 'CHE-110_results.csv'; document.body.appendChild(a); a.click(); a.remove(); URL.revokeObjectURL(url);
 });
 
 /* View summary modal */
@@ -2945,7 +2945,7 @@ function showSummaryModal(){
   modalRoot.innerHTML = '';
   const backdrop = document.createElement('div'); backdrop.className = 'modal-backdrop';
   const modal = document.createElement('div'); modal.className = 'modal';
-  const user = JSON.parse(localStorage.getItem('ece249_user') || '{}');
+  const user = JSON.parse(localStorage.getItem('CHE-110_user') || '{}');
   modal.innerHTML = `<h3>Test Summary</h3>
     <p><strong>Name:</strong> ${user.name || inpName.value} &nbsp; • &nbsp; <strong>Reg:</strong> ${user.reg || inpReg.value}</p>
     <p><strong>Score:</strong> ${correct} / ${totalQ} &nbsp; • &nbsp; <strong>Attempted:</strong> ${attempted}</p>
