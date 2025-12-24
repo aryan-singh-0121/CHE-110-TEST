@@ -2773,7 +2773,7 @@ btnStart.addEventListener('click', ()=>{
 });
 function startTest(user){
   // store last user
-  localStorage.setItem('ECE-249_user', JSON.stringify(user));
+  localStorage.setItem('CHE-110_user', JSON.stringify(user));
   // show test page
   startPage.style.display = 'none';
   testPage.style.display = 'block';
@@ -2988,7 +2988,7 @@ window.addEventListener('beforeunload', function(e){ if(state.started){ e.preven
 /* init */
 (function init(){
   // if previous user exists, prefill name/reg
-  const prevUser = JSON.parse(localStorage.getItem('ECE-249_user') || 'null');
+  const prevUser = JSON.parse(localStorage.getItem('CHE-110_user') || 'null');
   if(prevUser){
     if(prevUser.name) inpName.value = prevUser.name;
     if(prevUser.reg) inpReg.value = prevUser.reg;
